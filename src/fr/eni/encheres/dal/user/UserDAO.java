@@ -28,7 +28,7 @@ public interface UserDAO {
      * @return l'utilisateur
      * @throws UserDALException
      */
-    public Utilisateur show(Integer id) throws UserDALException;
+    public Utilisateur findById(Integer id) throws UserDALException;
     
     /**
      * Modifier un utilisateur
