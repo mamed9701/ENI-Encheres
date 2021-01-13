@@ -17,7 +17,7 @@ public class Utilisateur {
 	private String nom;
 	private String prenom;
 	private String email;
-	private Integer telephone;
+	private String telephone;
 	private String rue;
 	private String codePostal;
 	private String ville;
@@ -49,7 +49,7 @@ public class Utilisateur {
 	 * @param credit
 	 * @param administrateur
 	 */
-	public Utilisateur(Integer noUtilisateur, String pseudo, String nom, String prenom, String email, Integer telephone,
+	public Utilisateur(Integer noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String codePostal, String ville, String motDePasse, Integer credit, Boolean administrateur) {
 		super();
 		this.noUtilisateur = noUtilisateur;
@@ -139,14 +139,14 @@ public class Utilisateur {
 	/**
 	 * @return the telephone
 	 */
-	public Integer getTelephone() {
+	public String getTelephone() {
 		return telephone;
 	}
 
 	/**
 	 * @param telephone the telephone to set
 	 */
-	public void setTelephone(Integer telephone) {
+	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
 
