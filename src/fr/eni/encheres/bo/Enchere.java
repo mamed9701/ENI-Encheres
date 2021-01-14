@@ -3,9 +3,10 @@ package fr.eni.encheres.bo;
 import java.time.LocalDate;
 
 public class Enchere {
+    private Integer noEnchere;
 	private LocalDate dateEnchere;
 	private Integer montantEnchere;
-	private Utilisateur noUtilisateur;
+	private Utilisateur utilisateur;
 	private ArticleVendu article;
 
 	/**
@@ -26,7 +27,15 @@ public class Enchere {
 		this.montantEnchere = montantEnchere;
 	}
 
-	/**
+	public Integer getNoEnchere() {
+        return noEnchere;
+    }
+
+    public void setNoEnchere(Integer noEnchere) {
+        this.noEnchere = noEnchere;
+    }
+
+    /**
 	 * @return the dateEnchere
 	 */
 	public LocalDate getDateEnchere() {
@@ -55,17 +64,17 @@ public class Enchere {
 	}
 
 	/**
-	 * @return the noUtilisateur
+	 * @return the utilisateur
 	 */
-	public Utilisateur getNoUtilisateur() {
-		return noUtilisateur;
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
 	}
 
 	/**
-	 * @param noUtilisateur the noUtilisateur to set
+	 * @param utilisateur the utilisateur to set
 	 */
-	public void setNoUtilisateur(Utilisateur noUtilisateur) {
-		this.noUtilisateur = noUtilisateur;
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
 	}
 
 	/**
@@ -84,8 +93,8 @@ public class Enchere {
 
 	@Override
 	public String toString() {
-		return "Enchere [dateEnchere=" + dateEnchere + ", montantEnchere=" + montantEnchere + ", noUtilisateur="
-				+ noUtilisateur + ", article=" + article + "]";
+		return "Enchere [dateEnchere=" + dateEnchere + ", montantEnchere=" + montantEnchere + ", utilisateur="
+				+ utilisateur + ", article=" + article + "]";
 	}
 	
 	
