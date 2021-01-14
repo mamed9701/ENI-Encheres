@@ -2,9 +2,9 @@ package fr.eni.encheres.bo;
 
 public class Retrait {
 	private String rue;
-	private String code_postal;
+	private String codePostal;
 	private String ville;
-	private ArticleVendu noArticle;
+	private ArticleVendu article;
 
 	/**
 	 * 
@@ -16,13 +16,13 @@ public class Retrait {
 
 	/**
 	 * @param rue
-	 * @param code_postal
+	 * @param codePostal
 	 * @param ville
 	 */
-	public Retrait(String rue, String code_postal, String ville) {
+	public Retrait(String rue, String codePostal, String ville) {
 		super();
 		this.rue = rue;
-		this.code_postal = code_postal;
+		this.codePostal = codePostal;
 		this.ville = ville;
 	}
 
@@ -41,17 +41,17 @@ public class Retrait {
 	}
 
 	/**
-	 * @return the code_postal
+	 * @return the codePostal
 	 */
-	public String getCode_postal() {
-		return code_postal;
+	public String getCodePostal() {
+		return codePostal;
 	}
 
 	/**
-	 * @param code_postal the code_postal to set
+	 * @param codePostal the codePostal to set
 	 */
-	public void setCode_postal(String code_postal) {
-		this.code_postal = code_postal;
+	public void setCodePostal(String codePostal) {
+		this.codePostal = codePostal;
 	}
 
 	/**
@@ -69,22 +69,22 @@ public class Retrait {
 	}
 
 	/**
-	 * @return the noArticle
+	 * @return the article
 	 */
-	public ArticleVendu getNoArticle() {
-		return noArticle;
+	public ArticleVendu getArticle() {
+		return article;
 	}
 
 	/**
-	 * @param noArticle the noArticle to set
+	 * @param article the article to set
 	 */
-	public void setNoArticle(ArticleVendu noArticle) {
-		this.noArticle = noArticle;
+	public void setArticle(ArticleVendu article) {
+		this.article = article;
 	}
 
 	@Override
 	public String toString() {
-		return "Retrait [rue=" + rue + ", code_postal=" + code_postal + ", ville=" + ville + ", noArticle=" + noArticle
+		return "Retrait [rue=" + rue + ", codePostal=" + codePostal + ", ville=" + ville + ", article=" + article
 				+ "]";
 	}
 

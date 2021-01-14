@@ -11,6 +11,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.eni.encheres.bo.Retrait;
 import fr.eni.encheres.bo.Utilisateur;
 import fr.eni.encheres.dal.ConnectionProvider;
 
@@ -32,6 +33,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public Utilisateur insert(Utilisateur user) throws UserDALException {
+        
         try( Connection cnx = ConnectionProvider.getConnection();
                 PreparedStatement pst = cnx.prepareStatement(SQL_INSERT, Statement.RETURN_GENERATED_KEYS);
                ) {
@@ -53,6 +55,8 @@ public class UserDAOImpl implements UserDAO {
                    if (rs.next()) {
                        
                        user.setNoUtilisateur(rs.getInt(1));
+                       
+                       
                    }
                }
 

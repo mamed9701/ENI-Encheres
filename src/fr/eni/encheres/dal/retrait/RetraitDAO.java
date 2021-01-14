@@ -17,19 +17,7 @@ public interface RetraitDAO {
      * @return
      * @throws RetraitDALException
      */
-    public Retrait insert(Retrait retrait) throws RetraitDALException;
-    /**
-     * @param id
-     * @return
-     * @throws RetraitDALException
-     */
-    public Retrait findById(Integer id) throws RetraitDALException;
-    /**
-     * @param id
-     * @return
-     * @throws RetraitDALException
-     */
-    public Retrait edit(Integer id) throws RetraitDALException;
+    public void insert(Retrait retrait) throws RetraitDALException;
     /**
      * @param id
      * @throws RetraitDALException
