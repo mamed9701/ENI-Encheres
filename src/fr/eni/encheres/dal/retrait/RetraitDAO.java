@@ -23,7 +23,7 @@ public interface RetraitDAO {
      * @return
      * @throws RetraitDALException
      */
-    public Retrait show(Integer id) throws RetraitDALException;
+    public Retrait findById(Integer id) throws RetraitDALException;
     /**
      * @param id
      * @return

@@ -26,8 +26,8 @@ public class UserDAOImpl implements UserDAO {
     private static final String SQL_UPDATE = "update utilisateurs set pseudo=?,nom=?,prenom=?,email=?,telephone=?,rue=?,code_postal=?,ville=?,mot_de_passe=?,credit=?,administrateur=?"
             +" where no_utilisateur=?";
     private static final String SQL_DELETE = "delete from utilisateurs where no_utilisateur=?";
-    private static final String SQL_SELECT_BY_NAME = "select no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur"
-            +" from utilisateurs where nom = ?";
+    private static final String SQL_SELECT_BY_PSEUDO = "select no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur"
+            +" from utilisateurs where pseudo = ?";
     private static final String SQL_SELECT_ALL = "select * from utilisateurs";
 
     @Override
@@ -51,7 +51,8 @@ public class UserDAOImpl implements UserDAO {
                if (nbRows == 1) {
                    ResultSet rs = pst.getGeneratedKeys();
                    if (rs.next()) {
-                       user.setNoUtilisateur(rs.getInt("no_utilisateur"));
+                       
+                       user.setNoUtilisateur(rs.getInt(1));
                    }
                }
 
@@ -95,8 +96,8 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public Utilisateur edit(Integer id) throws UserDALException {
-        Utilisateur user = findById(id);
+    public Utilisateur edit(Utilisateur user) throws UserDALException {
+
         try( Connection cnx = ConnectionProvider.getConnection();
                 PreparedStatement pst = cnx.prepareStatement(SQL_UPDATE);
                ) {
@@ -111,6 +112,7 @@ public class UserDAOImpl implements UserDAO {
                pst.setString(9, user.getMotDePasse());
                pst.setInt(10, user.getCredit());
                pst.setBoolean(11, user.getAdministrateur());
+               pst.setInt(12, user.getNoUtilisateur());
                
                pst.executeUpdate();           
 
@@ -142,7 +144,7 @@ public class UserDAOImpl implements UserDAO {
         Utilisateur user = null;
         ResultSet rs = null;
         try( Connection cnx = ConnectionProvider.getConnection();
-                PreparedStatement rqt = cnx.prepareStatement(SQL_SELECT_BY_NAME);
+                PreparedStatement rqt = cnx.prepareStatement(SQL_SELECT_BY_PSEUDO);
                ) {
                 rqt.setString(1, username);
                 rs = rqt.executeQuery();

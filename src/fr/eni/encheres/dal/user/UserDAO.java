@@ -37,7 +37,7 @@ public interface UserDAO {
      * @return l'utilisateur modifié
      * @throws UserDALException
      */
-    public Utilisateur edit(Integer id) throws UserDALException;
+    public Utilisateur edit(Utilisateur user) throws UserDALException;
     
     /**
      * Supprimer un utilisateur
