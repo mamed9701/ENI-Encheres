@@ -4,6 +4,7 @@
 package fr.eni.encheres.dal.enchere;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,6 +34,8 @@ public class EnchereDAOImpl implements EnchereDAO {
     private static final String SQL_INSERT = "insert into encheres(date_enchere, montant_enchere, no_article, no_utilisateur) values(?,?,?,?)";
     private static final String SQL_SELECT_ALL_BY_USER = "select * from encheres where no_utilisateur = ?";
     private static final String SQL_SELECT_ALL = "select * from encheres";
+    private static final String SQL_UPDATE = "update encheres set date_enchere=?, montant_enchere=?"
+            +" where no_enchere=?";
 
     @Override
     public Enchere insert(Enchere enchere) throws EnchereDALException {
@@ -132,5 +135,24 @@ public class EnchereDAOImpl implements EnchereDAO {
            }
         return result;
     }
+
+	@Override
+	public Enchere update(Enchere enchere) throws EnchereDALException {
+		try( Connection cnx = ConnectionProvider.getConnection();
+                PreparedStatement pst = cnx.prepareStatement(SQL_UPDATE);
+               ) {
+               pst.setDate(1, Date.valueOf(enchere.getDateEnchere()));
+               pst.setInt(2, enchere.getMontantEnchere());
+               pst.setInt(3, enchere.getUtilisateur().getNoUtilisateur());
+               
+               
+               pst.executeUpdate();           
+
+           } catch (SQLException e) {
+               e.printStackTrace();
+               throw new EnchereDALException("Enchere DAL - La modification d'une enchère dans la base de données a échoué !");
+           }
+        return enchere;
+	}
 
 }

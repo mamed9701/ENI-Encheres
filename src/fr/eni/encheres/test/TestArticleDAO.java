@@ -6,6 +6,9 @@ package fr.eni.encheres.test;
 import java.time.LocalDate;
 import java.util.List;
 
+import fr.eni.encheres.bll.BLLException;
+import fr.eni.encheres.bll.enchere.EnchereManager;
+import fr.eni.encheres.bll.enchere.EnchereManagerSingl;
 import fr.eni.encheres.bo.ArticleVendu;
 import fr.eni.encheres.bo.Categorie;
 import fr.eni.encheres.bo.Utilisateur;
@@ -25,12 +28,17 @@ public class TestArticleDAO {
     private static ArticleVenduDAO daoArticles = DAOFactory.getArticleDAO();
     private static UserDAO daoUsers = DAOFactory.getUserDAO();
     private static CategorieDAO daoCategories = DAOFactory.getCategorieDAO();
+    
+    
+  
     /**
      * @param args
      * @throws ArticleVenduDALException 
      * @throws UserDALException 
      * @throws CategorieDALException 
+     * @throws BLLException 
      */
+
     public static void main(String[] args) throws ArticleVenduDALException, UserDALException, CategorieDALException {
         Utilisateur user1 = new Utilisateur("rr19", "user", "one", "test@test.com", "123456789", "1 rue du port", "29000", "Quimper", "123456", 0, false);
         Utilisateur user2 = new Utilisateur("tt20", "user", "two", "test@test.com", "123456789", "1 rue du port", "29000", "Quimper", "123456", 0, false);
@@ -65,12 +73,14 @@ public class TestArticleDAO {
         ArticleVendu art7 = new ArticleVendu("Montre de poche", "jolie montre de poche", LocalDate.now(), LocalDate.now(), 1500, 2555, user4, vetem);
         ArticleVendu art8 = new ArticleVendu("Sac à main", "sac à main en cuir", LocalDate.now(), LocalDate.now(), 1500, 2555, user3, vetem);
 
+
         //insert
         daoArticles.insert(art1);
         daoArticles.insert(art2);
         daoArticles.insert(art3);
         daoArticles.insert(art4);
         daoArticles.insert(art5);
+
         daoArticles.insert(art6);
         daoArticles.insert(art7);
         daoArticles.insert(art8);
@@ -79,6 +89,8 @@ public class TestArticleDAO {
 //        daoArticles.delete(10);
         
         //selectByNom
+//        daoArticles.selectByNom("montre");
+
 //        List<ArticleVendu> list = daoArticles.selectByNom("montre");
 //        
 //        for (ArticleVendu art : list) {
