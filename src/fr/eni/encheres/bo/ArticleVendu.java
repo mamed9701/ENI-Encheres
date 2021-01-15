@@ -11,14 +11,14 @@ public class ArticleVendu {
 	private LocalDate dateFinEncheres;
 	private Integer miseAPrix;
 	private Integer prixVente;
-	private Categorie categorieArticle;
+	private Categorie categorie;
+	private Utilisateur utilisateur;
 
 	/**
 	 * 
 	 */
 	public ArticleVendu() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -42,6 +42,46 @@ public class ArticleVendu {
 		this.prixVente = prixVente;
 	}
 
+	/**
+     * @param nomArticle
+     * @param description
+     * @param dateDebutEncheres
+     * @param dateFinEncheres
+     * @param miseAPrix
+     * @param prixVente
+     */
+    public ArticleVendu(String nomArticle, String description, LocalDate dateDebutEncheres,
+            LocalDate dateFinEncheres, Integer miseAPrix, Integer prixVente) {
+        super();
+        this.nomArticle = nomArticle;
+        this.description = description;
+        this.dateDebutEncheres = dateDebutEncheres;
+        this.dateFinEncheres = dateFinEncheres;
+        this.miseAPrix = miseAPrix;
+        this.prixVente = prixVente;
+    }
+    
+    /**
+     * @param nomArticle
+     * @param description
+     * @param dateDebutEncheres
+     * @param dateFinEncheres
+     * @param miseAPrix
+     * @param prixVente
+     */
+    public ArticleVendu(String nomArticle, String description, LocalDate dateDebutEncheres,
+            LocalDate dateFinEncheres, Integer miseAPrix, Integer prixVente, Utilisateur utilisateur, Categorie categorie) {
+        super();
+        this.nomArticle = nomArticle;
+        this.description = description;
+        this.dateDebutEncheres = dateDebutEncheres;
+        this.dateFinEncheres = dateFinEncheres;
+        this.miseAPrix = miseAPrix;
+        this.prixVente = prixVente;
+        this.utilisateur = utilisateur;
+        this.categorie = categorie;
+    }
+    
 	/**
 	 * @return the noArticle
 	 */
@@ -141,24 +181,38 @@ public class ArticleVendu {
 	}
 
 	/**
-	 * @return the categorieArticle
+	 * @return the categorie
 	 */
-	public Categorie getCategorieArticle() {
-		return categorieArticle;
+	public Categorie getCategorie() {
+		return categorie;
 	}
 
 	/**
-	 * @param categorieArticle the categorieArticle to set
+	 * @param categorie the categorie to set
 	 */
-	public void setCategorieArticle(Categorie categorieArticle) {
-		this.categorieArticle = categorieArticle;
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
 	}
 
-	@Override
+	/**
+     * @return the utilisateur
+     */
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
+    }
+
+    /**
+     * @param utilisateur the utilisateur to set
+     */
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
+
+    @Override
 	public String toString() {
 		return "ArticleVendu [noArticle=" + noArticle + ", nomArticle=" + nomArticle + ", description=" + description
 				+ ", dateDebutEncheres=" + dateDebutEncheres + ", dateFinEncheres=" + dateFinEncheres + ", miseAPrix="
-				+ miseAPrix + ", prixVente=" + prixVente + ", categorieArticle=" + categorieArticle + "]";
+				+ miseAPrix + ", prixVente=" + prixVente + ", categorie=" + categorie + "]";
 	}
 
 }
