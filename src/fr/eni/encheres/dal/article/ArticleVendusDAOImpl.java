@@ -51,25 +51,26 @@ public class ArticleVendusDAOImpl implements ArticleVenduDAO {
 		
 				if (null != article.getMiseAPrix()) {
 				    stmt.setInt(5, article.getMiseAPrix());                
-        }else {
-            stmt.setNull(5, Types.NULL);   
-        }
+				}else {
+				    stmt.setNull(5, Types.NULL);   
+				}
 				if (null != article.getPrixVente()) {
                     stmt.setInt(6, article.getPrixVente());                    
                 }else {
                     stmt.setNull(6, Types.NULL);   
-                    }
-        }
+                }
+        
 				stmt.setInt(7, user.getNoUtilisateur());
 				stmt.setInt(8, categorie.getNoCategorie());
 				
-        int nbRows = stmt.executeUpdate();
-        if (nbRows == 1) {
-            ResultSet rs = stmt.getGeneratedKeys();
-            if (rs.next()) {
-                article.setNoArticle(rs.getInt(1));
-            }
-        }	
+                int nbRows = stmt.executeUpdate();
+                if (nbRows == 1) {
+                    ResultSet rs = stmt.getGeneratedKeys();
+                    if (rs.next()) {
+                        article.setNoArticle(rs.getInt(1));
+                    }
+                }	
+                
 		} catch(Exception e) {
 		    e.printStackTrace();
 
