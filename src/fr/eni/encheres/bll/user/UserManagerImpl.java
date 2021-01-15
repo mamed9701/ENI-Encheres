@@ -23,7 +23,7 @@ public class UserManagerImpl implements UserManager {
     }
 
     @Override
-    public void deconnection(Utilisateur user) throws BLLException {
+    public void deconnexion(Utilisateur user) throws BLLException {
         
     }
 
