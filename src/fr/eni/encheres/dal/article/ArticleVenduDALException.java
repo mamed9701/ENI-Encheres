@@ -1,4 +1,4 @@
-package fr.eni.encheres.dal.ArticlesVendu;
+package fr.eni.encheres.dal.article;
 
 public class ArticleVenduDALException extends Exception{
 	
