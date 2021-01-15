@@ -39,13 +39,21 @@ public class ArticleVendusDAOImpl implements ArticleVenduDAO {
 				PreparedStatement stmt = cnx.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
 		        ) {
 				stmt.setString(1, article.getNomArticle());
+				System.out.println("1");
 				stmt.setString(2, article.getDescription());
+				System.out.println("2");
 				stmt.setDate(3, Date.valueOf(article.getDateDebutEncheres()));
+				System.out.println("3");
 				stmt.setDate(4, Date.valueOf(article.getDateFinEncheres()));
+				System.out.println("4");
 				stmt.setInt(5, article.getMiseAPrix());
+				System.out.println("5");
 				stmt.setInt(6, article.getPrixVente());
+				System.out.println("6");
 				stmt.setInt(7, user.getNoUtilisateur());
+				System.out.println("7");
 				stmt.setInt(8, categorie.getNoCategorie());
+				System.out.println("8");
 				
                 int nbRows = stmt.executeUpdate();
                 if (nbRows == 1) {
@@ -55,7 +63,7 @@ public class ArticleVendusDAOImpl implements ArticleVenduDAO {
                     }
                 }	
 		} catch(Exception e) {
-//		    e.printStackTrace();
+		    e.printStackTrace();
 			throw new ArticleVenduDALException("Impossible d'insérer l'article");
 		}
         return article;

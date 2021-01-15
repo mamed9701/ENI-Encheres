@@ -5,6 +5,9 @@ package fr.eni.encheres.test;
 
 import java.time.LocalDate;
 
+import fr.eni.encheres.bll.BLLException;
+import fr.eni.encheres.bll.enchere.EnchereManager;
+import fr.eni.encheres.bll.enchere.EnchereManagerSingl;
 import fr.eni.encheres.bo.ArticleVendu;
 import fr.eni.encheres.bo.Categorie;
 import fr.eni.encheres.bo.Utilisateur;
@@ -24,14 +27,18 @@ public class TestArticleDAO {
     private static ArticleVenduDAO daoArticles = DAOFactory.getArticleDAO();
     private static UserDAO daoUsers = DAOFactory.getUserDAO();
     private static CategorieDAO daoCategories = DAOFactory.getCategorieDAO();
+    
+    
+  
     /**
      * @param args
      * @throws ArticleVenduDALException 
      * @throws UserDALException 
      * @throws CategorieDALException 
+     * @throws BLLException 
      */
-    public static void main(String[] args) throws ArticleVenduDALException, UserDALException, CategorieDALException {
-        Utilisateur user1 = daoUsers.findById(32);
+    public static void main(String[] args) throws ArticleVenduDALException, UserDALException, CategorieDALException, BLLException {
+        Utilisateur user1 = daoUsers.findById(1);
         Categorie categorie = daoCategories.findByLibelle("informatique");
         
         ArticleVendu art1 = new ArticleVendu("article 1", "description article 1", LocalDate.now(), LocalDate.now(), 10, 25, user1, categorie);
@@ -46,10 +53,12 @@ public class TestArticleDAO {
 //        daoArticles.insert(art3);
 //        daoArticles.insert(art4);
         daoArticles.insert(art5);
+       
+        
         //delete
 //        daoArticles.delete(10);
         //selectByNom
-        daoArticles.selectByNom("montre");
+//        daoArticles.selectByNom("montre");
         
     }
 

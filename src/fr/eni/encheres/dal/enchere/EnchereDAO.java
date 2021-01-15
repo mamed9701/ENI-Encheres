@@ -37,4 +37,13 @@ public interface EnchereDAO {
      * @throws EnchereDALException
      */
     public List<Enchere> showAll() throws EnchereDALException;
+    
+    /**
+     * Mise à jour d'une enchère
+     * 
+     * @param enchere - objet de type Enchere
+     * @return L'enchère modifiée 
+     * @throws EnchereDALException
+     */
+    public Enchere update(Enchere enchere) throws EnchereDALException;
 }
