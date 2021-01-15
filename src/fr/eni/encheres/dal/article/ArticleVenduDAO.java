@@ -10,10 +10,10 @@ import fr.eni.encheres.bo.ArticleVendu;
  */
 public interface ArticleVenduDAO {
 	
-	public void insert(ArticleVendu article) throws ArticleVenduDALException;
-//	public void update(ArticleVendu article) throws ArticleVenduDALException;
-	public void delete(ArticleVendu article) throws ArticleVenduDALException;
 	public List<ArticleVendu> selectById(Integer id) throws ArticleVenduDALException;
+	public ArticleVendu insert(ArticleVendu article) throws ArticleVenduDALException;
+	public void update(ArticleVendu article) throws ArticleVenduDALException;
+	public void delete(Integer id) throws ArticleVenduDALException;
 	public List<ArticleVendu> selectByNom(String motCle) throws ArticleVenduDALException;
 	public List<ArticleVendu> selectByNomAndCateg(String motCle, Integer idCat) throws ArticleVenduDALException;
 	public List<ArticleVendu> selectByCategorie(Integer idCat) throws ArticleVenduDALException;

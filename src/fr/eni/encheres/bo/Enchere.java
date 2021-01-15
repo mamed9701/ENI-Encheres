@@ -14,7 +14,6 @@ public class Enchere {
 	 */
 	public Enchere() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
