@@ -73,6 +73,7 @@ public class ArticleVendusDAOImpl implements ArticleVenduDAO {
 		    e.printStackTrace();
 			throw new ArticleVenduDALException("Article DAL - Impossible d'insérer l'article");
 		}
+
         return article;
 	}
 	

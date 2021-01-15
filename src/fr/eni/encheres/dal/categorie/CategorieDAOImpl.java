@@ -111,6 +111,7 @@ public class CategorieDAOImpl implements CategorieDAO {
                e.printStackTrace();
                throw new CategorieDALException("Categorie DAL - L'insertion dans la base de données a échoué !");
            }
+        
         return categorie;
     }
 
