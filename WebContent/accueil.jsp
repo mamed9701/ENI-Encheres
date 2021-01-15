@@ -17,7 +17,7 @@
 	Filtres :
 	<br>
 	<form action="AccueilServlet" method="POST">
-		<input type="text" name="filtre" value="${model.filtre}" size="40">
+		<input type="text" name="filtre" value="${model.filtre}" size="40" placeholder="Le nom de l'article contient...">
 		<br> <br> <label for="categories">Catégorie : </label> <select
 			name="categories" id="categories">
 			<option value="">--Choisissez une catégorie--</option>
@@ -31,7 +31,10 @@
 	</form>
 	<c:forEach var="e" items="${model.listEncheres}">
 		<tr>
-			<td>${e.article}</td>
+			<td>${e.article.nomArticle}</td>
+			<td>Prix : ${e.article.miseAPrix}</td>
+			<td>Fin de l'enchère : ${e.article.dateFinEncheres}</td>
+			<td>Vendeur : ${e.article.nomArticle}</td>
 		</tr>
 	</c:forEach>
 
