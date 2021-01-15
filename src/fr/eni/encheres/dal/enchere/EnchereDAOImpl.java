@@ -17,6 +17,8 @@ import fr.eni.encheres.bo.Enchere;
 import fr.eni.encheres.bo.Utilisateur;
 import fr.eni.encheres.dal.ConnectionProvider;
 import fr.eni.encheres.dal.DAOFactory;
+import fr.eni.encheres.dal.article.ArticleVenduDALException;
+import fr.eni.encheres.dal.article.ArticleVenduDAO;
 import fr.eni.encheres.dal.user.UserDALException;
 import fr.eni.encheres.dal.user.UserDAO;
 
@@ -26,6 +28,7 @@ import fr.eni.encheres.dal.user.UserDAO;
  */
 public class EnchereDAOImpl implements EnchereDAO {
     private UserDAO userDAO = DAOFactory.getUserDAO();
+    private ArticleVenduDAO articleDAO = DAOFactory.getArticleDAO();
     
     private static final String SQL_INSERT = "insert into encheres(date_enchere, montant_enchere, no_article, no_utilisateur) values(?,?,?,?)";
     private static final String SQL_SELECT_ALL_BY_USER = "select * from encheres where no_utilisateur = ?";
@@ -64,8 +67,7 @@ public class EnchereDAOImpl implements EnchereDAO {
         } catch (UserDALException e1) {
             e1.printStackTrace();
         }
-        //TODO : remplacer article ici avec la méthode findById() de ArticleVendu avec rs.getInt("no_article") en paramètre
-        ArticleVendu article = new ArticleVendu();
+        
         List<Enchere> result = new ArrayList<Enchere>();
         ResultSet rs = null;
         try( Connection cnx = ConnectionProvider.getConnection();
@@ -75,18 +77,25 @@ public class EnchereDAOImpl implements EnchereDAO {
                 rs = rqt.executeQuery();
                 
                 while (rs.next()) {
+                    ArticleVendu article = null;
+                    try {
+                        article = articleDAO.selectById(rs.getInt("no_article"));
+                    } catch (ArticleVenduDALException e) {
+                        e.printStackTrace();
+                    }
                     LocalDate dateEnchere = rs.getDate("date_enchere").toLocalDate();
                     Enchere enchere = new Enchere();
                     enchere.setNoEnchere(rs.getInt("no_enchere"));
                     enchere.setDateEnchere(dateEnchere);
-                    enchere.setMontantEnchere(rs.getInt(""));
+                    enchere.setMontantEnchere(rs.getInt("montant_enchere"));
                     enchere.setArticle(article);
                     enchere.setUtilisateur(user);
                     
                     result.add(enchere);
                 }
            } catch (SQLException e) {
-               throw new EnchereDALException("La récuperation des données a échoué !");
+               e.printStackTrace();
+//               throw new EnchereDALException("La récuperation des données a échoué !");
            }
         return result;
     }
@@ -94,20 +103,24 @@ public class EnchereDAOImpl implements EnchereDAO {
     @Override
     public List<Enchere> showAll() throws EnchereDALException {
         Utilisateur user = new Utilisateur();
-        
-        //TODO : remplacer article ici avec la méthode findById() de ArticleVendu avec rs.getInt("no_article") en paramètre
-        ArticleVendu article = new ArticleVendu();
+
         List<Enchere> result = new ArrayList<Enchere>();
         try( Connection cnx = ConnectionProvider.getConnection();
                 PreparedStatement rqt = cnx.prepareStatement(SQL_SELECT_ALL);
                ) {
                ResultSet rs = rqt.executeQuery();
                while (rs.next()) {
+                   ArticleVendu article = null;
+                   try {
+                       article = articleDAO.selectById(rs.getInt("no_article"));
+                   } catch (ArticleVenduDALException e) {
+                       e.printStackTrace();
+                   }
                    LocalDate dateEnchere = rs.getDate("date_enchere").toLocalDate();
                    Enchere enchere = new Enchere();
                    enchere.setNoEnchere(rs.getInt("no_enchere"));
                    enchere.setDateEnchere(dateEnchere);
-                   enchere.setMontantEnchere(rs.getInt(""));
+                   enchere.setMontantEnchere(rs.getInt("montant_enchere"));
                    enchere.setArticle(article);
                    enchere.setUtilisateur(user);
                    

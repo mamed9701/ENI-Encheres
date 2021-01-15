@@ -9,7 +9,7 @@ import fr.eni.encheres.bo.ArticleVendu;
  *
  */
 public interface ArticleVenduDAO {
-	public List<ArticleVendu> selectById(Integer id) throws ArticleVenduDALException;
+	public ArticleVendu selectById(Integer id) throws ArticleVenduDALException;
 	public ArticleVendu insert(ArticleVendu article) throws ArticleVenduDALException;
 	public ArticleVendu update(ArticleVendu article) throws ArticleVenduDALException;
 	public void delete(Integer id) throws ArticleVenduDALException;

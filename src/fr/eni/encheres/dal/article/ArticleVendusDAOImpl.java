@@ -78,31 +78,28 @@ public class ArticleVendusDAOImpl implements ArticleVenduDAO {
 	}
 	
 	@Override
-	public List<ArticleVendu> selectById(Integer id) throws ArticleVenduDALException {
-		List<ArticleVendu> liste = new ArrayList<ArticleVendu>();
+	public ArticleVendu selectById(Integer id) throws ArticleVenduDALException {
+		ArticleVendu article = null;
+		ResultSet rs = null;
 		try (Connection cnx = ConnectionProvider.getConnection();
 				PreparedStatement stmt = cnx.prepareStatement(SELECT_ID);) {
 
 			stmt.setInt(1, id);
-			try (ResultSet rs = stmt.executeQuery();) {
-				ArticleVendu artVe = null;
+			rs = stmt.executeQuery();	
 
-				while (rs.next()) {
-					LocalDate dateDebut = rs.getDate("date_debut_encheres").toLocalDate();
-					LocalDate dateFin = rs.getDate("date_fin_encheres").toLocalDate();
+			if (rs.next()) {
+				LocalDate dateDebut = rs.getDate("date_debut_encheres").toLocalDate();
+				LocalDate dateFin = rs.getDate("date_fin_encheres").toLocalDate();
 
-						artVe = new ArticleVendu(rs.getInt("no_article"), rs.getString("nom_article"),
-								rs.getString("description"),dateDebut, dateFin, rs.getInt("prix_initial"), 
-								rs.getInt("prix_vente"));
-					
-					
-					liste.add(artVe);
-				}
+				article = new ArticleVendu(rs.getInt("no_article"), rs.getString("nom_article"),
+						rs.getString("description"),dateDebut, dateFin, rs.getInt("prix_initial"), 
+						rs.getInt("prix_vente"));
+
 			}
 		} catch (SQLException e) {
 			throw new ArticleVenduDALException("Article DAL - Séléction par identifiant échoué !");
 		}
-		return liste;
+		return article;
   }
   
 	@Override
