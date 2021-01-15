@@ -62,7 +62,6 @@ public class EnchereDAOImpl implements EnchereDAO {
         try {
             user = userDAO.findById(id);
         } catch (UserDALException e1) {
-            // TODO Auto-generated catch block
             e1.printStackTrace();
         }
         //TODO : remplacer article ici avec la méthode findById() de ArticleVendu avec rs.getInt("no_article") en paramètre
