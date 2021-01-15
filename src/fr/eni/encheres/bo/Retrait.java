@@ -11,7 +11,6 @@ public class Retrait {
 	 */
 	public Retrait() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**

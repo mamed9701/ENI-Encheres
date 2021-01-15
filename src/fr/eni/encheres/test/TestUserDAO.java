@@ -20,7 +20,7 @@ public class TestUserDAO {
 //        daoUsers.insert(user3);
 //        daoUsers.insert(user4);
         //find by id
-//        System.out.println(daoUsers.findById(19));
+//        System.out.println(daoUsers.findById(31));
         //edit
 //        System.out.println(user2.toString());
 //        user2 = daoUsers.edit(user3);
@@ -31,7 +31,7 @@ public class TestUserDAO {
 //        Utilisateur foundByUname = daoUsers.findByUsername(user4.getPseudo());
 //        System.out.println(foundByUname.toString());
 //        //show all
-        System.out.println(daoUsers.showAll());
+//        System.out.println(daoUsers.showAll());
 
     }
 

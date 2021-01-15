@@ -14,11 +14,9 @@ import java.util.List;
 
 import fr.eni.encheres.bo.ArticleVendu;
 import fr.eni.encheres.bo.Enchere;
-import fr.eni.encheres.bo.Retrait;
 import fr.eni.encheres.bo.Utilisateur;
 import fr.eni.encheres.dal.ConnectionProvider;
 import fr.eni.encheres.dal.DAOFactory;
-import fr.eni.encheres.dal.retrait.RetraitDALException;
 import fr.eni.encheres.dal.user.UserDALException;
 import fr.eni.encheres.dal.user.UserDAO;
 

@@ -5,19 +5,24 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 import fr.eni.encheres.bo.ArticleVendu;
+import fr.eni.encheres.bo.Categorie;
+import fr.eni.encheres.bo.Utilisateur;
 import fr.eni.encheres.dal.ConnectionProvider;
 
 
-public class ArticleVendusDAOImpl implements ArticleVenduDAO {
-	private String INSERT = "INSERT INTO Articles_Vendus (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial) VALUES ?, ?, ?, ?, ?;";
-//	private String UPDATE = "UPDATE Articles_Vendus";
+public class ArticleVendusDAOImpl implements ArticleVenduDAO {  
+	private String INSERT = "INSERT INTO articles_vendus (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie)"
+	        + " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+	private String UPDATE = "UPDATE articles_vendus"
+	        +" set nom_article=?, description=?, date_debut_encheres=?, date_fin_encheres=?, prix_initial=?, prix_vente=?, no_utilisateur=?, no_categorie=?"
+	        +" where no_article=?";
 	private String DELETE = "DELETE FROM Articles_Vendus WHERE no_article = ?;";
-	private String SELECT_ID = "SELECT * FROM Articles_Vendus WHERE no_article = ?;";
+  private String SELECT_ID = "SELECT * FROM Articles_Vendus WHERE no_article = ?;";
 	private String SELECT_MOT_CLE = "SELECT * FROM Articles_Vendus WHERE nom_article LIKE '%?%';";
 	private String SELECT_MOT_CATEG = "SELECT * FROM Articles_Vendus WHERE nom_article LIKE '%?%' AND no_categorie = ?;";
 	private String SELECT_CATEGORIE = "SELECT * FROM Articles_Vendus WHERE no_categorie = ?;";
@@ -26,50 +31,34 @@ public class ArticleVendusDAOImpl implements ArticleVenduDAO {
 	
 
 	@Override
-	public void insert(ArticleVendu article) throws ArticleVenduDALException {
-		try( Connection cnx = ConnectionProvider.getConnection()) {
-				PreparedStatement stmt = cnx.prepareStatement(INSERT);
+	public ArticleVendu insert(ArticleVendu article) throws ArticleVenduDALException {
+	    Utilisateur user = article.getUtilisateur();
+        Categorie categorie = article.getCategorie();
+        
+		try( Connection cnx = ConnectionProvider.getConnection();
+				PreparedStatement stmt = cnx.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
+		        ) {
 				stmt.setString(1, article.getNomArticle());
 				stmt.setString(2, article.getDescription());
 				stmt.setDate(3, Date.valueOf(article.getDateDebutEncheres()));
 				stmt.setDate(4, Date.valueOf(article.getDateFinEncheres()));
 				stmt.setInt(5, article.getMiseAPrix());
-				stmt.executeUpdate();
+				stmt.setInt(6, article.getPrixVente());
+				stmt.setInt(7, user.getNoUtilisateur());
+				stmt.setInt(8, categorie.getNoCategorie());
 				
+                int nbRows = stmt.executeUpdate();
+                if (nbRows == 1) {
+                    ResultSet rs = stmt.getGeneratedKeys();
+                    if (rs.next()) {
+                        article.setNoArticle(rs.getInt(1));
+                    }
+                }	
 		} catch(Exception e) {
+//		    e.printStackTrace();
 			throw new ArticleVenduDALException("Impossible d'insérer l'article");
 		}
-	}
-	
-
-
-//	@Override
-//	public void update(ArticleVendu article) throws ArticleVenduDALException {
-//		try( Connection cnx = ConnectionProvider.getConnection()) {
-//			PreparedStatement stmt = cnx.prepareStatement(UPDATE);
-//			stmt.setString(1, article.getNomArticle());
-//			stmt.setString(2, article.getDescription());
-//			stmt.setDate(3, Date.valueOf(article.getDateDebutEncheres()));
-//			stmt.setDate(4, Date.valueOf(article.getDateFinEncheres()));
-//			stmt.setInt(5, article.getMiseAPrix());
-//			stmt.executeUpdate();
-//			
-//	} catch(Exception e) {
-//		throw new ArticleVenduDALException("Impossible d'insérer l'article");
-//	}
-//		
-//	}
-
-	@Override
-	public void delete(ArticleVendu article) throws ArticleVenduDALException {
-		try (Connection cnx = ConnectionProvider.getConnection();
-			PreparedStatement stmt = cnx.prepareStatement(DELETE);) {
-			stmt.setInt(1, article.getNoArticle());
-			stmt.executeUpdate();
-		} catch (SQLException e) {
-			throw new ArticleVenduDALException("Suppresion non effectue");
-		}
-		
+        return article;
 	}
 	
 	@Override
@@ -98,6 +87,38 @@ public class ArticleVendusDAOImpl implements ArticleVenduDAO {
 			throw new ArticleVenduDALException("Impossible d'effetue l'opération");
 		}
 		return liste;
+  }
+  
+	@Override
+	public void update(ArticleVendu article) throws ArticleVenduDALException {
+		try( Connection cnx = ConnectionProvider.getConnection()) {
+			PreparedStatement stmt = cnx.prepareStatement(UPDATE);
+			stmt.setString(1, article.getNomArticle());
+			stmt.setString(2, article.getDescription());
+			stmt.setDate(3, Date.valueOf(article.getDateDebutEncheres()));
+			stmt.setDate(4, Date.valueOf(article.getDateFinEncheres()));
+			stmt.setInt(5, article.getMiseAPrix());
+			stmt.setInt(6, article.getPrixVente());
+			stmt.setInt(7, article.getUtilisateur().getNoUtilisateur());
+			stmt.setInt(8, article.getCategorie().getNoCategorie());
+			stmt.executeUpdate();
+			
+	} catch(Exception e) {
+		throw new ArticleVenduDALException("Impossible d'insérer l'article");
+	}
+		
+	}
+
+	@Override
+	public void delete(Integer id) throws ArticleVenduDALException {
+		try (Connection cnx = ConnectionProvider.getConnection();
+			PreparedStatement stmt = cnx.prepareStatement(DELETE);) {
+			stmt.setInt(1, id);
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			throw new ArticleVenduDALException("Suppresion non effectue");
+		}
+		
 	}
 
 	@Override
@@ -185,9 +206,4 @@ public class ArticleVendusDAOImpl implements ArticleVenduDAO {
 		}
 		return liste;
 	}
-
-
-
-
-
 }

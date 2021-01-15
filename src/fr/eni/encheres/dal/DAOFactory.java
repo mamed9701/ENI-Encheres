@@ -3,6 +3,8 @@
  */
 package fr.eni.encheres.dal;
 
+import fr.eni.encheres.dal.article.ArticleVenduDAO;
+import fr.eni.encheres.dal.article.ArticleVendusDAOImpl;
 import fr.eni.encheres.dal.categorie.CategorieDAO;
 import fr.eni.encheres.dal.categorie.CategorieDAOImpl;
 import fr.eni.encheres.dal.enchere.EnchereDAO;
@@ -33,5 +35,10 @@ public class DAOFactory {
     public static EnchereDAO getEnchereDAO() {
         return new EnchereDAOImpl();
     }
+    
+    public static ArticleVenduDAO getArticleDAO() {
+        return new ArticleVendusDAOImpl();
+    }
+    
 
 }
