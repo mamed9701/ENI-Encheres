@@ -36,7 +36,7 @@ public interface UserManager {
      * @param user - objet de type Utilisateur
      * @throws BLLException
      */
-    public void deconnection(Utilisateur user) throws BLLException;
+    public void deconnexion(Utilisateur user) throws BLLException;
     
     /**
      * Afficher le profil d'un utilisateur
