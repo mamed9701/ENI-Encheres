@@ -22,7 +22,7 @@ public class ArticleVendusDAOImpl implements ArticleVenduDAO {
 	        +" set nom_article=?, description=?, date_debut_encheres=?, date_fin_encheres=?, prix_initial=?, prix_vente=?, no_utilisateur=?, no_categorie=?"
 	        +" where no_article=?";
 	private String DELETE = "DELETE FROM Articles_Vendus WHERE no_article = ?;";
-	private String SELECT_ID = "SELECT * FROM Articles_Vendus WHERE no_article = ?;";
+  private String SELECT_ID = "SELECT * FROM Articles_Vendus WHERE no_article = ?;";
 	private String SELECT_MOT_CLE = "SELECT * FROM Articles_Vendus WHERE nom_article LIKE '%?%';";
 	private String SELECT_MOT_CATEG = "SELECT * FROM Articles_Vendus WHERE nom_article LIKE '%?%' AND no_categorie = ?;";
 	private String SELECT_CATEGORIE = "SELECT * FROM Articles_Vendus WHERE no_categorie = ?;";
@@ -61,8 +61,34 @@ public class ArticleVendusDAOImpl implements ArticleVenduDAO {
         return article;
 	}
 	
+	@Override
+	public List<ArticleVendu> selectById(Integer id) throws ArticleVenduDALException {
+		List<ArticleVendu> liste = new ArrayList<ArticleVendu>();
+		try (Connection cnx = ConnectionProvider.getConnection();
+				PreparedStatement stmt = cnx.prepareStatement(SELECT_ID);) {
 
+			stmt.setInt(1, id);
+			try (ResultSet rs = stmt.executeQuery();) {
+				ArticleVendu artVe = null;
 
+				while (rs.next()) {
+					LocalDate dateDebut = rs.getDate("date_debut_encheres").toLocalDate();
+					LocalDate dateFin = rs.getDate("date_fin_encheres").toLocalDate();
+
+						artVe = new ArticleVendu(rs.getInt("no_article"), rs.getString("nom_article"),
+								rs.getString("description"),dateDebut, dateFin, rs.getInt("prix_initial"), 
+								rs.getInt("prix_vente"));
+					
+					
+					liste.add(artVe);
+				}
+			}
+		} catch (SQLException e) {
+			throw new ArticleVenduDALException("Impossible d'effetue l'opération");
+		}
+		return liste;
+  }
+  
 	@Override
 	public void update(ArticleVendu article) throws ArticleVenduDALException {
 		try( Connection cnx = ConnectionProvider.getConnection()) {
@@ -93,34 +119,6 @@ public class ArticleVendusDAOImpl implements ArticleVenduDAO {
 			throw new ArticleVenduDALException("Suppresion non effectue");
 		}
 		
-	}
-	
-	@Override
-	public List<ArticleVendu> selectById(Integer id) throws ArticleVenduDALException {
-		List<ArticleVendu> liste = new ArrayList<ArticleVendu>();
-		try (Connection cnx = ConnectionProvider.getConnection();
-				PreparedStatement stmt = cnx.prepareStatement(SELECT_ID);) {
-
-			stmt.setInt(1, id);
-			try (ResultSet rs = stmt.executeQuery();) {
-				ArticleVendu artVe = null;
-
-				while (rs.next()) {
-					LocalDate dateDebut = rs.getDate("date_debut_encheres").toLocalDate();
-					LocalDate dateFin = rs.getDate("date_fin_encheres").toLocalDate();
-
-						artVe = new ArticleVendu(rs.getInt("no_article"), rs.getString("nom_article"),
-								rs.getString("description"),dateDebut, dateFin, rs.getInt("prix_initial"), 
-								rs.getInt("prix_vente"));
-					
-					
-					liste.add(artVe);
-				}
-			}
-		} catch (SQLException e) {
-			throw new ArticleVenduDALException("Impossible d'effetue l'opération");
-		}
-		return liste;
 	}
 
 	@Override
@@ -208,9 +206,4 @@ public class ArticleVendusDAOImpl implements ArticleVenduDAO {
 		}
 		return liste;
 	}
-
-
-
-
-
 }
