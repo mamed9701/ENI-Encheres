@@ -1,9 +1,7 @@
 package fr.eni.encheres.bll.enchere;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 import fr.eni.encheres.bll.BLLException;
 import fr.eni.encheres.bo.ArticleVendu;
 import fr.eni.encheres.bo.Categorie;
@@ -109,7 +107,14 @@ public class EnchereManagerImpl implements EnchereManager {
 
 	@Override
 	public Enchere afficherEnchere(Integer id) throws BLLException {
-		return null;
+	    Enchere enchere = null;
+		try {
+            enchere = enchereDAO.findById(id);
+        } catch (EnchereDALException e) {
+            e.printStackTrace();
+        }
+		
+		return enchere;
 	}
 
     @Override

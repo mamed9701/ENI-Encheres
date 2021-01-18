@@ -35,7 +35,6 @@ public class UserManagerImpl implements UserManager {
 		try {
 			user = userDAO.findByUsername(pseudo);
 		} catch (UserDALException e) {
-			throw BLLExcep
 		}
 			
 		return user;
