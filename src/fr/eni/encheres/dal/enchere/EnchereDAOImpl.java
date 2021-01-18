@@ -4,7 +4,6 @@
 package fr.eni.encheres.dal.enchere;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,8 +17,6 @@ import fr.eni.encheres.bo.Enchere;
 import fr.eni.encheres.bo.Utilisateur;
 import fr.eni.encheres.dal.ConnectionProvider;
 import fr.eni.encheres.dal.DAOFactory;
-import fr.eni.encheres.dal.article.ArticleVenduDALException;
-import fr.eni.encheres.dal.article.ArticleVenduDAO;
 import fr.eni.encheres.dal.user.UserDALException;
 import fr.eni.encheres.dal.user.UserDAO;
 
@@ -29,13 +26,10 @@ import fr.eni.encheres.dal.user.UserDAO;
  */
 public class EnchereDAOImpl implements EnchereDAO {
     private UserDAO userDAO = DAOFactory.getUserDAO();
-    private ArticleVenduDAO articleDAO = DAOFactory.getArticleDAO();
     
     private static final String SQL_INSERT = "insert into encheres(date_enchere, montant_enchere, no_article, no_utilisateur) values(?,?,?,?)";
     private static final String SQL_SELECT_ALL_BY_USER = "select * from encheres where no_utilisateur = ?";
     private static final String SQL_SELECT_ALL = "select * from encheres";
-    private static final String SQL_UPDATE = "update encheres set date_enchere=?, montant_enchere=?"
-            +" where no_enchere=?";
 
     @Override
     public Enchere insert(Enchere enchere) throws EnchereDALException {
@@ -68,9 +62,11 @@ public class EnchereDAOImpl implements EnchereDAO {
         try {
             user = userDAO.findById(id);
         } catch (UserDALException e1) {
+            // TODO Auto-generated catch block
             e1.printStackTrace();
         }
-        
+        //TODO : remplacer article ici avec la méthode findById() de ArticleVendu avec rs.getInt("no_article") en paramètre
+        ArticleVendu article = new ArticleVendu();
         List<Enchere> result = new ArrayList<Enchere>();
         ResultSet rs = null;
         try( Connection cnx = ConnectionProvider.getConnection();
@@ -80,25 +76,18 @@ public class EnchereDAOImpl implements EnchereDAO {
                 rs = rqt.executeQuery();
                 
                 while (rs.next()) {
-                    ArticleVendu article = null;
-                    try {
-                        article = articleDAO.selectById(rs.getInt("no_article"));
-                    } catch (ArticleVenduDALException e) {
-                        e.printStackTrace();
-                    }
                     LocalDate dateEnchere = rs.getDate("date_enchere").toLocalDate();
                     Enchere enchere = new Enchere();
                     enchere.setNoEnchere(rs.getInt("no_enchere"));
                     enchere.setDateEnchere(dateEnchere);
-                    enchere.setMontantEnchere(rs.getInt("montant_enchere"));
+                    enchere.setMontantEnchere(rs.getInt(""));
                     enchere.setArticle(article);
                     enchere.setUtilisateur(user);
                     
                     result.add(enchere);
                 }
            } catch (SQLException e) {
-               e.printStackTrace();
-//               throw new EnchereDALException("La récuperation des données a échoué !");
+               throw new EnchereDALException("La récuperation des données a échoué !");
            }
         return result;
     }
@@ -106,24 +95,20 @@ public class EnchereDAOImpl implements EnchereDAO {
     @Override
     public List<Enchere> showAll() throws EnchereDALException {
         Utilisateur user = new Utilisateur();
-
+        
+        //TODO : remplacer article ici avec la méthode findById() de ArticleVendu avec rs.getInt("no_article") en paramètre
+        ArticleVendu article = new ArticleVendu();
         List<Enchere> result = new ArrayList<Enchere>();
         try( Connection cnx = ConnectionProvider.getConnection();
                 PreparedStatement rqt = cnx.prepareStatement(SQL_SELECT_ALL);
                ) {
                ResultSet rs = rqt.executeQuery();
                while (rs.next()) {
-                   ArticleVendu article = null;
-                   try {
-                       article = articleDAO.selectById(rs.getInt("no_article"));
-                   } catch (ArticleVenduDALException e) {
-                       e.printStackTrace();
-                   }
                    LocalDate dateEnchere = rs.getDate("date_enchere").toLocalDate();
                    Enchere enchere = new Enchere();
                    enchere.setNoEnchere(rs.getInt("no_enchere"));
                    enchere.setDateEnchere(dateEnchere);
-                   enchere.setMontantEnchere(rs.getInt("montant_enchere"));
+                   enchere.setMontantEnchere(rs.getInt(""));
                    enchere.setArticle(article);
                    enchere.setUtilisateur(user);
                    
@@ -135,24 +120,5 @@ public class EnchereDAOImpl implements EnchereDAO {
            }
         return result;
     }
-
-	@Override
-	public Enchere update(Enchere enchere) throws EnchereDALException {
-		try( Connection cnx = ConnectionProvider.getConnection();
-                PreparedStatement pst = cnx.prepareStatement(SQL_UPDATE);
-               ) {
-               pst.setDate(1, Date.valueOf(enchere.getDateEnchere()));
-               pst.setInt(2, enchere.getMontantEnchere());
-               pst.setInt(3, enchere.getUtilisateur().getNoUtilisateur());
-               
-               
-               pst.executeUpdate();           
-
-           } catch (SQLException e) {
-               e.printStackTrace();
-               throw new EnchereDALException("Enchere DAL - La modification d'une enchère dans la base de données a échoué !");
-           }
-        return enchere;
-	}
 
 }

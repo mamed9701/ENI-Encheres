@@ -63,5 +63,7 @@ public interface UserDAO {
      * @throws UserDALException
      */
     public List<Utilisateur> showAll() throws UserDALException;
+
+    public	Utilisateur findByUsernameAndPwd(String username, String pwd) throws UserDALException;
     
 }
