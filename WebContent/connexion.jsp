@@ -4,24 +4,19 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Connexion-Encheres</title>
+<title>Connexion - ENI Enchères</title>
 </head>
 <body>
-	<h1>ENI-Encheres</h1>
-
+	<h1>Connexion utilisateur</h1>
+	<h4>${credentials}</h4>
+	<h4>${status}</h4>
 	<form action="AfficherEncheresServlet" method="POST">
-		Identifiant : <input type="text" name="identifiant" value="${model.identifiant}"><br><br> 
-		Mot de passe : <input type="text" name="mdp" value="${model.identifiant}"><br><br>
+		Identifiant : <input type="text" name="user" value="${model.identifiant}"><br><br> 
+		Mot de passe : <input type="text" name="mdp" value="${model.motDePasse}"><br><br>
 		<input type="submit" value="Connexion">
 		<input type="checkbox" name="souvenir">Se souvenir de moi<br>
 		<br> <a href="">Mot de passe oublié</a><br><br>
 	</form>
-	
-		<form action="InscriptionServlet">
-			<input type="submit" value="Créer un compte">
-		</form>	
-		
-
-
+	<a href="/InscriptionServlet">Créer un compte</a>
 </body>
 </html>

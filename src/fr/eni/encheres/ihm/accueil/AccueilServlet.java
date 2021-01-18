@@ -31,7 +31,6 @@ public class AccueilServlet extends HttpServlet {
      */
     public AccueilServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
