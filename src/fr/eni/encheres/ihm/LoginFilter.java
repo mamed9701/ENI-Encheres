@@ -1,6 +1,8 @@
 package fr.eni.encheres.ihm;
 
 import java.io.IOException;
+import java.util.Date;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -14,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
  * Servlet Filter implementation class LoginFilter
  */
 
-@WebFilter("/AccueilServlet")
+@WebFilter("/*")
 public class LoginFilter implements Filter {
 
     /**
