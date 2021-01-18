@@ -64,4 +64,12 @@ public interface UserDAO {
      */
     public List<Utilisateur> showAll() throws UserDALException;
     
+    /**
+     * Trouver un utilisateur par identifiant et mot de passe
+     * 
+     * @return
+     * @throws UserDALException
+     */
+    public Utilisateur findByUsernameAndPwd(String username, String pwd) throws UserDALException;
+    
 }

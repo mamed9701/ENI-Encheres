@@ -27,16 +27,7 @@ public interface UserManager {
      * @return L'utilisateur connecté
      * @throws BLLException
      */
-    public Utilisateur connexion(Utilisateur user) throws BLLException;
-    
-    /**
-     * Déconnexion d'un utilisateur
-     * Redirection sur la page d'accueil après déconnexion
-     * 
-     * @param user - objet de type Utilisateur
-     * @throws BLLException
-     */
-    public void deconnexion(Utilisateur user) throws BLLException;
+    public Utilisateur connexion(String pseudo, String mdp) throws BLLException;
     
     /**
      * Afficher le profil d'un utilisateur
@@ -54,7 +45,7 @@ public interface UserManager {
      * @return L'utilisateur modifié
      * @throws BLLException
      */
-    public Utilisateur modifierUtilisateur(Integer id) throws BLLException;
+    public Utilisateur modifierUtilisateur(Utilisateur user) throws BLLException;
     
     /**
      * Supprimer un compte utilisateur

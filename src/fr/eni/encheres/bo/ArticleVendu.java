@@ -20,29 +20,29 @@ public class ArticleVendu {
 	public ArticleVendu() {
 		super();
 	}
-
+    
 	/**
-	 * @param noArticle
-	 * @param nomArticle
-	 * @param description
-	 * @param dateDebutEncheres
-	 * @param dateFinEncheres
-	 * @param miseAPrix
-	 * @param prixVente
-	 */
-	public ArticleVendu(Integer noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
-			LocalDate dateFinEncheres, Integer miseAPrix, Integer prixVente) {
-		super();
-		this.noArticle = noArticle;
-		this.nomArticle = nomArticle;
-		this.description = description;
-		this.dateDebutEncheres = dateDebutEncheres;
-		this.dateFinEncheres = dateFinEncheres;
-		this.miseAPrix = miseAPrix;
-		this.prixVente = prixVente;
-	}
+     * @param noArticle
+     * @param nomArticle
+     * @param description
+     * @param dateDebutEncheres
+     * @param dateFinEncheres
+     * @param miseAPrix
+     * @param prixVente
+     */
+    public ArticleVendu(Integer noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
+            LocalDate dateFinEncheres, Integer miseAPrix, Integer prixVente) {
+        super();
+        this.noArticle = noArticle;
+        this.nomArticle = nomArticle;
+        this.description = description;
+        this.dateDebutEncheres = dateDebutEncheres;
+        this.dateFinEncheres = dateFinEncheres;
+        this.miseAPrix = miseAPrix;
+        this.prixVente = prixVente;
+    }
 
-	/**
+    /**
      * @param nomArticle
      * @param description
      * @param dateDebutEncheres
@@ -68,6 +68,8 @@ public class ArticleVendu {
      * @param dateFinEncheres
      * @param miseAPrix
      * @param prixVente
+     * @param utilisateur
+     * @param categorie
      */
     public ArticleVendu(String nomArticle, String description, LocalDate dateDebutEncheres,
             LocalDate dateFinEncheres, Integer miseAPrix, Integer prixVente, Utilisateur utilisateur, Categorie categorie) {
@@ -90,6 +92,8 @@ public class ArticleVendu {
      * @param dateFinEncheres
      * @param miseAPrix
      * @param prixVente
+     * @param utilisateur
+     * @param categorie
      */
     public ArticleVendu(Integer noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
             LocalDate dateFinEncheres, Integer miseAPrix, Integer prixVente, Utilisateur utilisateur, Categorie categorie) {

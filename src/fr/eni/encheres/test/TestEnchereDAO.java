@@ -95,12 +95,15 @@ public class TestEnchereDAO {
 //        System.out.println(daoEncheres.showAll());
         
         //update
-        Enchere enchere5 = new Enchere(LocalDate.now(), 111);
-        enchere5.setArticle(art3);
-        enchere5.setUtilisateur(daoUsers.findById(103));
+//        Enchere enchere5 = new Enchere(LocalDate.now(), 111);
+//        enchere5.setArticle(art3);
+//        enchere5.setUtilisateur(daoUsers.findById(103));
+//        
+//        
+//        System.out.println(daoEncheres.update(enchere5));
         
-        
-        System.out.println(daoEncheres.update(enchere5));
+        //findById
+        System.out.println(daoEncheres.findById(30));
         
     }
 

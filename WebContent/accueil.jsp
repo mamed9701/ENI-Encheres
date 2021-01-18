@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,12 +21,10 @@
 		<input type="text" name="filtre" value="${model.filtre}" size="40" placeholder="Le nom de l'article contient...">
 		<br> <br> <label for="categories">Catégorie : </label> <select
 			name="categories" id="categories">
-			<option value="">--Choisissez une catégorie--</option>
 			<option value="toutes">Toutes</option>
-			<option value="informatique">Informatique</option>
-			<option value="ameublement">Ameublement</option>
-			<option value="vetement">Vêtement</option>
-			<option value="autre">Sport&Loisirs</option>
+			<c:forEach var="cat" items="${model.listCategories}">
+				<option value="${fn:toLowerCase(cat.libelle)}">${cat.libelle}</option>
+			</c:forEach>
 		</select> <br> <br> <input type="submit" name="recherche"
 			value="Rechercher">
 	</form>
