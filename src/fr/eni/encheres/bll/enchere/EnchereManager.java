@@ -4,6 +4,7 @@ import java.util.List;
 
 import fr.eni.encheres.bll.BLLException;
 import fr.eni.encheres.bo.ArticleVendu;
+import fr.eni.encheres.bo.Categorie;
 import fr.eni.encheres.bo.Enchere;
 
 
@@ -31,7 +32,7 @@ public interface EnchereManager {
      * @return L'enchère créée
      * @throws BLLException
      */
-    public Enchere encherir(ArticleVendu article, Enchere enchere) throws BLLException;
+    public Enchere encherir(ArticleVendu article) throws BLLException;
     
     /**
      * Récupérer toutes les enchères
@@ -67,5 +68,13 @@ public interface EnchereManager {
      * @throws BLLException
      */
     public Enchere afficherEnchere(Integer id) throws BLLException;
+    
+    /**
+     * Récupérer toutes les catégories
+     * 
+     * @return Une liste de toutes les catégories
+     * @throws BLLException
+     */
+    public List<Categorie> getAllCategories() throws BLLException;
     
 }

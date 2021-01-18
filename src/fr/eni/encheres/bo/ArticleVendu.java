@@ -82,29 +82,6 @@ public class ArticleVendu {
         this.categorie = categorie;
     }
     
-    /**
-     * @param noArticle
-     * @param nomArticle
-     * @param description
-     * @param dateDebutEncheres
-     * @param dateFinEncheres
-     * @param miseAPrix
-     * @param prixVente
-     */
-    public ArticleVendu(Integer noArticle, String nomArticle, String description, LocalDate dateDebutEncheres,
-            LocalDate dateFinEncheres, Integer miseAPrix, Integer prixVente, Utilisateur utilisateur, Categorie categorie) {
-        super();
-        this.noArticle = noArticle;
-        this.nomArticle = nomArticle;
-        this.description = description;
-        this.dateDebutEncheres = dateDebutEncheres;
-        this.dateFinEncheres = dateFinEncheres;
-        this.miseAPrix = miseAPrix;
-        this.prixVente = prixVente;
-        this.utilisateur = utilisateur;
-        this.categorie = categorie;
-    }
-    
 	/**
 	 * @return the noArticle
 	 */

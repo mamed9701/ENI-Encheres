@@ -25,6 +25,19 @@ public class Enchere {
 		this.dateEnchere = dateEnchere;
 		this.montantEnchere = montantEnchere;
 	}
+	
+	/**
+     * @param dateEnchere
+     * @param montantEnchere
+     */
+    public Enchere(Integer noEnchere, LocalDate dateEnchere, Integer montantEnchere, Utilisateur utilisateur, ArticleVendu article) {
+        super();
+        this.noEnchere = noEnchere;
+        this.dateEnchere = dateEnchere;
+        this.montantEnchere = montantEnchere;
+        this.utilisateur = utilisateur;
+        this.article = article;
+    }
 
 	public Integer getNoEnchere() {
         return noEnchere;
