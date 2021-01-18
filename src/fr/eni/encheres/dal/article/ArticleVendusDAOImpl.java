@@ -14,7 +14,10 @@ import fr.eni.encheres.bo.Categorie;
 import fr.eni.encheres.bo.Utilisateur;
 import fr.eni.encheres.dal.ConnectionProvider;
 
-
+public class ArticleVendusDAOImpl implements ArticleVenduDAO {
+	private static UserDAO daoUsers = DAOFactory.getUserDAO();
+	private static CategorieDAO daoCategories = DAOFactory.getCategorieDAO();
+  
 public class ArticleVendusDAOImpl implements ArticleVenduDAO {  
 	private String INSERT = "INSERT INTO articles_vendus (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie)"
 	        + " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -86,6 +89,7 @@ public class ArticleVendusDAOImpl implements ArticleVenduDAO {
 			stmt.setInt(7, article.getUtilisateur().getNoUtilisateur());
 			stmt.setInt(8, article.getCategorie().getNoCategorie());
 			stmt.executeUpdate();
+
 			
 	} catch(Exception e) {
 		throw new ArticleVenduDALException("Impossible d'insérer l'article");
@@ -96,19 +100,20 @@ public class ArticleVendusDAOImpl implements ArticleVenduDAO {
 	@Override
 	public void delete(Integer id) throws ArticleVenduDALException {
 		try (Connection cnx = ConnectionProvider.getConnection();
-			PreparedStatement stmt = cnx.prepareStatement(DELETE);) {
+				PreparedStatement stmt = cnx.prepareStatement(DELETE);) {
 			stmt.setInt(1, id);
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			throw new ArticleVenduDALException("Suppresion non effectue");
 		}
-		
+
 	}
 	
 	@Override
 	public List<ArticleVendu> selectById(Integer id) throws ArticleVenduDALException {
 		List<ArticleVendu> liste = new ArrayList<ArticleVendu>();
 		try (Connection cnx = ConnectionProvider.getConnection();
+
 				PreparedStatement stmt = cnx.prepareStatement(SELECT_ID);) {
 
 			stmt.setInt(1, id);
@@ -160,6 +165,7 @@ public class ArticleVendusDAOImpl implements ArticleVenduDAO {
 		}
 		return liste;
 	}
+
 	@Override
 	public List<ArticleVendu> selectByNomAndCateg(String motCle, Integer idCat) throws ArticleVenduDALException {
 		List<ArticleVendu> liste = new ArrayList<ArticleVendu>();
@@ -198,6 +204,7 @@ public class ArticleVendusDAOImpl implements ArticleVenduDAO {
 				PreparedStatement stmt = cnx.prepareStatement(SELECT_CATEGORIE);) {
 
 			stmt.setInt(1, idCat);
+
 			try (ResultSet rs = stmt.executeQuery();) {
 				ArticleVendu artVe = null;
 
