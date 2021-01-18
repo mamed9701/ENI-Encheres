@@ -47,7 +47,8 @@ public class EnchereManagerImpl implements EnchereManager {
 				if (enchere.getMontantEnchere() > article.getMiseAPrix()) {
 					article.setPrixVente(enchere.getMontantEnchere());
 				} else {
-					// error le prix que vous propsez est trop petit
+					throw new BLLException("Le prix que vous propsez n'est pas suffisant !");
+			
 				}
 			} else {
 				while (enchere.getMontantEnchere() > article.getPrixVente()) {
@@ -66,6 +67,10 @@ public class EnchereManagerImpl implements EnchereManager {
 			}
 
 			//verifier si l'id de l'utilisateur courant est dans la table encheres et si il est on fait update()
+			
+			
+			
+			
 			//et update de la table utilisateur si il est surpassé
 			try { 
 				enchereDAO.insert(enchere);
@@ -88,11 +93,23 @@ public class EnchereManagerImpl implements EnchereManager {
 
 	@Override
 	public List<Enchere> getAllEncheres() throws BLLException {
+		
+		 try {
+			enchereDAO.showAll();
+		} catch (EnchereDALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 
+		 
+		
 		return null;
 	}
 
 	@Override
 	public List<Enchere> getEncheresByUser(Integer id) throws BLLException {
+		
+		
 		return null;
 	}
 
@@ -103,6 +120,9 @@ public class EnchereManagerImpl implements EnchereManager {
 
 	@Override
 	public Enchere afficherEnchere(Integer id) throws BLLException {
+		
+		
+		
 		return null;
 	}
 
