@@ -33,16 +33,17 @@ public class UserManagerImpl implements UserManager {
     	Utilisateur user = null;
     	
 		try {
-			user = userDAO.findByUsername(pseudo);
-		} catch (UserDALException e) {
-			throw BLLExcep
-		}
+			user = userDAO.findByUsernameAndPwd(pseudo, mdp);
 			
+		} catch (UserDALException e) {
+			throw new BLLException("L'utilisateur n'existe pas");
+		}
+	
 		return user;
     }
 
     @Override
-    public void deconnexion(Utilisateur user) throws BLLException {
+    public void deconnection(Utilisateur user) throws BLLException {
         
     }
 

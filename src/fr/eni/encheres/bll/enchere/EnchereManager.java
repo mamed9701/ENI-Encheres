@@ -32,7 +32,7 @@ public interface EnchereManager {
      * @return L'enchère créée
      * @throws BLLException
      */
-    public Enchere encherir(ArticleVendu article, Enchere enchere) throws BLLException;
+    public Enchere encherir(ArticleVendu article) throws BLLException;
     
     /**
      * Récupérer toutes les enchères

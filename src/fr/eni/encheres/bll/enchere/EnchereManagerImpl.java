@@ -20,97 +20,39 @@ import fr.eni.encheres.dal.user.UserDALException;
 import fr.eni.encheres.dal.user.UserDAO;
 
 
+
 public class EnchereManagerImpl implements EnchereManager {
 
-	ArticleVenduDAO articleVenduDAO = DAOFactory.getArticleDAO();
-	UserDAO utilisateurDAO = DAOFactory.getUserDAO();
-	EnchereDAO enchereDAO = DAOFactory.getEnchereDAO();
-	CategorieDAO categorieDAO = DAOFactory.getCategorieDAO();
+    @Override
+    public ArticleVendu ajouterArticle(ArticleVendu article) throws BLLException {
+        return null;
+    }
+    @Override
+    public Enchere encherir(ArticleVendu article) throws BLLException {
+        return null;
+    }
 
-	@Override
-	public ArticleVendu ajouterArticle(ArticleVendu article) throws BLLException {
-		ArticleVendu result = null;
-		try {
-			result = articleVenduDAO.insert(article);
-		} catch (ArticleVenduDALException e) {
-			e.printStackTrace();
-			throw new BLLException("Echec de l'ajout d'un article");
+    @Override
+    public List<Enchere> getAllEncheres() throws BLLException {
+        return null;
+    }
 
-		}
-		return result;
-	}
+    @Override
+    public List<Enchere> getEncheresByUser(Integer id) throws BLLException {
+        return null;
+    }
 
-	Integer idUtilisPreced = null;
-	
-	@Override
-	public Enchere encherir(ArticleVendu article, Enchere enchere) throws BLLException {
-		Utilisateur user = enchere.getUtilisateur();
-		
-		Integer credit = user.getCredit();
-		
-		if (enchere.getMontantEnchere() < credit) {
-			if (article.getPrixVente() == null) {
-				if (enchere.getMontantEnchere() > article.getMiseAPrix()) {
-					article.setPrixVente(enchere.getMontantEnchere());
-				} else {
-					// error le prix que vous propsez est trop petit
-				}
-			} else {
-				while (enchere.getMontantEnchere() > article.getPrixVente()) {
-					idUtilisPreced = user.getNoUtilisateur();
-					article.setPrixVente(enchere.getMontantEnchere());
-				}
-			}
-			credit -= enchere.getMontantEnchere();
+    @Override
+    public ArticleVendu acquerir(ArticleVendu article) throws BLLException {
+        return null;
+    }
 
-			user.setCredit(credit);
-			try {
-				
-				utilisateurDAO.edit(user);
-			} catch (UserDALException e) {
-				e.printStackTrace();
-			}
+    @Override
+    public Enchere afficherEnchere(Integer id) throws BLLException {
+        return null;
+    }
 
-			//verifier si l'id de l'utilisateur courant est dans la table encheres et si il est on fait update()
-			//et update de la table utilisateur si il est surpassé
-			try { 
-				enchereDAO.insert(enchere);
-			} catch (EnchereDALException e) {
-				e.printStackTrace();
-			}
-			
-			
-			
-			// Le meilleur enrechisseur précedent s'il existe est re-crédité de son offre
-//			utilisateurDAO.findById(idUtilisPreced);
-			
-			
-		} else {
-			// error vos n'avez pas assez credit
-		}
 
-		return enchere;
-	}
-
-	@Override
-	public List<Enchere> getAllEncheres() throws BLLException {
-		return null;
-	}
-
-	@Override
-	public List<Enchere> getEncheresByUser(Integer id) throws BLLException {
-		return null;
-	}
-
-	@Override
-	public ArticleVendu acquerir(ArticleVendu article) throws BLLException {
-		return null;
-	}
-
-	@Override
-	public Enchere afficherEnchere(Integer id) throws BLLException {
-		return null;
-	}
 
     @Override
     public List<Categorie> getAllCategories() throws BLLException {
