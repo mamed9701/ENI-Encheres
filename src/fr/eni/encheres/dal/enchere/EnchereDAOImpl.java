@@ -29,6 +29,7 @@ public class EnchereDAOImpl implements EnchereDAO {
     
     private static final String SQL_INSERT = "insert into encheres(date_enchere, montant_enchere, no_article, no_utilisateur) values(?,?,?,?)";
     private static final String SQL_SELECT_ALL_BY_USER = "select * from encheres where no_utilisateur = ?";
+    private static final String SQL_SELECT_BY_ID = "select * from encheres where no_enchere = ?";
     private static final String SQL_SELECT_ALL = "select * from encheres";
     private static final String SQL_UPDATE = "update encheres set date_enchere=?, montant_enchere=?"
             +" where no_utilisateur=?";
@@ -123,4 +124,62 @@ public class EnchereDAOImpl implements EnchereDAO {
         return result;
     }
 
+	@Override
+	public Enchere update(Enchere enchere) throws EnchereDALException {
+		try( Connection cnx = ConnectionProvider.getConnection();
+                PreparedStatement pst = cnx.prepareStatement(SQL_UPDATE);
+               ) {
+               pst.setDate(1, Date.valueOf(enchere.getDateEnchere()));
+               pst.setInt(2, enchere.getMontantEnchere());
+               pst.setInt(3, enchere.getUtilisateur().getNoUtilisateur());
+               
+               
+               pst.executeUpdate();           
+
+           } catch (SQLException e) {
+               e.printStackTrace();
+               throw new EnchereDALException("Enchere DAL - La modification d'une enchère dans la base de données a échoué !");
+           }
+        return enchere;
+	}
+
+    
+	@Override
+    public Enchere findById(Integer id) throws EnchereDALException {
+	    Enchere enchere = null;
+        ResultSet rs = null;
+        try( Connection cnx = ConnectionProvider.getConnection();
+                PreparedStatement rqt = cnx.prepareStatement(SQL_SELECT_BY_ID);
+               ) {
+                rqt.setInt(1, id);
+                rs = rqt.executeQuery();
+                
+                Utilisateur user = null;
+                ArticleVendu article = null;
+                
+                if (rs.next()) {
+                    try {
+                        user = userDAO.findById(rs.getInt("no_utilisateur"));
+                    } catch (UserDALException e) {
+                        e.printStackTrace();
+                    }
+                    try {
+                        article = articleDAO.selectById(rs.getInt("no_article"));
+                    } catch (ArticleVenduDALException e) {
+                        e.printStackTrace();
+                    }
+                    LocalDate dateEnchere = rs.getDate("date_enchere").toLocalDate();
+                    enchere = new Enchere(
+                            rs.getInt("no_enchere"),
+                            dateEnchere,
+                            rs.getInt("montant_enchere"),
+                            user,
+                            article
+                            );
+                }
+           } catch (SQLException e) {
+               throw new EnchereDALException("Enchere DAL - La récuperation d'une enchere par identifiant a échoué !");
+           }
+        return enchere;
+    }
 }

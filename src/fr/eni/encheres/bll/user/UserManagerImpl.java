@@ -36,6 +36,7 @@ public class UserManagerImpl implements UserManager {
 			user = userDAO.findByUsernameAndPwd(pseudo, mdp);
 			
 		} catch (UserDALException e) {
+
 			throw new BLLException("L'utilisateur n'existe pas");
 		}
 	
