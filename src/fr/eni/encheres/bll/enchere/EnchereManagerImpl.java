@@ -18,6 +18,7 @@ import fr.eni.encheres.dal.user.UserDALException;
 import fr.eni.encheres.dal.user.UserDAO;
 
 
+
 public class EnchereManagerImpl implements EnchereManager {
 
 	ArticleVenduDAO articleVenduDAO = DAOFactory.getArticleDAO();

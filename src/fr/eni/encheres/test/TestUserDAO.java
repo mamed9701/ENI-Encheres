@@ -15,12 +15,12 @@ public class TestUserDAO {
         Utilisateur user3 = new Utilisateur("ss21", "user", "three", "test@test.com", "123456789", "1 rue du port", "29000", "Quimper", "123456", 0, false);
         Utilisateur user4 = new Utilisateur("yy22", "user", "four", "test@test.com", "123456789", "1 rue du port", "29000", "Quimper", "123456", 0, false);
         //insert
-        daoUsers.insert(user1);
-        daoUsers.insert(user2);
-        daoUsers.insert(user3);
-        daoUsers.insert(user4);
+//        daoUsers.insert(user1);
+//        daoUsers.insert(user2);
+//        daoUsers.insert(user3);
+//        daoUsers.insert(user4);
         //find by id
-        System.out.println(daoUsers.findById(1));
+//        System.out.println(daoUsers.findById(31));
         //edit
 //        System.out.println(user2.toString());
 //        user2 = daoUsers.edit(user3);

@@ -28,6 +28,10 @@ public class UserDAOImpl implements UserDAO {
     private static final String SQL_SELECT_BY_PSEUDO = "select no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur"
             +" from utilisateurs where pseudo = ?";
     private static final String SQL_SELECT_ALL = "select * from utilisateurs";
+    private static final String SQL_SELECT_BY_PSEUDO_PWD = "select no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur"
+            +" from utilisateurs where pseudo = ? AND mot_de_passe = ?";
+    
+   
 
     @Override
     public Utilisateur insert(Utilisateur user) throws UserDALException {
@@ -149,6 +153,39 @@ public class UserDAOImpl implements UserDAO {
                 PreparedStatement rqt = cnx.prepareStatement(SQL_SELECT_BY_PSEUDO);
                ) {
                 rqt.setString(1, username);
+                rs = rqt.executeQuery();
+                
+                if (rs.next()) {
+                    user = new Utilisateur(
+                            rs.getInt("no_utilisateur"),
+                            rs.getString("pseudo"),
+                            rs.getString("nom"),
+                            rs.getString("prenom"),
+                            rs.getString("email"),
+                            rs.getString("telephone"),
+                            rs.getString("rue"),
+                            rs.getString("code_postal"),
+                            rs.getString("ville"),
+                            rs.getString("mot_de_passe"),
+                            rs.getInt("credit"),
+                            rs.getBoolean("administrateur")
+                            );
+                }
+           } catch (SQLException e) {
+               throw new UserDALException("User DAL - La récuperation d'un utilisateur par nom a échoué !");
+           }
+        return user;
+    }
+    
+    @Override
+    public Utilisateur findByUsernameAndPwd(String username, String pwd) throws UserDALException {
+        Utilisateur user = null;
+        ResultSet rs = null;
+        try( Connection cnx = ConnectionProvider.getConnection();
+                PreparedStatement rqt = cnx.prepareStatement(SQL_SELECT_BY_PSEUDO_PWD);
+               ) {
+                rqt.setString(1, username);
+                rqt.setString(2, pwd);
                 rs = rqt.executeQuery();
                 
                 if (rs.next()) {

@@ -55,4 +55,5 @@ public interface EnchereDAO {
      * @throws EnchereDALException
      */
     public Enchere findById(Integer id) throws EnchereDALException;
+
 }
