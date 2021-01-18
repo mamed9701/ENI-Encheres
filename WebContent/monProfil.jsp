@@ -4,12 +4,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Profil-Encheres</title>
+<title>Mon Profil-Encheres</title>
 </head>
 <body>
-
+	
 <h2>ENI-Encheres</h2>
-
 
 	Pseudo : $<{model.utilisateur.pseudo} <br><br>
 	Nom :  $<{model.utilisateur.nom} <br><br>
@@ -19,6 +18,10 @@
 	Rue :  $<{model.utilisateur.rue} <br><br>
 	Code Postal :  $<{model.utilisateur.codePostal} <br><br>
 	Ville :  $<{model.utilisateur.ville} <br><br>
+	
+	<form action="ModifierProfilServlet" method="POST">
+		<input type="submit" value="Modifier">
+	</form>
 	
 </body>
 </html>
