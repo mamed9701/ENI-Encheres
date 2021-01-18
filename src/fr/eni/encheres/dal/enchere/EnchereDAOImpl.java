@@ -35,7 +35,7 @@ public class EnchereDAOImpl implements EnchereDAO {
     private static final String SQL_SELECT_ALL_BY_USER = "select * from encheres where no_utilisateur = ?";
     private static final String SQL_SELECT_ALL = "select * from encheres";
     private static final String SQL_UPDATE = "update encheres set date_enchere=?, montant_enchere=?"
-            +" where no_enchere=?";
+            +" where no_utilisateur=?";
 
     @Override
     public Enchere insert(Enchere enchere) throws EnchereDALException {
