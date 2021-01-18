@@ -103,7 +103,13 @@ public class EnchereManagerImpl implements EnchereManager {
 
 	@Override
 	public List<Enchere> getEncheresByUser(Integer id) throws BLLException {
-		return null;
+		List<Enchere> liste = new ArrayList<>();
+		try {
+            liste = enchereDAO.getAllByUser(id);
+        } catch (EnchereDALException e) {
+            e.printStackTrace();
+        }
+		return liste;
 	}
 
 	@Override
