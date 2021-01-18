@@ -23,10 +23,10 @@ public class TestCategorieDAO {
      */
     public static void main(String[] args) throws CategorieDALException {
         //insert
-        Categorie cat1 = new Categorie("informatique");
-        Categorie cat2 = new Categorie("sport");
-        Categorie cat3 = new Categorie("ameublement");
-        Categorie cat4 = new Categorie("vetement");
+        Categorie cat1 = new Categorie("Informatique");
+        Categorie cat2 = new Categorie("Sport");
+        Categorie cat3 = new Categorie("Ameublement");
+        Categorie cat4 = new Categorie("Vetement");
 //        daoCategories.insert(cat1);
 //        daoCategories.insert(cat2);
 //        daoCategories.insert(cat3);
@@ -49,11 +49,11 @@ public class TestCategorieDAO {
 //        System.out.println(vetem);
         
         //showAll
-//        List<Categorie> list = daoCategories.showAll();
-//          
-//        for (Categorie cat : list) {
-//            System.out.println(cat.toString());
-//        }
+        List<Categorie> list = daoCategories.showAll();
+          
+        for (Categorie cat : list) {
+            System.out.println(cat.toString());
+        }
 
     }
 
