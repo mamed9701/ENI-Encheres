@@ -34,33 +34,30 @@ public class ConnexionServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ConnexionModel model = new ConnexionModel();
 		Utilisateur user = null;
-        String uname = request.getParameter("user");
-        String pwd = request.getParameter("mdp");           
-        
+		//get data from login form
+		String uname = request.getParameter("user");
+		String pwd = request.getParameter("pwd");
+                   
         if (null != request.getParameter("user") && null != request.getParameter("pwd")) {
+            
+            // search in DB if user exists
             try {
-                // search in DB if user exists
-                user = manager.connexion(uname, pwd);
+                user = manager.connexion(uname, pwd);                          
 
                 if (user != null) {
-                    if (pwd.equals(user.getMotDePasse())) {
-                        //login the user
-                        request.getSession().setAttribute("login", user.getNoUtilisateur());
-                        request.getRequestDispatcher("/AccueilServlet").forward(request, response);
-                    } else {
-                        // error if username or password is not correct
-                        request.getSession().setAttribute("credentials", "Nom utilisateur ou mot de passe incorrect !");
-                        request.getRequestDispatcher("login.jsp").forward(request, response);
-                    }
-
+                    //login the user
+                    request.getSession().setAttribute("login", user.getNoUtilisateur());
+                    request.getRequestDispatcher("/AccueilServlet").forward(request, response);
+                    
                 } else {
                     //if the user doesn't exist redirect to register
-                    request.getRequestDispatcher("/InscriptionServlet").forward(request, response);
+                    request.setAttribute("status", "Identifiant ou mot de passe incorrect !");
+                    request.getRequestDispatcher("connexion.jsp").forward(request, response);
                 }
-
             } catch (BLLException e) {
-                request.setAttribute("status", e.getMessage());
+                e.printStackTrace();
             }
+
 
         } else {
             request.setAttribute("model", model);

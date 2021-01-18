@@ -10,11 +10,11 @@
 <body>
 	<h3>Mon profil</h3>
 	<form action="ENI-Encheres/AfficherEncheresServlet" method="POST">
-		Pseudo : <input type="text" name="pseudo" value="${model.creaUtilisateur.pseudo}"><br><br>
+		Pseudo : <input type="text" name="pseudo" value="${uname}"><br><br>
 		Prenom : <input type="text" name="pseudo" value="${model.creaUtilisateur.prenom}"><br><br>
 		Teléphone : <input type="text" name="pseudo" value="${model.creaUtilisateur.telephone}"><br><br>
 		Code Postal : <input type="text" name="pseudo" value="${model.creaUtilisateur.codePostal}"><br><br>
-		Mot de passe : <input type="text" name="pseudo" value="${model.creaUtilisateur.motDePasse}"><br><br>
+		Mot de passe : <input type="password" name="pseudo" value="${pwd}"><br><br>
 		Nom : <input type="text" name="pseudo" value="${model.creaUtilisateur.nom}"><br><br>
 		Email : <input type="text" name="pseudo" value="${model.creaUtilisateur.email}"><br><br>
 		Rue : <input type="text" name="pseudo" value="${model.creaUtilisateur.rue}"><br><br>

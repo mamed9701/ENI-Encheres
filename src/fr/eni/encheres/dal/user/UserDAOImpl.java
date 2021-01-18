@@ -231,7 +231,7 @@ public class UserDAOImpl implements UserDAO {
                             );
                 }
            } catch (SQLException e) {
-               throw new UserDALException("User DAL - La récuperation d'un utilisateur par nom a échoué !");
+               throw new UserDALException("User DAL - La récuperation d'un utilisateur par nom et mot de passe a échoué !");
            }
         return user;
     }
