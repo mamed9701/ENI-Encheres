@@ -20,7 +20,7 @@ public class UserManagerImpl implements UserManager {
         try {
             userDAO.insert(user);
         } catch (UserDALException e) {
-            throw new BLLException("Impossible d'insÃ©rer un nouvel utilisaeur");
+            throw new BLLException("Impossible d'insérer un nouvel utilisateur");
         }
         return user;
     }

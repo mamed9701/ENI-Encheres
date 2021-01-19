@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<jsp:include page="header.jsp"></jsp:include>
 <meta charset="ISO-8859-1">
 <title>Mon Profil-Encheres</title>
 </head>
@@ -22,6 +23,6 @@
 	<form action="ModifierProfilServlet" method="POST">
 		<input type="submit" value="Modifier">
 	</form>
-	
+<jsp:include page="footer.jsp"></jsp:include>	
 </body>
 </html>
