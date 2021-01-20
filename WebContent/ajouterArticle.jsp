@@ -10,13 +10,17 @@
 </head>
 <body>
 	<h2>Nouvelle vente</h2>
-	<form action="/ENI-Encheres/afficherEncheres" method="POST">
+	<c:if test="${success != null}">
+      	<div class="alert alert-success" role="alert">
+	  		${success}
+		</div>       	
+   	</c:if>
+	<form action="/ENI-Encheres/vendre-article" method="POST">
 		Article : <input type="text" name="nom"><br><br>
 		<label for="description">Description : </label><br>
-		<textarea rows="5" cols="20" name="descrption" id="description"></textarea><br><br>
+		<textarea rows="5" cols="20" name="description" id="description"></textarea><br><br>
 		 <label for="categories">Catégorie : </label>
 		 <select name="categories" id="categories">
-			<option value="toutes">Toutes</option>
 			<c:forEach var="cat" items="${model.listCategories}">
 				<option value="${fn:toLowerCase(cat.libelle)}">${cat.libelle}</option>
 			</c:forEach>

@@ -7,12 +7,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.encheres.bll.BLLException;
+import fr.eni.encheres.bll.user.UserManager;
+import fr.eni.encheres.bll.user.UserManagerSingl;
+import fr.eni.encheres.bo.Utilisateur;
+
 /**
  * Servlet implementation class AfficherUtilisateurServlet
  */
 @WebServlet("/afficher-utilisateur")
 public class AfficherUtilisateurServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private UserManager userManager = UserManagerSingl.getInstance();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -27,10 +33,24 @@ public class AfficherUtilisateurServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AfficherUtilisateurModel model = new AfficherUtilisateurModel();
+		Utilisateur currentUser = null;
 		
-		request.setAttribute("model", model);
-		request.getRequestDispatcher("profil.jsp").forward(request, response);
-		
+		if (null != request.getSession().getAttribute("login")) {
+			Integer id = (Integer) request.getSession().getAttribute("login");
+			try {
+				currentUser = userManager.afficherUtilisateur(id);
+			} catch (BLLException e) {
+				e.printStackTrace();
+			}
+
+			model.setUtilisateur(currentUser);
+			request.setAttribute("model", model);
+
+			request.getRequestDispatcher("monProfil.jsp").forward(request, response);
+		}else {
+			request.getRequestDispatcher("profil.jsp").forward(request, response);			
+		}
+
 	}
 
 	/**

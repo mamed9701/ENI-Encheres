@@ -11,10 +11,22 @@
 </head>
 <body>
 
-	<h3>ENI-Encheres</h3>
-	<nav>
-		<a href="/ENI-Encheres/connexion">S'inscrire - Se connecter</a>
-	</nav>
+<nav class="navbar navbar-expand-md navbar-light bg-light mb-4">
+	<a class="navbar-brand" href="/ENI-Encheres/accueil">ENI-Encheres</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse"
+		data-target="#navbarCollapse" aria-controls="navbarCollapse"
+		aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarCollapse">
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item"><a class="nav-link" href="/ENI-Encheres/accueil">Encherès</a></li>
+			<li class="nav-item"><a class="nav-link" href="/ENI-Encheres/vendre-article">Vendre un article</a></li>
+			<li class="nav-item"><a class="nav-link" href="/ENI-Encheres/edit">Mon profil</a></li>
+			<li class="nav-item"><a class="nav-link" href="/ENI-Encheres/logout">Déconnexion</a></li>
+		</ul>				
+	</div>
+</nav>
 	<h3>Liste des enchères</h3>
 	Filtres :
 	<br>

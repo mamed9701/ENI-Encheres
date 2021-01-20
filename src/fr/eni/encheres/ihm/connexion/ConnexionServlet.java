@@ -1,6 +1,9 @@
 package fr.eni.encheres.ihm.connexion;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,17 +47,23 @@ public class ConnexionServlet extends HttpServlet {
 
                 if (user != null) {
                 	String referrer = request.getHeader("referer");
-                	System.out.println(referrer);
+                	String refererURI = new URI(request.getHeader("referer")).getPath();
                     //login the user
                     request.getSession().setAttribute("login", user.getNoUtilisateur());
-                    response.sendRedirect(referrer);
+                    System.out.println(refererURI);
+                    if ("/ENI-Encheres/login".equals(refererURI)) {
+                    	response.sendRedirect("/ENI-Encheres/accueil");
+					}else {
+						response.sendRedirect(referrer);						
+					}
+
                     
                 } else {
                     //if the user doesn't exist redirect to register
                     request.setAttribute("error", "Identifiant ou mot de passe incorrect !");
                     request.getRequestDispatcher("connexion.jsp").forward(request, response);
                 }
-            } catch (BLLException e) {
+            } catch (BLLException | URISyntaxException e) {
                 e.printStackTrace();
             }
 
