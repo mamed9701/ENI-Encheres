@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Détail vente-Encheres</title>
+<meta charset="UTF-8">
+<title>Détail vente - ENI Enchères</title>
 </head>
 <body>
 	<h2>${model.profilUtilisateur.pseudo}</h2> <h2>a remporté l'enchère</h2><br><br>

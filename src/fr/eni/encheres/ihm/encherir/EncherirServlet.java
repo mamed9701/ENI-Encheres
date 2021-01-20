@@ -29,8 +29,7 @@ public class EncherirServlet extends HttpServlet {
 		EncherirModel model = new EncherirModel();
 		
 		request.setAttribute("model", model);
-		
-		
+	
 		request.getRequestDispatcher("encherir.jsp").forward(request, response);
 		
 	}

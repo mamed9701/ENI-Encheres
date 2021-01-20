@@ -1,4 +1,4 @@
-package fr.eni.encheres.ihm.afficherEncheres;
+package fr.eni.encheres.ihm.connexion;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AfficherEncheresAchatsServlet
+ * Servlet implementation class LogoutServlet
  */
-@WebServlet("/afficherEncheres")
-public class AfficherEncheresServlet extends HttpServlet {
+@WebServlet("/logout")
+public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AfficherEncheresServlet() {
+    public LogoutServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,14 +26,11 @@ public class AfficherEncheresServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		AfficherEncheresModel model = new AfficherEncheresModel();
-		
-		request.setAttribute("model", model);
-		request.getRequestDispatcher("afficherEncheres.jsp").forward(request, response);
+		request.getSession().removeAttribute("login");
+        response.sendRedirect("/ENI-Encheres/accueil");
 	}
 
 	/**
-	 * 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
