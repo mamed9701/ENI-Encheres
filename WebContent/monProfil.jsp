@@ -19,7 +19,7 @@
 	Code Postal :  $<{model.utilisateur.codePostal} <br><br>
 	Ville :  $<{model.utilisateur.ville} <br><br>
 	
-	<form action="ModifierProfilServlet" method="POST">
+	<form action="/ENI-Encheres/modifierUtilisateur" method="POST">
 		<input type="submit" value="Modifier">
 	</form>
 	

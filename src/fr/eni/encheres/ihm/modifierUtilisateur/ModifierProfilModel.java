@@ -3,7 +3,7 @@ package fr.eni.encheres.ihm.modifierUtilisateur;
 import fr.eni.encheres.bo.Utilisateur;
 
 public class ModifierProfilModel {
-	private Utilisateur creaUtilisateur;
+	private Utilisateur modifUtilisateur;
 	private String confirmation;
 	private String mdpActuel;
 	private String messagePseudo;
@@ -17,29 +17,29 @@ public class ModifierProfilModel {
 	}
 
 	/**
-	 * @param creaUtilisateur
+	 * @param modifUtilisateur
 	 * @param confirmation
 	 * @param mdpActuel
 	 */
-	public ModifierProfilModel(Utilisateur creaUtilisateur, String confirmation, String mdpActuel) {
+	public ModifierProfilModel(Utilisateur modifUtilisateur, String confirmation, String mdpActuel) {
 		super();
-		this.creaUtilisateur = creaUtilisateur;
+		this.modifUtilisateur = modifUtilisateur;
 		this.confirmation = confirmation;
 		this.mdpActuel = mdpActuel;
 	}
 
 	/**
-	 * @return the creaUtilisateur
+	 * @return the modifUtilisateur
 	 */
-	public Utilisateur getCreaUtilisateur() {
-		return creaUtilisateur;
+	public Utilisateur getModifUtilisateur() {
+		return modifUtilisateur;
 	}
 
 	/**
-	 * @param creaUtilisateur the creaUtilisateur to set
+	 * @param modifUtilisateur the modifUtilisateur to set
 	 */
-	public void setCreaUtilisateur(Utilisateur creaUtilisateur) {
-		this.creaUtilisateur = creaUtilisateur;
+	public void setModifUtilisateur(Utilisateur modifUtilisateur) {
+		this.modifUtilisateur = modifUtilisateur;
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class ModifierProfilModel {
 
 	@Override
 	public String toString() {
-		return "ModifierProfilModel [creaUtilisateur=" + creaUtilisateur + ", confirmation=" + confirmation
+		return "ModifierProfilModel [modifUtilisateur=" + modifUtilisateur + ", confirmation=" + confirmation
 				+ ", mdpActuel=" + mdpActuel + ", messagePseudo=" + messagePseudo + "]";
 	}
 

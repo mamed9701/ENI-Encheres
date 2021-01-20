@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class AcquerirServlet
  */
-@WebServlet("/AcquerirServlet")
+@WebServlet("/acquerir")
 public class AcquerirServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

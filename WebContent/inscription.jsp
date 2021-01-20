@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h3>Mon profil</h3>
-	<form action="ENI-Encheres/AfficherEncheresServlet" method="POST">
+	<form action="ENI-Encheres/afficherEncheres" method="POST">
 		Pseudo : <input type="text" name="pseudo" value="${model.creaUtilisateur.pseudo}"><br><br>
 		Prenom : <input type="text" name="pseudo" value="${model.creaUtilisateur.prenom}"><br><br>
 		Teléphone : <input type="text" name="pseudo" value="${model.creaUtilisateur.telephone}"><br><br>
@@ -23,7 +23,7 @@
 		<input type="submit" name="create" value="Créer">
 	</form>
 		
-		<form action="ENI-Encheres/AccueilServlet">
+		<form action="ENI-Encheres/accueil">
 			<input type="submit" name="cancel" value="Annuler">
 		</form>
 </body>

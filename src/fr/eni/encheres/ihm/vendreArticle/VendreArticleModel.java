@@ -1,21 +1,19 @@
 package fr.eni.encheres.ihm.vendreArticle;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.eni.encheres.bo.ArticleVendu;
 import fr.eni.encheres.bo.Categorie;
 import fr.eni.encheres.bo.Retrait;
+import fr.eni.encheres.bo.Utilisateur;
 
 public class VendreArticleModel {
 
-	private String article;
-	private String description;
+	private ArticleVendu article;
 	private List<Categorie> listCategories = new ArrayList<>();
-	private Integer miseAPrix;
-	private LocalDate debutEnchere;
-	private LocalDate finEnchere;
 	private Retrait retrait;
+	private Utilisateur utilisateur;
 
 	/**
 	 * 
@@ -27,51 +25,28 @@ public class VendreArticleModel {
 
 	/**
 	 * @param article
-	 * @param description
 	 * @param listCategories
-	 * @param miseAPrix
-	 * @param debutEnchere
-	 * @param finEnchere
 	 * @param retrait
 	 */
-	public VendreArticleModel(String article, String description, List<Categorie> listCategories, Integer miseAPrix,
-			LocalDate debutEnchere, LocalDate finEnchere, Retrait retrait) {
+	public VendreArticleModel(ArticleVendu article, List<Categorie> listCategories, Retrait retrait) {
 		super();
 		this.article = article;
-		this.description = description;
 		this.listCategories = listCategories;
-		this.miseAPrix = miseAPrix;
-		this.debutEnchere = debutEnchere;
-		this.finEnchere = finEnchere;
 		this.retrait = retrait;
 	}
 
 	/**
 	 * @return the article
 	 */
-	public String getArticle() {
+	public ArticleVendu getArticle() {
 		return article;
 	}
 
 	/**
 	 * @param article the article to set
 	 */
-	public void setArticle(String article) {
+	public void setArticle(ArticleVendu article) {
 		this.article = article;
-	}
-
-	/**
-	 * @return the description
-	 */
-	public String getDescription() {
-		return description;
-	}
-
-	/**
-	 * @param description the description to set
-	 */
-	public void setDescription(String description) {
-		this.description = description;
 	}
 
 	/**
@@ -89,48 +64,6 @@ public class VendreArticleModel {
 	}
 
 	/**
-	 * @return the miseAPrix
-	 */
-	public Integer getMiseAPrix() {
-		return miseAPrix;
-	}
-
-	/**
-	 * @param miseAPrix the miseAPrix to set
-	 */
-	public void setMiseAPrix(Integer miseAPrix) {
-		this.miseAPrix = miseAPrix;
-	}
-
-	/**
-	 * @return the debutEnchere
-	 */
-	public LocalDate getDebutEnchere() {
-		return debutEnchere;
-	}
-
-	/**
-	 * @param debutEnchere the debutEnchere to set
-	 */
-	public void setDebutEnchere(LocalDate debutEnchere) {
-		this.debutEnchere = debutEnchere;
-	}
-
-	/**
-	 * @return the finEnchere
-	 */
-	public LocalDate getFinEnchere() {
-		return finEnchere;
-	}
-
-	/**
-	 * @param finEnchere the finEnchere to set
-	 */
-	public void setFinEnchere(LocalDate finEnchere) {
-		this.finEnchere = finEnchere;
-	}
-
-	/**
 	 * @return the retrait
 	 */
 	public Retrait getRetrait() {
@@ -144,11 +77,26 @@ public class VendreArticleModel {
 		this.retrait = retrait;
 	}
 
+	/**
+	 * @return the utilisateur
+	 */
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+	/**
+	 * @param utilisateur the utilisateur to set
+	 */
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
 	@Override
 	public String toString() {
-		return "VendreArticleModel [article=" + article + ", description=" + description + ", listCategories="
-				+ listCategories + ", miseAPrix=" + miseAPrix + ", debutEnchere=" + debutEnchere + ", finEnchere="
-				+ finEnchere + ", retrait=" + retrait + "]";
+		return "VendreArticleModel [article=" + article + ", listCategories=" + listCategories + ", retrait=" + retrait
+				+ ", utilisateur=" + utilisateur + "]";
 	}
+
+	
 
 }

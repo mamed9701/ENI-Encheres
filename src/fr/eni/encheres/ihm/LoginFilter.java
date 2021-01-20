@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
  * Servlet Filter implementation class LoginFilter
  */
 
-@WebFilter("/AccueilServlet")
+@WebFilter("/*")
 public class LoginFilter implements Filter {
 
     /**
@@ -33,12 +33,12 @@ public class LoginFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-	    if(null == ((HttpServletRequest)request).getSession().getAttribute("login")) {
-            request.getRequestDispatcher("ConnexionServlet").forward(request, response);
-        }
-        else {
-            chain.doFilter(request, response);
-        }
+		if(((HttpServletRequest)request).getSession().getAttribute("login")==null) {
+			request.getRequestDispatcher("connexion").forward(request, response);
+		}
+		else {
+			chain.doFilter(request, response);
+		}
 
 	}
 

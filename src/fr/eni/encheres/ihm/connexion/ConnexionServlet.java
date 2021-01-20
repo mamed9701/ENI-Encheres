@@ -16,7 +16,7 @@ import fr.eni.encheres.bo.Utilisateur;
 /**
  * Servlet implementation class ConnexionServlet
  */
-@WebServlet("/ConnexionServlet")
+@WebServlet("/connexion")
 public class ConnexionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserManager manager = UserManagerSingl.getInstance();

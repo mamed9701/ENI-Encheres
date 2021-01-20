@@ -12,7 +12,7 @@
 
 	<h3>ENI-Encheres</h3>
 	<nav>
-		<a href="/ENI-Encheres/ConnexionServlet">S'inscrire - Se connecter</a>
+		<a href="/ENI-Encheres/connexion">S'inscrire - Se connecter</a>
 	</nav>
 	<h3>Liste des enchères</h3>
 	Filtres :

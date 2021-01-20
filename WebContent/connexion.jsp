@@ -10,13 +10,13 @@
 	<h1>Connexion utilisateur</h1>
 	<h4>${credentials}</h4>
 	<h4>${status}</h4>
-	<form action="AfficherEncheresServlet" method="POST">
+	<form action="/ENI-Encheres/afficherEncheres" method="POST">
 		Identifiant : <input type="text" name="user" value="${model.identifiant}"><br><br> 
 		Mot de passe : <input type="text" name="mdp" value="${model.motDePasse}"><br><br>
 		<input type="submit" value="Connexion">
 		<input type="checkbox" name="souvenir">Se souvenir de moi<br>
 		<br> <a href="">Mot de passe oublié</a><br><br>
 	</form>
-	<a href="/InscriptionServlet">Créer un compte</a>
+	<a href="/ENI-Encheres/inscription">Créer un compte</a>
 </body>
 </html>
