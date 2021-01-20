@@ -6,6 +6,7 @@ import fr.eni.encheres.bll.BLLException;
 import fr.eni.encheres.bo.ArticleVendu;
 import fr.eni.encheres.bo.Categorie;
 import fr.eni.encheres.bo.Enchere;
+import fr.eni.encheres.bo.Retrait;
 import fr.eni.encheres.bo.Utilisateur;
 import fr.eni.encheres.dal.DAOFactory;
 import fr.eni.encheres.dal.article.ArticleVenduDALException;
@@ -14,6 +15,8 @@ import fr.eni.encheres.dal.categorie.CategorieDALException;
 import fr.eni.encheres.dal.categorie.CategorieDAO;
 import fr.eni.encheres.dal.enchere.EnchereDALException;
 import fr.eni.encheres.dal.enchere.EnchereDAO;
+import fr.eni.encheres.dal.retrait.RetraitDALException;
+import fr.eni.encheres.dal.retrait.RetraitDAO;
 import fr.eni.encheres.dal.user.UserDALException;
 import fr.eni.encheres.dal.user.UserDAO;
 
@@ -23,6 +26,7 @@ public class EnchereManagerImpl implements EnchereManager {
 	UserDAO utilisateurDAO = DAOFactory.getUserDAO();
 	EnchereDAO enchereDAO = DAOFactory.getEnchereDAO();
 	CategorieDAO categorieDAO = DAOFactory.getCategorieDAO();
+	RetraitDAO retraitDAO = DAOFactory.getRetraitDAO();
 
 	@Override
 	public ArticleVendu ajouterArticle(ArticleVendu article) throws BLLException {
@@ -141,5 +145,30 @@ public class EnchereManagerImpl implements EnchereManager {
 
         return categories;
     }
+
+	@Override
+	public Categorie trouverParLibelle(String libelle) throws BLLException {
+		
+		Categorie categorie = null;
+		
+		try {
+			categorie = categorieDAO.findByLibelle(libelle);
+		} catch (CategorieDALException e) {
+			e.printStackTrace();
+		}
+		return categorie;
+		
+	
+	}
+
+	@Override
+	public void ajoutRetrait(Retrait retrait) throws BLLException {
+	
+		try {
+			retraitDAO.insert(retrait);
+		} catch (RetraitDALException e) {
+			e.printStackTrace();
+		}
+	}
 
 }

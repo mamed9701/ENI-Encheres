@@ -1,11 +1,16 @@
 package fr.eni.encheres.ihm.finEnchere;
 
 import fr.eni.encheres.bo.ArticleVendu;
+import fr.eni.encheres.bo.Enchere;
+import fr.eni.encheres.bo.Retrait;
+import fr.eni.encheres.bo.Utilisateur;
 
 public class FinEnchereModel {
-
-	private String mOffre;
-	private ArticleVendu article;
+	
+	private ArticleVendu articleVendu;
+	private Retrait retrait;
+	private Enchere enchere;
+	private Utilisateur profilUtilisateur;
 
 	/**
 	 * 
@@ -16,46 +21,81 @@ public class FinEnchereModel {
 	}
 
 	/**
-	 * @param mOffre
-	 * @param article
+	 * @param articleVendu
+	 * @param enchere
+	 * @param profilUtilisateur
 	 */
-	public FinEnchereModel(String mOffre, ArticleVendu article) {
+	public FinEnchereModel(ArticleVendu articleVendu, Retrait retrait, Enchere enchere,  Utilisateur profilUtilisateur) {
 		super();
-		this.mOffre = mOffre;
-		this.article = article;
+		this.articleVendu = articleVendu;
+		this.retrait = retrait;
+		this.enchere = enchere;
+		this.profilUtilisateur = profilUtilisateur;
 	}
 
 	/**
-	 * @return the mOffre
+	 * @return the articleVendu
 	 */
-	public String getmOffre() {
-		return mOffre;
+	public ArticleVendu getArticleVendu() {
+		return articleVendu;
 	}
 
 	/**
-	 * @param mOffre the mOffre to set
+	 * @param articleVendu the articleVendu to set
 	 */
-	public void setmOffre(String mOffre) {
-		this.mOffre = mOffre;
+	public void setArticleVendu(ArticleVendu articleVendu) {
+		this.articleVendu = articleVendu;
 	}
 
 	/**
-	 * @return the article
+	 * @return the enchere
 	 */
-	public ArticleVendu getArticle() {
-		return article;
+	public Retrait getRetrait() {
+		return retrait;
 	}
 
 	/**
-	 * @param article the article to set
+	 * @param enchere the enchere to set
 	 */
-	public void setArticle(ArticleVendu article) {
-		this.article = article;
+	public void setRetrait(Retrait retrait) {
+		this.retrait = retrait;
+	}
+
+	/**
+	 * @return the profilUtilisateur
+	 */
+	public Utilisateur getProfilUtilisateur() {
+		return profilUtilisateur;
+	}
+
+	/**
+	 * @param profilUtilisateur the profilUtilisateur to set
+	 */
+	public void setProfilUtilisateur(Utilisateur profilUtilisateur) {
+		this.profilUtilisateur = profilUtilisateur;
+	}
+
+	/**
+	 * @return the enchere
+	 */
+	public Enchere getEnchere() {
+		return enchere;
+	}
+
+	/**
+	 * @param enchere the enchere to set
+	 */
+	public void setEnchere(Enchere enchere) {
+		this.enchere = enchere;
 	}
 
 	@Override
 	public String toString() {
-		return "FinEnchereModel [mOffre=" + mOffre + ", article=" + article + "]";
+		return "FinEnchereModel [articleVendu=" + articleVendu + ", retrait=" + retrait + ", enchere=" + enchere
+				+ ", profilUtilisateur=" + profilUtilisateur + "]";
 	}
 
+	
+
+	
 }

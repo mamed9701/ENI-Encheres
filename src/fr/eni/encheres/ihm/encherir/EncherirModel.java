@@ -1,11 +1,16 @@
 package fr.eni.encheres.ihm.encherir;
 
 import fr.eni.encheres.bo.ArticleVendu;
+import fr.eni.encheres.bo.Enchere;
+import fr.eni.encheres.bo.Retrait;
+import fr.eni.encheres.bo.Utilisateur;
 
 public class EncherirModel {
 
-	private ArticleVendu article;
-	private String mOffre;
+	private ArticleVendu articleVendu;
+	private Retrait retrait;
+	private Enchere enchere;
+	private Utilisateur profilUtilisateur;
 	private Integer maProposition;
 
 	/**
@@ -17,43 +22,76 @@ public class EncherirModel {
 	}
 
 	/**
-	 * @param article
-	 * @param mOffre
+	 * @param articleVendu
+	 * @param retrait
+	 * @param enchere
+	 * @param profilUtilisateur
 	 * @param maProposition
 	 */
-	public EncherirModel(ArticleVendu article, String mOffre, Integer maProposition) {
+	public EncherirModel(ArticleVendu articleVendu, Retrait retrait, Enchere enchere, Utilisateur profilUtilisateur,
+			Integer maProposition) {
 		super();
-		this.article = article;
-		this.mOffre = mOffre;
+		this.articleVendu = articleVendu;
+		this.retrait = retrait;
+		this.enchere = enchere;
+		this.profilUtilisateur = profilUtilisateur;
 		this.maProposition = maProposition;
 	}
 
 	/**
-	 * @return the article
+	 * @return the articleVendu
 	 */
-	public ArticleVendu getArticle() {
-		return article;
+	public ArticleVendu getArticleVendu() {
+		return articleVendu;
 	}
 
 	/**
-	 * @param article the article to set
+	 * @param articleVendu the articleVendu to set
 	 */
-	public void setArticle(ArticleVendu article) {
-		this.article = article;
+	public void setArticleVendu(ArticleVendu articleVendu) {
+		this.articleVendu = articleVendu;
 	}
 
 	/**
-	 * @return the mOffre
+	 * @return the retrait
 	 */
-	public String getmOffre() {
-		return mOffre;
+	public Retrait getRetrait() {
+		return retrait;
 	}
 
 	/**
-	 * @param mOffre the mOffre to set
+	 * @param retrait the retrait to set
 	 */
-	public void setmOffre(String mOffre) {
-		this.mOffre = mOffre;
+	public void setRetrait(Retrait retrait) {
+		this.retrait = retrait;
+	}
+
+	/**
+	 * @return the enchere
+	 */
+	public Enchere getEnchere() {
+		return enchere;
+	}
+
+	/**
+	 * @param enchere the enchere to set
+	 */
+	public void setEnchere(Enchere enchere) {
+		this.enchere = enchere;
+	}
+
+	/**
+	 * @return the profilUtilisateur
+	 */
+	public Utilisateur getProfilUtilisateur() {
+		return profilUtilisateur;
+	}
+
+	/**
+	 * @param profilUtilisateur the profilUtilisateur to set
+	 */
+	public void setProfilUtilisateur(Utilisateur profilUtilisateur) {
+		this.profilUtilisateur = profilUtilisateur;
 	}
 
 	/**
@@ -72,7 +110,8 @@ public class EncherirModel {
 
 	@Override
 	public String toString() {
-		return "EncherirModel [article=" + article + ", mOffre=" + mOffre + ", maProposition=" + maProposition + "]";
+		return "EncherirModel [articleVendu=" + articleVendu + ", retrait=" + retrait + ", enchere=" + enchere
+				+ ", profilUtilisateur=" + profilUtilisateur + ", maProposition=" + maProposition + "]";
 	}
 
 }

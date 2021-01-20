@@ -8,7 +8,7 @@
 <jsp:include page="header.jsp"></jsp:include>
 
 <meta charset="ISO-8859-1">
-<title>Connexion - ENI Enchères</title>
+<title>Connexion - ENI EnchÃ¨res</title>
 </head>
 <body>
 	<div class="container">
@@ -35,8 +35,8 @@
 					<button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
 			    </form>
 			    
-				<a href="#" class="stretched-link">Mot de passe oublié</a> <br>
-			    <a href="/ENI-Encheres/register">Créer un compte</a>
+				<a href="#" class="stretched-link">Mot de passe oubliÃ©</a> <br>
+			    <a href="/ENI-Encheres/register">CrÃ©er un compte</a>
 			</div>			
 		</div>
 	</div>

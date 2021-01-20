@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class EncherirServlet
  */
-@WebServlet("/EncherirServlet")
+@WebServlet("/encherir")
 public class EncherirServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -29,6 +29,7 @@ public class EncherirServlet extends HttpServlet {
 		EncherirModel model = new EncherirModel();
 		
 		request.setAttribute("model", model);
+		
 		
 		request.getRequestDispatcher("encherir.jsp").forward(request, response);
 		

@@ -6,6 +6,7 @@ import fr.eni.encheres.bll.BLLException;
 import fr.eni.encheres.bo.ArticleVendu;
 import fr.eni.encheres.bo.Categorie;
 import fr.eni.encheres.bo.Enchere;
+import fr.eni.encheres.bo.Retrait;
 
 
 /**
@@ -76,5 +77,22 @@ public interface EnchereManager {
      * @throws BLLException
      */
     public List<Categorie> getAllCategories() throws BLLException;
+    
+    /**
+     * Trouver une catégorie par libelle
+     * 
+     * @return La categorie correspondante 
+     * @throws BLLException
+     */
+    public Categorie trouverParLibelle(String libelle) throws BLLException;
+
+    /**
+     * Ajouter un nouveau retrait dans la bdd
+     * 
+     * @throws BLLException
+     */
+	public void ajoutRetrait(Retrait retrait) throws BLLException;
+    
+    
     
 }

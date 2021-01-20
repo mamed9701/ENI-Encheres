@@ -1,12 +1,14 @@
 package fr.eni.encheres.ihm.acquerir;
 
 import fr.eni.encheres.bo.ArticleVendu;
+import fr.eni.encheres.bo.Enchere;
+import fr.eni.encheres.bo.Retrait;
 
 public class AcquerirModel {
 
-	private String mOffre;
-	private ArticleVendu article;
-
+	private ArticleVendu articleVendu;
+	private Retrait retrait;
+	private Enchere enchere;
 	/**
 	 * 
 	 */
@@ -14,48 +16,61 @@ public class AcquerirModel {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 	/**
-	 * @param mOffre
-	 * @param article
+	 * @param articleVendu
+	 * @param retrait
+	 * @param enchere
+	 * @param profilUtilisateur
 	 */
-	public AcquerirModel(String mOffre, ArticleVendu article) {
+	public AcquerirModel(ArticleVendu articleVendu, Retrait retrait, Enchere enchere) {
 		super();
-		this.mOffre = mOffre;
-		this.article = article;
+		this.articleVendu = articleVendu;
+		this.retrait = retrait;
+		this.enchere = enchere;
 	}
-
 	/**
-	 * @return the mOffre
+	 * @return the articleVendu
 	 */
-	public String getmOffre() {
-		return mOffre;
+	public ArticleVendu getArticleVendu() {
+		return articleVendu;
 	}
-
 	/**
-	 * @param mOffre the mOffre to set
+	 * @param articleVendu the articleVendu to set
 	 */
-	public void setmOffre(String mOffre) {
-		this.mOffre = mOffre;
+	public void setArticleVendu(ArticleVendu articleVendu) {
+		this.articleVendu = articleVendu;
 	}
-
 	/**
-	 * @return the article
+	 * @return the retrait
 	 */
-	public ArticleVendu getArticle() {
-		return article;
+	public Retrait getRetrait() {
+		return retrait;
 	}
-
 	/**
-	 * @param article the article to set
+	 * @param retrait the retrait to set
 	 */
-	public void setArticle(ArticleVendu article) {
-		this.article = article;
+	public void setRetrait(Retrait retrait) {
+		this.retrait = retrait;
 	}
-
+	/**
+	 * @return the enchere
+	 */
+	public Enchere getEnchere() {
+		return enchere;
+	}
+	/**
+	 * @param enchere the enchere to set
+	 */
+	public void setEnchere(Enchere enchere) {
+		this.enchere = enchere;
+	}
 	@Override
 	public String toString() {
-		return "AcquerirModel [mOffre=" + mOffre + ", article=" + article + "]";
+		return "AcquerirModel [articleVendu=" + articleVendu + ", retrait=" + retrait + ", enchere=" + enchere + "]";
 	}
+
+	
+	
+	 
 
 }

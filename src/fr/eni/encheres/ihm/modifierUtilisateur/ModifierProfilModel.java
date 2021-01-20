@@ -3,6 +3,7 @@ package fr.eni.encheres.ihm.modifierUtilisateur;
 import fr.eni.encheres.bo.Utilisateur;
 
 public class ModifierProfilModel {
+
 	private Utilisateur utilisateur;
 
 	/**
@@ -39,6 +40,7 @@ public class ModifierProfilModel {
 
 	@Override
 	public String toString() {
+
 		return "ModifierProfilModel [utilisateur=" + utilisateur + "]";
 	}
 

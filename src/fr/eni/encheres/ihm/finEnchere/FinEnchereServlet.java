@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class FinEnchereServlet
  */
-@WebServlet("/FinEnchereServlet")
+@WebServlet("/finEnchere")
 public class FinEnchereServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -26,7 +26,11 @@ public class FinEnchereServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		FinEnchereModel model = new FinEnchereModel();
 		
+		request.setAttribute("model", model);
+		
+		request.getRequestDispatcher("maVente.jsp").forward(request, response);
 	}
 
 	/**

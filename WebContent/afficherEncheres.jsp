@@ -12,12 +12,12 @@
 
 	<h3>ENI-Encheres</h3>
 	<nav>
-		<a href="/ENI-Encheres/ConnexionServlet">S'inscrire - Se connecter</a>
+		<a href="/ENI-Encheres/connexion">S'inscrire - Se connecter</a>
 	</nav>
 	<h3>Liste des enchères</h3>
 	Filtres :
 	<br>
-	<form action="AccueilServlet" method="POST">
+	<form action="/ENI-Encheres/accueil" method="POST">
 		<input type="text" name="filtre" value="${model.filtre}" size="40"
 			placeholder="Le nom de l'article contient..."> <br> <br>
 		<label for="categories">Catégorie : </label> <select name="categories"
@@ -58,16 +58,10 @@
 					<label for="terminees">Ventes terminées</label><br> <br>
 					
 				</td>
-			</tr><br> <br>
+			</tr>
 		</div>	
-	</form>
-	
-	  <c:if test="${param.choix == 'Achats'}">
-             
-        </c:if>
-	
-	
-	
+	</form><br><br>
+		
 	<c:forEach var="e" items="${model.listEncheres}">
 		<tr>
 			<td>${e.article.nomArticle}</td>

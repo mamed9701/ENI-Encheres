@@ -32,8 +32,8 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-6">
-                        <label for="prenom">Prénom : </label>
-						<input type="text" name="prenom" id="prenom" class="form-control" placeholder="Prénom" value="${model.utilisateur.prenom}" required>
+                        <label for="prenom">PrÃ©nom : </label>
+						<input type="text" name="prenom" id="prenom" class="form-control" placeholder="PrÃ©nom" value="${model.utilisateur.prenom}" required>
                     </div>
                     <div class="col-sm-6">
                         <label for="email">Email : </label>
@@ -42,8 +42,8 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-6">
-                        <label for="telephone">Téléphone : </label>
-						<input type="text" name="telephone" id="telephone" class="form-control" placeholder="Téléphone" value="${model.utilisateur.telephone}" required>
+                        <label for="telephone">TÃ©lÃ©phone : </label>
+						<input type="text" name="telephone" id="telephone" class="form-control" placeholder="TÃ©lÃ©phone" value="${model.utilisateur.telephone}" required>
                     </div>
                     <div class="col-sm-6">
                         <label for="rue">Rue : </label>
