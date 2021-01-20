@@ -68,7 +68,7 @@
 	              <p class="mb-0">Fin de l'enchère : ${e.article.dateFinEncheres}</p>	
 	              <p class="mb-0">Vendeur : ${e.article.nomArticle}</p>	              
 	            </div>
-	            <img class="card-img-left flex-auto d-none d-md-block" src="img/placeholder.png" alt="Thumbnail [200x250]">
+	            <img class="card-img-right flex-auto d-none d-md-block" src="img/placeholder.png" alt="Thumbnail [200x250]">
 	          </div>
 	        </div>
 		</c:forEach>
