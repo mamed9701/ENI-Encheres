@@ -39,51 +39,53 @@ public class ModifierProfilServlet extends HttpServlet {
 			Integer id = (Integer) request.getSession().getAttribute("login");
 			try {
 				currentUser = manager.afficherUtilisateur(id);
-				
-				model.setUtilisateur(currentUser);
-				
+	
 			} catch (BLLException e) {
 				e.printStackTrace();
 			}
 		}
-			//check if the modification form has been submitted
-			if (null != request.getParameter("pseudo")) {
-				String pseudo = request.getParameter("pseudo");
-			    String nom = request.getParameter("nom");
-			    String prenom = request.getParameter("prenom");
-			    String email = request.getParameter("email");
-			    String telephone = request.getParameter("telephone");
-			    String rue = request.getParameter("rue");
-			    String ville = request.getParameter("ville");
-			    String code = request.getParameter("code-postal");
-			    String pwd = request.getParameter("current-password");
-			    String npwd = request.getParameter("new-password");
-			    String confirm = request.getParameter("confirm-password");
-			    
-			    if (pwd.equals(currentUser.getMotDePasse()) && npwd.equals(confirm)) {
+		//check if the modification form has been submitted
+		if (null != request.getParameter("pseudo")) {
+			String pseudo = request.getParameter("pseudo");
+		    String nom = request.getParameter("nom");
+		    String prenom = request.getParameter("prenom");
+		    String email = request.getParameter("email");
+		    String telephone = request.getParameter("telephone");
+		    String rue = request.getParameter("rue");
+		    String ville = request.getParameter("ville");
+		    String code = request.getParameter("code-postal");
+		    String pwd = request.getParameter("current-password");
+		    String npwd = request.getParameter("new-password");
+		    String confirm = request.getParameter("confirm-password");
+		    
+		    if (pwd.equals(currentUser.getMotDePasse()) && npwd.equals(confirm)) {
 
-			    	currentUser.setPseudo(pseudo);
-			    	currentUser.setNom(nom);
-			    	currentUser.setPrenom(prenom);
-			    	currentUser.setEmail(email);
-			    	currentUser.setTelephone(telephone);
-			    	currentUser.setRue(rue);
-			    	currentUser.setVille(ville);
-			    	currentUser.setCodePostal(code);
-			    	currentUser.setMotDePasse(npwd);
-			    	
-			    	try {
-						manager.modifierUtilisateur(currentUser);
-					} catch (BLLException e) {
-						e.printStackTrace();
-					}
-				}else {					
-	            	request.setAttribute("error", "Les mots de passe ne correspondent pas !");	            	
-	                         
-	            }
-			    
-			}
+		    	currentUser.setPseudo(pseudo);
+		    	currentUser.setNom(nom);
+		    	currentUser.setPrenom(prenom);
+		    	currentUser.setEmail(email);
+		    	currentUser.setTelephone(telephone);
+		    	currentUser.setRue(rue);
+		    	currentUser.setVille(ville);
+		    	currentUser.setCodePostal(code);
+		    	currentUser.setMotDePasse(npwd);
+		    	
+		    	try {
+					manager.modifierUtilisateur(currentUser);
+				} catch (BLLException e) {
+					e.printStackTrace();
+				}
+			}else {					
+            	request.setAttribute("error", "Les mots de passe ne correspondent pas !");	            	
+                         
+            }
+		    
+		}
 		
+		if (null != currentUser) {
+			model.setUtilisateur(currentUser);
+		}
+		request.setAttribute("model", model);
 		request.getRequestDispatcher("modifierProfil.jsp").forward(request, response);
 		
 	}

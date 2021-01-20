@@ -14,7 +14,7 @@
 <body>
 
 <nav class="navbar navbar-expand-md navbar-light bg-light mb-4">
-	<a class="navbar-brand" href="/ENI-Encheres/accueil">ENI-Encheres</a>
+	<h2>ENI-Encheres</h2>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarCollapse" aria-controls="navbarCollapse"
 		aria-expanded="false" aria-label="Toggle navigation">

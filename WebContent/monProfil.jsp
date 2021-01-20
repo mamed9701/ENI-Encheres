@@ -8,21 +8,87 @@
 <title>Mon Profil - ENI Enchères</title>
 </head>
 <body>
-	
-<h2>ENI-Encheres</h2>
+	<div class="container">
+		<div class="row mt-5">
+			<div class="col-sm-3">
+				<label for="pseudo">Pseudo : </label>
+			</div>
+			<div class="col-sm-9">
+				<input type="text" name="pseudo" id="pseudo" class="form-control"
+					placeholder="Pseudo" value="${model.utilisateur.pseudo}" disabled>
+			</div>
+		</div>
+		<div class="row mt-3">
+			<div class="col-sm-3">
+				<label for="pseudo">Nom : </label>
+			</div>
+			<div class="col-sm-9">
+				<input type="text" name="pseudo" id="pseudo" class="form-control"
+					placeholder="Pseudo" value="${model.utilisateur.nom}" disabled>
+			</div>
+		</div>
+		<div class="row mt-3">
+			<div class="col-sm-3">
+				<label for="pseudo">Prenom : </label>
+			</div>
+			<div class="col-sm-9">
+				<input type="text" name="pseudo" id="pseudo" class="form-control"
+					placeholder="Pseudo" value="${model.utilisateur.prenom}" disabled>
+			</div>
+		</div>
+		<div class="row mt-3">
+			<div class="col-sm-3">
+				<label for="pseudo">Email : </label>
+			</div>
+			<div class="col-sm-9">
+				<input type="text" name="pseudo" id="pseudo" class="form-control"
+					placeholder="Pseudo" value="${model.utilisateur.email}" disabled>
+			</div>
+		</div>
+		<div class="row mt-3">
+			<div class="col-sm-3">
+				<label for="pseudo">Téléphone : </label>
+			</div>
+			<div class="col-sm-9">
+				<input type="text" name="pseudo" id="pseudo" class="form-control"
+					placeholder="Pseudo" value="${model.utilisateur.telephone}" disabled>
+			</div>
+		</div>
+		<div class="row mt-3">
+			<div class="col-sm-3">
+				<label for="pseudo">Rue : </label>
+			</div>
+			<div class="col-sm-9">
+				<input type="text" name="pseudo" id="pseudo" class="form-control"
+					placeholder="Pseudo" value="${model.utilisateur.rue}" disabled>
+			</div>
+		</div>
+		<div class="row mt-3">
+			<div class="col-sm-3">
+				<label for="pseudo">Code Postal : </label>
+			</div>
+			<div class="col-sm-9">
+				<input type="text" name="pseudo" id="pseudo" class="form-control"
+					placeholder="Pseudo" value="${model.utilisateur.codePostal}" disabled>
+			</div>
+		</div>
+		<div class="row mt-3">
+			<div class="col-sm-3">
+				<label for="pseudo">Ville : </label>
+			</div>
+			<div class="col-sm-9">
+				<input type="text" name="pseudo" id="pseudo" class="form-control"
+					placeholder="Pseudo" value="${model.utilisateur.ville}" disabled>
+			</div>
+		</div>
+		<div class="row mt-5">
+			<div class="col-sm-4 offset-lg-4">
+				<a class="btn btn-warning px-4" href="/ENI-Encheres/edit">Modifier</a>
+			</div>			
+		</div>	
+	</div>
 
-	Pseudo : ${model.utilisateur.pseudo} <br><br>
-	Nom :  ${model.utilisateur.nom} <br><br>
-	Prenom :  ${model.utilisateur.prenom} <br><br>
-	Email : ${model.utilisateur.email} <br><br>
-	Télephone :  ${model.utilisateur.telephone} <br><br>
-	Rue :  ${model.utilisateur.rue} <br><br>
-	Code Postal :  ${model.utilisateur.codePostal} <br><br>
-	Ville :  ${model.utilisateur.ville} <br><br>
-	
-	<form action="/ENI-Encheres/modifierUtilisateur" method="POST">
-		<input type="submit" value="Modifier">
-	</form>
-<jsp:include page="footer.jsp"></jsp:include>	
+	<jsp:include page="footer.jsp"></jsp:include>	
 </body>
 </html>
+                

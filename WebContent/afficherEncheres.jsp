@@ -22,7 +22,7 @@
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item"><a class="nav-link" href="/ENI-Encheres/accueil">Encherès</a></li>
 			<li class="nav-item"><a class="nav-link" href="/ENI-Encheres/vendre-article">Vendre un article</a></li>
-			<li class="nav-item"><a class="nav-link" href="/ENI-Encheres/edit">Mon profil</a></li>
+			<li class="nav-item"><a class="nav-link" href="/ENI-Encheres/afficher-utilisateur">Mon profil</a></li>
 			<li class="nav-item"><a class="nav-link" href="/ENI-Encheres/logout">Déconnexion</a></li>
 		</ul>				
 	</div>
