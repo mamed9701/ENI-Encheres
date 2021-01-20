@@ -61,8 +61,7 @@ public class InscriptionServlet extends HttpServlet {
                     request.getSession().setAttribute("login", user.getNoUtilisateur());   
                     model.setUtilisateur(user);
                     
-                    //TODO : here redirect too liste encheres en mode connecté
-                    response.sendRedirect("/ENI-Encheres/accueil");
+                    response.sendRedirect("/ENI-Encheres/afficherEncheres");
                     
                 } catch (BLLException e) {
                     e.printStackTrace();
