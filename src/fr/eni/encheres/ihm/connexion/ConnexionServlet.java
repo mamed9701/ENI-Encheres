@@ -16,7 +16,7 @@ import fr.eni.encheres.bo.Utilisateur;
 /**
  * Servlet implementation class ConnexionServlet
  */
-@WebServlet("/ConnexionServlet")
+@WebServlet("/login")
 public class ConnexionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserManager manager = UserManagerSingl.getInstance();
@@ -47,11 +47,11 @@ public class ConnexionServlet extends HttpServlet {
                 if (user != null) {
                     //login the user
                     request.getSession().setAttribute("login", user.getNoUtilisateur());
-                    request.getRequestDispatcher("/AccueilServlet").forward(request, response);
+                    response.sendRedirect("/ENI-Encheres/accueil");
                     
                 } else {
                     //if the user doesn't exist redirect to register
-                    request.setAttribute("status", "Identifiant ou mot de passe incorrect !");
+                    request.setAttribute("error", "Identifiant ou mot de passe incorrect !");
                     request.getRequestDispatcher("connexion.jsp").forward(request, response);
                 }
             } catch (BLLException e) {

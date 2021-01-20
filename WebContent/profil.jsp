@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<jsp:include page="header.jsp"></jsp:include>
 <meta charset="ISO-8859-1">
 <title>Profil-Encheres</title>
 </head>
@@ -19,6 +20,6 @@
 	Rue :  ${model.utilisateur.rue} <br><br>
 	Code Postal :  ${model.utilisateur.codePostal} <br><br>
 	Ville :  ${model.utilisateur.ville} <br><br>
-	
+<jsp:include page="footer.jsp"></jsp:include>	
 </body>
 </html>

@@ -42,26 +42,26 @@ public class TestEnchereDAO {
         Utilisateur user2 = new Utilisateur("tt20", "user", "two", "test@test.com", "123456789", "1 rue du port", "29000", "Quimper", "123456", 0, false);
         Utilisateur user3 = new Utilisateur("ss21", "user", "three", "test@test.com", "123456789", "1 rue du port", "29000", "Quimper", "123456", 0, false);
         Utilisateur user4 = new Utilisateur("yy22", "user", "four", "test@test.com", "123456789", "1 rue du port", "29000", "Quimper", "123456", 0, false);
-//        user1 = daoUsers.insert(user1);
-//        user2 =  daoUsers.insert(user2);
-//        user3 = daoUsers.insert(user3);
-//        user4 = daoUsers.insert(user4);
+        user1 = daoUsers.insert(user1);
+        user2 =  daoUsers.insert(user2);
+        user3 = daoUsers.insert(user3);
+        user4 = daoUsers.insert(user4);
         
         Categorie cat1 = new Categorie("informatique");
         Categorie cat2 = new Categorie("sport");
         Categorie cat3 = new Categorie("ameublement");
-//        cat1 = daoCategories.insert(cat1);
-//        cat2 = daoCategories.insert(cat2);
-//        cat3 = daoCategories.insert(cat3);
+        cat1 = daoCategories.insert(cat1);
+        cat2 = daoCategories.insert(cat2);
+        cat3 = daoCategories.insert(cat3);
         
         ArticleVendu art1 = new ArticleVendu("PC Gamer", "bla bla bla pc gamer bla bla", LocalDate.now(), LocalDate.now(), 55, null, user1, cat1);
         ArticleVendu art2 = new ArticleVendu("Mouse", "mouse Microsoft", LocalDate.now(), LocalDate.now(), 42, null, user1, cat1);
         ArticleVendu art3 = new ArticleVendu("Vélo", "vélo b-twin en super bon état", LocalDate.now(), LocalDate.now(), 299, null, user2, cat2);
         ArticleVendu art4 = new ArticleVendu("Armoir bois", "armoir bois chêne massif", LocalDate.now(), LocalDate.now(), 741, null, user3, cat3);
-//        art1 = daoArticles.insert(art1);
-//        art2 = daoArticles.insert(art2);
-//        art3 = daoArticles.insert(art3);
-//        art4 = daoArticles.insert(art4);
+        art1 = daoArticles.insert(art1);
+        art2 = daoArticles.insert(art2);
+        art3 = daoArticles.insert(art3);
+        art4 = daoArticles.insert(art4);
         
         Enchere enchere1 = new Enchere(LocalDate.now(), 200);
         enchere1.setArticle(art1);
@@ -80,10 +80,10 @@ public class TestEnchereDAO {
         enchere4.setUtilisateur(user4);
         
         //insert
-//        daoEncheres.insert(enchere1);
-//        daoEncheres.insert(enchere2);
-//        daoEncheres.insert(enchere3);
-//        daoEncheres.insert(enchere4);
+        daoEncheres.insert(enchere1);
+        daoEncheres.insert(enchere2);
+        daoEncheres.insert(enchere3);
+        daoEncheres.insert(enchere4);
         
         //getAllByUser
 //        List<Enchere> list = daoEncheres.getAllByUser(user1.getNoUtilisateur());

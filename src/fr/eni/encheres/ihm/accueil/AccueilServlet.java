@@ -19,7 +19,7 @@ import fr.eni.encheres.bo.Enchere;
 /**
  * Servlet implementation class AccueilServlet
  */
-@WebServlet("/AccueilServlet")
+@WebServlet("/accueil")
 public class AccueilServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private EnchereManager manager = EnchereManagerSingl.getInstance();

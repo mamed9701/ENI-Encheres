@@ -27,10 +27,10 @@ public class TestCategorieDAO {
         Categorie cat2 = new Categorie("sport");
         Categorie cat3 = new Categorie("ameublement");
         Categorie cat4 = new Categorie("vetement");
-//        daoCategories.insert(cat1);
-//        daoCategories.insert(cat2);
-//        daoCategories.insert(cat3);
-//        daoCategories.insert(cat4);
+        daoCategories.insert(cat1);
+        daoCategories.insert(cat2);
+        daoCategories.insert(cat3);
+        daoCategories.insert(cat4);
         
         //findById
 //        System.out.println(daoCategories.findById(cat1.getNoCategorie()));
