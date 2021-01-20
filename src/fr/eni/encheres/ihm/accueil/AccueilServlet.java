@@ -28,6 +28,7 @@ public class AccueilServlet extends HttpServlet {
 	private EnchereManager manager = EnchereManagerSingl.getInstance();
 	private UserManager userManager = UserManagerSingl.getInstance();
     List<Enchere> listeEncheres = new ArrayList<>();   
+    List<Enchere> listeEncheresByUser = new ArrayList<>();   
     List<Categorie> listeCategories = new ArrayList<>(); 
        
     /**
@@ -52,23 +53,34 @@ public class AccueilServlet extends HttpServlet {
 				e.printStackTrace();
 			}			
 		}
-		try {
-            model.setListEncheres(manager.getAllEncheres());
-        } catch (BLLException e) {
-            request.setAttribute("message", e.getMessage());
-        }
-      
+		
         try {
-            listeCategories = manager.getAllCategories();
+            listeCategories = manager.getAllCategories();           
             model.setListCategories(listeCategories);
         } catch (BLLException e) {
             e.printStackTrace();
         }
-        
-        request.setAttribute("model", model);
+
         if (null != currentUser) {
-        	request.getRequestDispatcher("afficherEncheres.jsp").forward(request, response);			
+        	try {
+        		listeEncheresByUser = manager.getEncheresByUser(currentUser.getNoUtilisateur());
+        		System.out.println(listeEncheresByUser);
+				model.setListEncheres(listeEncheresByUser);
+				request.setAttribute("model", model);
+				request.getRequestDispatcher("afficherEncheres.jsp").forward(request, response);			
+			} catch (BLLException e) {
+				e.printStackTrace();
+			}
 		}else {
+			System.out.println("nelogat");
+			try {
+				listeEncheres = manager.getAllEncheres();
+	            model.setListEncheres(listeEncheres);         
+	        } catch (BLLException e) {
+	            request.setAttribute("message", e.getMessage());
+	        }
+			model.setListEncheres(listeEncheres);
+			request.setAttribute("model", model);
 			request.getRequestDispatcher("accueil.jsp").forward(request, response);			
 		}
 
