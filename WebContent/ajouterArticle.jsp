@@ -5,8 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Novelle vente-Encheres</title>
+<meta charset="UTF-8">
+<title>Novelle vente - ENI Enchères</title>
 </head>
 <body>
 	<h2>Nouvelle vente</h2>

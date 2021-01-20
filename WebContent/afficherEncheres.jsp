@@ -5,8 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Accueil-Encheres</title>
+<meta charset="UTF-8">
+<jsp:include page="header.jsp"></jsp:include>
+<title>Afficher enchères - ENI Enchères</title>
 </head>
 <body>
 

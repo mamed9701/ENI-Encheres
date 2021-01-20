@@ -5,11 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 
 <jsp:include page="header.jsp"></jsp:include>
 
-<title>Accueil-Encheres</title>
+<title>Accueil - ENI Enchères</title>
 </head>
 <body>
 

@@ -47,8 +47,7 @@ public class AccueilServlet extends HttpServlet {
       
         try {
             listeCategories = manager.getAllCategories();
-            model.setListCategories(manager.getAllCategories());
-            System.out.println(listeCategories);
+            model.setListCategories(listeCategories);
         } catch (BLLException e) {
             e.printStackTrace();
         }

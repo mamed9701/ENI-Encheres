@@ -25,7 +25,6 @@ public class ModifierProfilServlet extends HttpServlet {
      */
     public ModifierProfilServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -42,11 +41,11 @@ public class ModifierProfilServlet extends HttpServlet {
 				currentUser = manager.afficherUtilisateur(id);
 				
 				model.setUtilisateur(currentUser);
-				request.setAttribute("model", model);
-				request.getRequestDispatcher("modifierProfil.jsp").forward(request, response);
+				
 			} catch (BLLException e) {
 				e.printStackTrace();
 			}
+		}
 			//check if the modification form has been submitted
 			if (null != request.getParameter("pseudo")) {
 				String pseudo = request.getParameter("pseudo");
@@ -61,16 +60,8 @@ public class ModifierProfilServlet extends HttpServlet {
 			    String npwd = request.getParameter("new-password");
 			    String confirm = request.getParameter("confirm-password");
 			    
-//			    System.out.println(currentUser);
-//			    System.out.println(pwd);
-//			    System.out.println(npwd);
-//			    System.out.println(confirm);
-			    
 			    if (pwd.equals(currentUser.getMotDePasse()) && npwd.equals(confirm)) {
-			    	System.out.println(pwd);
-			    	System.out.println(currentUser.getMotDePasse());
-			    	System.out.println(npwd);
-			    	System.out.println(confirm);
+
 			    	currentUser.setPseudo(pseudo);
 			    	currentUser.setNom(nom);
 			    	currentUser.setPrenom(prenom);
@@ -92,10 +83,6 @@ public class ModifierProfilServlet extends HttpServlet {
 	            }
 			    
 			}
-			
-		}else {
-			response.sendRedirect("/ENI-Encheres/login");
-		}
 		
 		request.getRequestDispatcher("modifierProfil.jsp").forward(request, response);
 		

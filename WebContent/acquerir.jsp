@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Acheté-Encheres</title>
+<meta charset="UTF-8">
+<title>Acquerir - ENI Enchères</title>
 </head>
 <body>
 	<h2> Vous avez remporté l'enchère</h2><br><br>
