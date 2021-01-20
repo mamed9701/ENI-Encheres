@@ -3,7 +3,7 @@ package fr.eni.encheres.ihm.inscription;
 import fr.eni.encheres.bo.Utilisateur;
 
 public class InscriptionModel {
-	private Utilisateur creaUtilisateur;
+	private Utilisateur utilisateur;
 	private String confirmation;
 	
 
@@ -16,27 +16,27 @@ public class InscriptionModel {
 	}
 
 	/**
-	 * @param creaUtilisateur
+	 * @param utilisateur
 	 * @param confirmation
 	 */
-	public InscriptionModel(Utilisateur creaUtilisateur, String confirmation) {
+	public InscriptionModel(Utilisateur utilisateur, String confirmation) {
 		super();
-		this.creaUtilisateur = creaUtilisateur;
+		this.utilisateur = utilisateur;
 		this.confirmation = confirmation;
 	}
 	
 	/**
-	 * @return the creaUtilisateur
+	 * @return the utilisateur
 	 */
-	public Utilisateur getCreaUtilisateur() {
-		return creaUtilisateur;
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
 	}
 
 	/**
-	 * @param creaUtilisateur the creaUtilisateur to set
+	 * @param utilisateur the utilisateur to set
 	 */
-	public void setCreaUtilisateur(Utilisateur creaUtilisateur) {
-		this.creaUtilisateur = creaUtilisateur;
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
 	}
 
 	/**
@@ -55,7 +55,7 @@ public class InscriptionModel {
 
 	@Override
 	public String toString() {
-		return "CreationCompteModel [creaUtilisateur=" + creaUtilisateur + ", confirmation=" + confirmation + "]";
+		return "CreationCompteModel [utilisateur=" + utilisateur + ", confirmation=" + confirmation + "]";
 	}
 
 }

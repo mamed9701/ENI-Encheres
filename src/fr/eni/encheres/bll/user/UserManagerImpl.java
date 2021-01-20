@@ -20,7 +20,7 @@ public class UserManagerImpl implements UserManager {
         try {
             userDAO.insert(user);
         } catch (UserDALException e) {
-            throw new BLLException("Impossible d'insÃ©rer un nouvel utilisaeur");
+            throw new BLLException("Impossible d'insérer un nouvel utilisateur");
         }
         return user;
     }
@@ -31,10 +31,8 @@ public class UserManagerImpl implements UserManager {
 
         try {
             user = userDAO.findByUsernameAndPwd(pseudo, mdp);
-
         } catch (UserDALException e) {
-
-            throw new BLLException("L'utilisateur n'existe pas");
+            throw new BLLException("La connexion d'un utilisateur a échoué !");
         }
 
         return user;
@@ -46,7 +44,7 @@ public class UserManagerImpl implements UserManager {
         try {
             user = userDAO.findById(id);
         } catch (UserDALException e) {
-            throw new BLLException("Impossible d'afficher l'utilisaeur");
+            throw new BLLException("Impossible d'afficher l'utilisateur");
         }
         return user;
     }

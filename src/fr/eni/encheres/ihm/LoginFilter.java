@@ -1,6 +1,8 @@
 package fr.eni.encheres.ihm;
 
 import java.io.IOException;
+
+import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -14,7 +16,10 @@ import javax.servlet.http.HttpServletRequest;
  * Servlet Filter implementation class LoginFilter
  */
 
-@WebFilter("/*")
+@WebFilter(
+        urlPatterns = {"/edit", ""},
+        dispatcherTypes = {DispatcherType.REQUEST, DispatcherType.FORWARD}
+)
 public class LoginFilter implements Filter {
 
     /**
@@ -33,12 +38,13 @@ public class LoginFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		if(((HttpServletRequest)request).getSession().getAttribute("login")==null) {
-			request.getRequestDispatcher("connexion").forward(request, response);
-		}
-		else {
-			chain.doFilter(request, response);
-		}
+	    if(null == ((HttpServletRequest)request).getSession().getAttribute("login")) {
+            request.getRequestDispatcher("login").forward(request, response);
+//            response.sendRedirect("/ENI-Encheres/login");
+        }
+        else {
+            chain.doFilter(request, response);
+        }
 
 	}
 
@@ -46,7 +52,6 @@ public class LoginFilter implements Filter {
 	 * @see Filter#init(FilterConfig)
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
 	}
 
 }

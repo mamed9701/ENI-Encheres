@@ -3,10 +3,8 @@ package fr.eni.encheres.ihm.modifierUtilisateur;
 import fr.eni.encheres.bo.Utilisateur;
 
 public class ModifierProfilModel {
-	private Utilisateur modifUtilisateur;
-	private String confirmation;
-	private String mdpActuel;
-	private String messagePseudo;
+
+	private Utilisateur utilisateur;
 
 	/**
 	 * 
@@ -17,77 +15,33 @@ public class ModifierProfilModel {
 	}
 
 	/**
-	 * @param modifUtilisateur
+	 * @param utilisateur
 	 * @param confirmation
-	 * @param mdpActuel
+	 * @param nmdp
 	 */
-	public ModifierProfilModel(Utilisateur modifUtilisateur, String confirmation, String mdpActuel) {
+	public ModifierProfilModel(Utilisateur utilisateur) {
 		super();
-		this.modifUtilisateur = modifUtilisateur;
-		this.confirmation = confirmation;
-		this.mdpActuel = mdpActuel;
+		this.utilisateur = utilisateur;
 	}
 
 	/**
-	 * @return the modifUtilisateur
+	 * @return the utilisateur
 	 */
-	public Utilisateur getModifUtilisateur() {
-		return modifUtilisateur;
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
 	}
 
 	/**
-	 * @param modifUtilisateur the modifUtilisateur to set
+	 * @param utilisateur the utilisateur to set
 	 */
-	public void setModifUtilisateur(Utilisateur modifUtilisateur) {
-		this.modifUtilisateur = modifUtilisateur;
-	}
-
-	/**
-	 * @return the confirmation
-	 */
-	public String getConfirmation() {
-		return confirmation;
-	}
-
-	/**
-	 * @param confirmation the confirmation to set
-	 */
-	public void setConfirmation(String confirmation) {
-		this.confirmation = confirmation;
-	}
-
-	/**
-	 * @return the mdpActuel
-	 */
-	public String getMdpActuel() {
-		return mdpActuel;
-	}
-
-	/**
-	 * @param mdpActuel the mdpActuel to set
-	 */
-	public void setMdpActuel(String mdpActuel) {
-		this.mdpActuel = mdpActuel;
-	}
-
-	/**
-	 * @return the messagePseudo
-	 */
-	public String getMessagePseudo() {
-		return messagePseudo;
-	}
-
-	/**
-	 * @param messagePseudo the messagePseudo to set
-	 */
-	public void setMessagePseudo(String messagePseudo) {
-		this.messagePseudo = messagePseudo;
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
 	}
 
 	@Override
 	public String toString() {
-		return "ModifierProfilModel [modifUtilisateur=" + modifUtilisateur + ", confirmation=" + confirmation
-				+ ", mdpActuel=" + mdpActuel + ", messagePseudo=" + messagePseudo + "]";
+
+		return "ModifierProfilModel [utilisateur=" + utilisateur + "]";
 	}
 
 }
