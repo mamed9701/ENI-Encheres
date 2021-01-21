@@ -5,9 +5,11 @@
 <head>
 <jsp:include page="header.jsp"></jsp:include>
 <meta charset="UTF-8">
-<title>Mon Profil - ENI Enchères</title>
+
+<title>Mon Profil - ENI EnchÃ¨res</title>
 </head>
 <body>
+  <jsp:include page="logo.jsp"></jsp:include>
 	<div class="container">
 		<div class="row mt-5">
 			<div class="col-sm-3">
@@ -47,7 +49,7 @@
 		</div>
 		<div class="row mt-3">
 			<div class="col-sm-3">
-				<label for="pseudo">Téléphone : </label>
+				<label for="pseudo">TÃ©lÃ©phone : </label>
 			</div>
 			<div class="col-sm-9">
 				<input type="text" name="pseudo" id="pseudo" class="form-control"

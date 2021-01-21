@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sun.xml.internal.bind.v2.model.core.ID;
+
 import fr.eni.encheres.bll.BLLException;
 import fr.eni.encheres.bll.enchere.EnchereManager;
 import fr.eni.encheres.bll.enchere.EnchereManagerSingl;
@@ -59,7 +61,6 @@ public class AccueilServlet extends HttpServlet {
 				e.printStackTrace();
 			}			
 		}
-		
         try {
             listeCategories = manager.getAllCategories();           
             model.setListCategories(listeCategories);
@@ -90,7 +91,6 @@ public class AccueilServlet extends HttpServlet {
 			request.getRequestDispatcher("accueil.jsp").forward(request, response);			
 		}
 
-		
 	}
 
 	/**

@@ -19,7 +19,6 @@ import fr.eni.encheres.bo.Utilisateur;
 public class AfficherUtilisateurServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserManager userManager = UserManagerSingl.getInstance();
-       
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -50,7 +49,6 @@ public class AfficherUtilisateurServlet extends HttpServlet {
 		}else {
 			request.getRequestDispatcher("profil.jsp").forward(request, response);			
 		}
-
 	}
 
 	/**

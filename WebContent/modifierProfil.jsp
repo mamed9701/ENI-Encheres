@@ -7,9 +7,12 @@
 <head>
 <jsp:include page="header.jsp"></jsp:include>
 <meta charset="UTF-8">
-<title>Modifier profil - ENI Enchères</title>
+
+<title>Modifier profil - ENI EnchÃ¨res</title>
+
 </head>
 <body>
+<jsp:include page="logo.jsp"></jsp:include>
 <div class="container py-5">
     <div class="row">
         <div class="col-md-12 mx-auto">
@@ -32,8 +35,10 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-6">
-                        <label for="prenom">Prénom : </label>
-						<input type="text" name="prenom" id="prenom" class="form-control" placeholder="Prénom" value="${model.utilisateur.prenom}" required>
+                        <label for="prenom">PrÃ©nom : </label>
+
+						<input type="text" name="prenom" id="prenom" class="form-control" placeholder="PrÃ©nom" value="${model.utilisateur.prenom}" required>
+
                     </div>
                     <div class="col-sm-6">
                         <label for="email">Email : </label>
@@ -42,8 +47,10 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-6">
-                        <label for="telephone">Téléphone : </label>
-						<input type="text" name="telephone" id="telephone" class="form-control" placeholder="Téléphone" value="${model.utilisateur.telephone}" required>
+
+                        <label for="telephone">TÃ©lÃ©phone : </label>
+						<input type="text" name="telephone" id="telephone" class="form-control" placeholder="TÃ©lÃ©phone" value="${model.utilisateur.telephone}" required>
+
                     </div>
                     <div class="col-sm-6">
                         <label for="rue">Rue : </label>

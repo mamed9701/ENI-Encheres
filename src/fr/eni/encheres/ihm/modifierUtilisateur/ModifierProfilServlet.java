@@ -38,8 +38,6 @@ public class ModifierProfilServlet extends HttpServlet {
 			//retrieve the current user id from session and search it in the database
 			Integer id = (Integer) request.getSession().getAttribute("login");
 			try {
-				currentUser = manager.afficherUtilisateur(id);
-	
 			} catch (BLLException e) {
 				e.printStackTrace();
 			}
