@@ -10,7 +10,11 @@
 <title>Inscription - ENI Enchères</title>
 </head>
 <body>
-
+<div class="row">
+	<div class="col-4 mt-3 ml-3">
+		<jsp:include page="logo.jsp"></jsp:include>
+	</div>
+</div>
 <div class="container py-5">
     <div class="row">
         <div class="col-md-12 mx-auto">

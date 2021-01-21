@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE html>
@@ -12,7 +12,11 @@
 
 </head>
 <body>
-<jsp:include page="logo.jsp"></jsp:include>
+	<div class="row">
+		<div class="col-4 mt-3 ml-3">
+			<jsp:include page="logo.jsp"></jsp:include>
+		</div>
+	</div>
 <div class="container py-5">
     <div class="row">
         <div class="col-md-12 mx-auto">
@@ -37,7 +41,7 @@
                     <div class="col-sm-6">
                         <label for="prenom">Prénom : </label>
 
-						<input type="text" name="prenom" id="prenom" class="form-control" placeholder="Prénom" value="${model.utilisateur.prenom}" required>
+						<input type="text" name="prenom" id="prenom" class="form-control" placeholder="PrÃ©nom" value="${model.utilisateur.prenom}" required>
 
                     </div>
                     <div class="col-sm-6">
@@ -49,7 +53,7 @@
                     <div class="col-sm-6">
 
                         <label for="telephone">Téléphone : </label>
-						<input type="text" name="telephone" id="telephone" class="form-control" placeholder="Téléphone" value="${model.utilisateur.telephone}" required>
+						<input type="text" name="telephone" id="telephone" class="form-control" placeholder="TÃ©lÃ©phone" value="${model.utilisateur.telephone}" required>
 
                     </div>
                     <div class="col-sm-6">

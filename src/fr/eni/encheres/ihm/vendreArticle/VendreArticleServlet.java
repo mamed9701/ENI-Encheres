@@ -98,9 +98,11 @@ public class VendreArticleServlet extends HttpServlet {
 			article.setPrixVente(null);
 			article.setCategorie(categorie);
 			article.setUtilisateur(currentUser);
+			
 			ArticleVendu newArticle = null;
 			try {
 				newArticle = manager.ajouterArticle(article);
+				request.setAttribute("success", "L'article a été ajouté avec success !");
 			} catch (BLLException e) {
 				e.printStackTrace();
 			}
@@ -120,8 +122,6 @@ public class VendreArticleServlet extends HttpServlet {
 		}
 
 		model.setUtilisateur(currentUser);
-
-		request.setAttribute("success", "L'article a été ajouté avec success !");
 		model.setListCategories(listeCategories);
 		request.setAttribute("model", model);
 		request.getRequestDispatcher("ajouterArticle.jsp").forward(request, response);

@@ -25,16 +25,18 @@ public class TestArticleBLL1 {
 
 	public static void main(String[] args) throws UserDALException, CategorieDALException, BLLException, ArticleVenduDALException {
 		
-		 Utilisateur user1 = daoUsers.findById(1);
-	     Categorie categorie = daoCategories.findByLibelle("informatique");
-	     
-	     
-	     ArticleVendu article1 = new ArticleVendu("Montre en or", "jolie montre en or jaune", LocalDate.now(), LocalDate.now(), 1500, 2555, user1, categorie);
-	     ArticleVendu article2 = new ArticleVendu("Clavier mécanique", "Clavier mécanique pour pc gamer", LocalDate.now(), LocalDate.now(), 340, 750, user1, categorie);
-	     
-	     manager.ajouterArticle(article2);
-	     System.out.println(daoArticleVendu.selectById(2));
+//		 Utilisateur user1 = daoUsers.findById(1);
+//	     Categorie categorie = daoCategories.findByLibelle("informatique");
+//	     
+//	     
+//	     ArticleVendu article1 = new ArticleVendu("Montre en or", "jolie montre en or jaune", LocalDate.now(), LocalDate.now(), 1500, 2555, user1, categorie);
+//	     ArticleVendu article2 = new ArticleVendu("Clavier mécanique", "Clavier mécanique pour pc gamer", LocalDate.now(), LocalDate.now(), 340, 750, user1, categorie);
+//	     
+//	     manager.ajouterArticle(article2);
+//	     System.out.println(daoArticleVendu.selectById(2));
 
+		System.out.println(manager.getArticleParId(113));
+		
 	}
 
 }

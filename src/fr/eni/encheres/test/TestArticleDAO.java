@@ -45,19 +45,19 @@ public class TestArticleDAO {
         Utilisateur user3 = new Utilisateur("ss21", "user", "three", "test@test.com", "123456789", "1 rue du port", "29000", "Quimper", "123456", 0, false);
         Utilisateur user4 = new Utilisateur("yy22", "user", "four", "test@test.com", "123456789", "1 rue du port", "29000", "Quimper", "123456", 0, false);
         //insert
-        daoUsers.insert(user1);
-        daoUsers.insert(user2);
-        daoUsers.insert(user3);
-        daoUsers.insert(user4);
+//        daoUsers.insert(user1);
+//        daoUsers.insert(user2);
+//        daoUsers.insert(user3);
+//        daoUsers.insert(user4);
         
         Categorie cat1 = new Categorie("informatique");
         Categorie cat2 = new Categorie("sport");
         Categorie cat3 = new Categorie("ameublement");
         Categorie cat4 = new Categorie("vetement");
-        daoCategories.insert(cat1);
-        daoCategories.insert(cat2);
-        daoCategories.insert(cat3);
-        daoCategories.insert(cat4);
+//        daoCategories.insert(cat1);
+//        daoCategories.insert(cat2);
+//        daoCategories.insert(cat3);
+//        daoCategories.insert(cat4);
         
         Categorie info = daoCategories.findByLibelle("informatique");
         Categorie sport = daoCategories.findByLibelle("sport");
@@ -75,15 +75,15 @@ public class TestArticleDAO {
 
 
         //insert
-        daoArticles.insert(art1);
-        daoArticles.insert(art2);
-        daoArticles.insert(art3);
-        daoArticles.insert(art4);
-        daoArticles.insert(art5);
-
-        daoArticles.insert(art6);
-        daoArticles.insert(art7);
-        daoArticles.insert(art8);
+//        daoArticles.insert(art1);
+//        daoArticles.insert(art2);
+//        daoArticles.insert(art3);
+//        daoArticles.insert(art4);
+//        daoArticles.insert(art5);
+//
+//        daoArticles.insert(art6);
+//        daoArticles.insert(art7);
+//        daoArticles.insert(art8);
         
         //delete
 //        daoArticles.delete(10);
@@ -108,7 +108,14 @@ public class TestArticleDAO {
 //        System.out.println(daoArticles.selectByNomAndCateg("montre", vetem.getNoCategorie()));
         
         //selectByCategorie
-        System.out.println(daoArticles.selectByCategorie(14));
+//        System.out.println(daoArticles.selectByCategorie(14));
+        
+        //selectByDateDebut
+//        System.out.println(daoArticles.selectByDateDebut(LocalDate.now()));
+        
+        //selectAll
+        System.out.println(daoArticles.selectAll());
+        
         
     }
 

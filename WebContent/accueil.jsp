@@ -57,16 +57,14 @@
 	  </div>
 	</div>
     <div class="row mb-2">
-		<c:forEach var="e" items="${model.listEncheres}">
+		<c:forEach var="article" items="${model.listArticles}">
 			<div class="col-md-6">
 	          <div class="card flex-md-row mb-4 box-shadow h-md-250">
 	            <div class="card-body d-flex flex-column align-items-start">	              
-	              <h5 class="mb-0">
-	                <a class="text-dark" href="#">${e.article.nomArticle}</a>
-	              </h5>	
-	              <p class="mb-0">Prix : ${e.article.miseAPrix}</p>	
-	              <p class="mb-0">Fin de l'enchère : ${e.article.dateFinEncheres}</p>	
-	              <p class="mb-0">Vendeur : ${e.article.nomArticle}</p>	              
+	              <h5 class="mb-0">${article.nomArticle}</h5>	
+	              <p class="mb-0">Prix : ${article.miseAPrix}</p>	
+	              <p class="mb-0">Fin de l'enchère : ${article.dateFinEncheres}</p>	
+	              <p class="mb-0">Vendeur : ${article.utilisateur.pseudo}</p>	              
 	            </div>
 	            <img class="card-img-right flex-auto d-none d-md-block" src="img/placeholder.png" alt="Thumbnail [200x250]">
 	          </div>

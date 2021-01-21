@@ -1,5 +1,6 @@
 package fr.eni.encheres.bll.enchere;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import fr.eni.encheres.bll.BLLException;
@@ -27,6 +28,15 @@ public interface EnchereManager {
     public ArticleVendu ajouterArticle(ArticleVendu article) throws BLLException;
     
     /**
+     * Trouver un article par id
+     * 
+     * @param id integer identifiant de l'article
+     * @return L'article trouvé
+     * @throws BLLException
+     */
+    public ArticleVendu getArticleParId(Integer id) throws BLLException;
+    
+    /**
      * Faire une enchère sur un article
      * 
      * @param article - un objet de type ArticleVendu
@@ -44,6 +54,22 @@ public interface EnchereManager {
     public List<Enchere> getAllEncheres() throws BLLException;
     
     /**
+     * Récupérer toutes les articles par date de début
+     * 
+     * @return Une liste de toutes les articles par date début
+     * @throws BLLException
+     */
+    public List<ArticleVendu> getArticlesParDateDebut(LocalDate debut) throws BLLException;
+    
+    /**
+     * Récupérer toutes les articles
+     * 
+     * @return Une liste de toutes les articles
+     * @throws BLLException
+     */
+    public List<ArticleVendu> getAllArticles() throws BLLException;
+    
+    /**
      * Récupérer toutes les enchères d'un utilisateur
      * 
      * @param id - l'identifiant de l'utilisateur
@@ -52,6 +78,15 @@ public interface EnchereManager {
      */
     public List<Enchere> getEncheresByUser(Integer id) throws BLLException;
      
+    /**
+     * Récupérer toutes les articles d'un utilisateur
+     * 
+     * @param id - l'identifiant de l'utilisateur
+     * @return La liste des enchères d'un utilisateur
+     * @throws BLLException
+     */
+    public List<ArticleVendu> getArticlesByUser(Integer id) throws BLLException;
+    
     /**
      * Remporter une vente
      * 

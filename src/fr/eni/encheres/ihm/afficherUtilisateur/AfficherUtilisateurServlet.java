@@ -32,23 +32,32 @@ public class AfficherUtilisateurServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AfficherUtilisateurModel model = new AfficherUtilisateurModel();
-		Utilisateur currentUser = null;
-		
+		String idParam = request.getParameter("id");
+		Utilisateur user = null;
+		Integer idCurrentUser = null;
 		if (null != request.getSession().getAttribute("login")) {
-			Integer id = (Integer) request.getSession().getAttribute("login");
+			idCurrentUser = (Integer) request.getSession().getAttribute("login");
+		}
+		if (Integer.parseInt(idParam) == idCurrentUser ) {
 			try {
-				currentUser = userManager.afficherUtilisateur(id);
+				user = userManager.afficherUtilisateur(idCurrentUser);
+				request.setAttribute("currentUser", true);
 			} catch (BLLException e) {
 				e.printStackTrace();
 			}
-
-			model.setUtilisateur(currentUser);
-			request.setAttribute("model", model);
-
-			request.getRequestDispatcher("monProfil.jsp").forward(request, response);
 		}else {
-			request.getRequestDispatcher("profil.jsp").forward(request, response);			
+			try {
+				user = userManager.afficherUtilisateur(Integer.parseInt(idParam));
+			} catch (BLLException e) {
+				e.printStackTrace();
+			}
 		}
+	
+		model.setUtilisateur(user);
+		request.setAttribute("model", model);
+		
+		request.getRequestDispatcher("profil.jsp").forward(request, response);			
+
 	}
 
 	/**

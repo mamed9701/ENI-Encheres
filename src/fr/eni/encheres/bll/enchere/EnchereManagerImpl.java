@@ -1,5 +1,6 @@
 package fr.eni.encheres.bll.enchere;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import fr.eni.encheres.bll.BLLException;
@@ -169,6 +170,58 @@ public class EnchereManagerImpl implements EnchereManager {
 		} catch (RetraitDALException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public List<ArticleVendu> getArticlesParDateDebut(LocalDate debut) throws BLLException {
+		List<ArticleVendu> articles = new ArrayList<>();
+
+        try {
+        	articles = articleVenduDAO.selectByDateDebut(debut);
+        } catch (ArticleVenduDALException e) {
+            e.printStackTrace();
+        }
+
+        return articles;
+	}
+
+	@Override
+	public List<ArticleVendu> getAllArticles() throws BLLException {
+		List<ArticleVendu> articles = new ArrayList<>();
+
+        try {
+        	articles = articleVenduDAO.selectAll();
+        } catch (ArticleVenduDALException e) {
+            e.printStackTrace();
+        }
+
+        return articles;
+	}
+
+	@Override
+	public List<ArticleVendu> getArticlesByUser(Integer id) throws BLLException {
+		List<ArticleVendu> articles = new ArrayList<>();
+
+        try {
+        	articles = articleVenduDAO.selectByUtilisateur(id);
+        } catch (ArticleVenduDALException e) {
+            e.printStackTrace();
+        }
+
+        return articles;
+	}
+
+	@Override
+	public ArticleVendu getArticleParId(Integer id) throws BLLException {
+		ArticleVendu article = null;	
+		try {
+			article = articleVenduDAO.selectById(id);
+			
+		} catch (ArticleVenduDALException e) {
+			e.printStackTrace();
+		}
+	
+		return article;
 	}
 
 }

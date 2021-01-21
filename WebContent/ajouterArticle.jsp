@@ -11,9 +11,17 @@
 <title>Novelle vente - ENI Enchères</title>
 </head>
 <body>
+
 	<div class="container">
+	<div class="row">
+		<div class="col-4 mt-3">
+			<jsp:include page="logo.jsp"></jsp:include>
+		</div>
+	</div>
 		<div class="row justify-content-center mt-5">
-			<h2>Nouvelle vente</h2>
+			<h2>Nouvelle vente</h2>		
+		</div>
+		<div class="row justify-content-center mt-3">
 			<c:if test="${success != null}">
 				<div class="alert alert-success" role="alert">${success}</div>
 			</c:if>
@@ -88,7 +96,7 @@
 					</div>
 					
 					<div class="card col-10">
-						<h5 class="card-header">Retrait</h5>
+						<h5 class="card-header row">Retrait</h5>
 						<div class="card-body">
 							<div class="form-group row">
 							<label for="rue" class="col-3 col-form-label">Rue :</label>

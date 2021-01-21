@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +11,11 @@
 <title>Profil - ENI Enchères</title>
 </head>
 <body>
-  <jsp:include page="logo.jsp"></jsp:include>
+  	<div class="row">
+		<div class="col-4 mt-3 ml-3">
+			<jsp:include page="logo.jsp"></jsp:include>
+		</div>
+	</div>
 	<div class="container">
 		<div class="row mt-5">
 			<div class="col-sm-3">
@@ -31,7 +37,7 @@
 		</div>
 		<div class="row mt-3">
 			<div class="col-sm-3">
-				<label for="pseudo">Prenom : </label>
+				<label for="pseudo">Prénom : </label>
 			</div>
 			<div class="col-sm-9">
 				<input type="text" name="pseudo" id="pseudo" class="form-control"
@@ -83,6 +89,13 @@
 					placeholder="Pseudo" value="${model.utilisateur.ville}" disabled>
 			</div>
 		</div>
+		<c:if test="${currentUser != null}">
+			<div class="row mt-5">
+				<div class="col-sm-4 offset-lg-4">
+					<a class="btn btn-warning px-4" href="/ENI-Encheres/edit">Modifier</a>
+				</div>
+			</div>
+		</c:if>
 	</div>
   
 <jsp:include page="footer.jsp"></jsp:include>	
