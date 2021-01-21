@@ -35,8 +35,8 @@ public class RetraitDAOImpl implements RetraitDAO {
             pst.executeUpdate();
 
         } catch (Exception e) {
-//            e.printStackTrace();
-            throw new RetraitDALException("Retrait DAL - problème dans l'insertion d'un retrait");
+        	e.printStackTrace();
+          //  throw new RetraitDALException("Retrait DAL - problème dans l'insertion d'un retrait");
         }
     }
 

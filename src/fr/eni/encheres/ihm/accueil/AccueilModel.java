@@ -25,11 +25,9 @@ public class AccueilModel {
 	 * @param listCategories
 	 * @param listEncheres
 	 */
-	public AccueilModel(String filtre, List<Categorie> listCategories, List<Enchere> listEncheres) {
+	public AccueilModel(String filtre) {
 		super();
 		this.filtre = filtre;
-		this.listCategories = listCategories;
-		this.setListEncheres(listEncheres);
 	}
 
 	/**

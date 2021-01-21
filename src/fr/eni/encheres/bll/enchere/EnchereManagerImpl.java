@@ -35,7 +35,7 @@ public class EnchereManagerImpl implements EnchereManager {
 			result = articleVenduDAO.insert(article);
 		} catch (ArticleVenduDALException e) {
 			e.printStackTrace();
-			throw new BLLException("Echec de l'ajout d'un article");
+			//throw new BLLException("Echec de l'ajout d'un article");
 
 		}
 		return result;

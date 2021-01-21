@@ -5,14 +5,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Accueil-Encheres</title>
 </head>
 <body>
-
-	<h3>ENI-Encheres</h3>
+<jsp:include page="logo.jsp"></jsp:include>
 	<nav>
-		<a href="/ENI-Encheres/connexion">S'inscrire - Se connecter</a>
+		<a href="/ENI-Encheres/afficherEncheres">Enchères</a>
+		<a href="/ENI-Encheres/vendre-article">Vendre un article</a>
+		<a href="/ENI-Encheres/afficher-utilisateur">Mon profil</a>
+		<a href="/ENI-Encheres/login">Déconnexion</a>
 	</nav>
 	<h3>Liste des enchères</h3>
 	Filtres :
@@ -22,7 +24,6 @@
 			placeholder="Le nom de l'article contient..."> <br> <br>
 		<label for="categories">Catégorie : </label> <select name="categories"
 			id="categories">
-			<option value="toutes">Toutes</option>
 			<c:forEach var="cat" items="${model.listCategories}">
 				<option value="${fn:toLowerCase(cat.libelle)}">${cat.libelle}</option>
 			</c:forEach>
@@ -61,17 +62,17 @@
 			</tr>
 		</div>	
 	</form><br><br>
-		
-	<c:forEach var="e" items="${model.listEncheres}">
-		<tr>
-			<td>${e.article.nomArticle}</td>
-			<td>Prix : ${e.article.miseAPrix}</td>
-			<td>Fin de l'enchère : ${e.article.dateFinEncheres}</td>
-			<td>Vendeur : ${e.article.nomArticle}</td>
-		</tr>
-	</c:forEach>
-
-
+	<table border ="3">
+		<c:forEach var="e" items="${model.listEncheres}">
+			<tr>
+				<td>${e.article.nomArticle}</td>
+				<td>Prix : ${e.article.miseAPrix} pts</td>
+				<td>Fin de l'enchère : ${e.article.dateFinEncheres}</td>
+				<td>Vendeur : ${e.utilisateur.nom}</td>
+			</tr>
+		</c:forEach>
+	</table>	
+	
 
 </body>
 </html>

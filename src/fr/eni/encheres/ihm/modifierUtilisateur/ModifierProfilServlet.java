@@ -43,7 +43,7 @@ public class ModifierProfilServlet extends HttpServlet {
 				
 				model.setUtilisateur(currentUser);
 				request.setAttribute("model", model);
-				request.getRequestDispatcher("modifierProfil.jsp").forward(request, response);
+				request.getRequestDispatcher("modifierProfil").forward(request, response);
 			} catch (BLLException e) {
 				e.printStackTrace();
 			}

@@ -3,10 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Ma vente-Encheres</title>
 </head>
 <body>
+<jsp:include page="logo.jsp"></jsp:include>
 	<h2>${model.profilUtilisateur.pseudo}</h2> <h2>a remporté l'enchère</h2><br><br>
 	${model.articleVendu.nomArticle}<br><br>
 	Description : ${model.articleVendu.description}<br><br>

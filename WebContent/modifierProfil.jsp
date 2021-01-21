@@ -6,10 +6,11 @@
 <html>
 <head>
 <jsp:include page="header.jsp"></jsp:include>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Modifier profil-Encheres</title>
 </head>
 <body>
+<jsp:include page="logo.jsp"></jsp:include>
 <div class="container py-5">
     <div class="row">
         <div class="col-md-12 mx-auto">
@@ -32,7 +33,7 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-6">
-                        <label for="prenom">Prénom : </label>
+                        <label for="prenom">Pr�nom : </label>
 						<input type="text" name="prenom" id="prenom" class="form-control" placeholder="Prénom" value="${model.utilisateur.prenom}" required>
                     </div>
                     <div class="col-sm-6">
@@ -42,7 +43,7 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-6">
-                        <label for="telephone">Téléphone : </label>
+                        <label for="telephone">Tel�phone : </label>
 						<input type="text" name="telephone" id="telephone" class="form-control" placeholder="Téléphone" value="${model.utilisateur.telephone}" required>
                     </div>
                     <div class="col-sm-6">

@@ -6,7 +6,7 @@
 <html>
 <head>
 <jsp:include page="header.jsp"></jsp:include>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Inscription-Encheres</title>
 </head>
 <body>

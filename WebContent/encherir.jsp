@@ -3,13 +3,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Détail vente-Encheres</title>
 </head>
 <body>
-	<h2>${model.profilUtilisateur.pseudo}</h2> <h2>a remporté l'enchère</h2><br><br>
-	${model.articleVendu.nomArticle}<br><br>
-	Description : ${model.articleVendu.description}<br><br>
+<jsp:include page="logo.jsp"></jsp:include>
+	<h2>Détail vente</h2><br><br>
+	${model.enchere.article.nomArticle}<br><br>
+	Description : ${model.enchere.article.description}<br><br>
 	Meilleure offre : ${model.articleVendu.prixVente}pts par ${model.profilUtilisateur.pseudo}<br>
 	Mise à prix : ${model.articleVendu.miseAPrix} points<br><br>
 	Fin de l'enchère : ${model.articleVendu.dateFinEncheres}<br><br>

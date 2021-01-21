@@ -5,24 +5,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Novelle vente-Encheres</title>
 </head>
 <body>
-	<h2>Nouvelle vente</h2>
-	<form action="/ENI-Encheres/afficherEncheres" method="POST">
+<jsp:include page="logo.jsp"></jsp:include>
+	<h4>Nouvelle vente</h4>
+	<form action="/ENI-Encheres/vendre-article" method="POST">
 		Article : <input type="text" name="nom"><br><br>
 		<label for="description">Description : </label><br>
-		<textarea rows="5" cols="20" name="descrption" id="description"></textarea><br><br>
+		<textarea rows="5" cols="20" name="description" id="description"></textarea><br><br>
 		 <label for="categories">Catégorie : </label>
 		 <select name="categories" id="categories">
-			<option value="toutes">Toutes</option>
 			<c:forEach var="cat" items="${model.listCategories}">
 				<option value="${fn:toLowerCase(cat.libelle)}">${cat.libelle}</option>
 			</c:forEach>
 		</select> <br> <br>
 		Photo de l'article : <input type="file" name="photo_profil" id="file"><br><br>
-		Mise à prix : <input type="number" name="prix" min="0"><br><br>
+		Mise à prix : <input type="number" name="prix" min="0" value="${model.article.miseAPrix}"><br><br>
 		Début de l'enchère : <input type="date" name="debut_e" value="${model.article.dateDebutEncheres}"><br><br>
 		Fin de l'enchère : <input type="date" name="fin_e" value="${model.article.dateFinEncheres}"><br><br>
 		<div>
@@ -36,7 +36,7 @@
 		<input type="submit" name="save" value="Enregistrer">
 	</form><br>
 	
-	<form action="/ENI-Encheres/accueil" method="POST">
+	<form action="/ENI-Encheres/afficherEncheres" method="POST">
 		<input type="submit" name="cancel" value="Annuler">
 	</form>
 </body>
