@@ -5,3 +5,7 @@ html {
 .navbar-light .navbar-nav .nav-link, .navbar-light .navbar-brand {
     color: #007bff;
 }
+
+.custom-select {
+	width: 100%;
+}

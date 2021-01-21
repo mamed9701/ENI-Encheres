@@ -45,6 +45,12 @@ public class AccueilServlet extends HttpServlet {
 		AccueilModel model = new AccueilModel();
 		Utilisateur currentUser = null;
 		
+
+		//TODO filtres: categ libelle -> findByLibelle(param formulaire)
+		//if "".equals("get param filtre")
+		
+		
+		
 		if (null != request.getSession().getAttribute("login")) {
 			Integer id = (Integer) request.getSession().getAttribute("login");
 			try {

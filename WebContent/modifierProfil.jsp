@@ -80,7 +80,7 @@
                     </div>
                 </div>
                 <input type="submit" name="register" class="btn btn-primary px-4 float-left" value="Enregistrer">
-	            <a class="btn btn-warning px-4 float-right" href="#">Supprimer mon compte</a>
+	            <a class="btn btn-warning px-4 float-right" href="/ENI-Encheres/supprimer">Supprimer mon compte</a>
             </form>
             
         </div>

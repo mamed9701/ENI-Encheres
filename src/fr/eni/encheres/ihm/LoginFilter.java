@@ -24,6 +24,8 @@ import javax.servlet.http.HttpServletResponse;
         		"/edit",
         		"/fin-enchere",
         		"/encherir",
+        		"/logout",
+        		"/supprimer",
         		"/afficher-utilisateur"
         		},
         dispatcherTypes = {DispatcherType.REQUEST, DispatcherType.FORWARD}
