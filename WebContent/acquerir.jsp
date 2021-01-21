@@ -8,11 +8,9 @@
 <title>Acquerir - ENI Enchères</title>
 </head>
 <body>
-	<div class="row">
-		<div class="col-4 mt-3 ml-3">
-			<jsp:include page="logo.jsp"></jsp:include>
-		</div>
-	</div>
+
+	<jsp:include page="logo.jsp"></jsp:include>
+
 	<h2> Vous avez remporté l'enchère</h2><br><br>
 	${model.articleVendu.nomArticle}<br><br>
 	Description : ${model.articleVendu.description}<br><br>

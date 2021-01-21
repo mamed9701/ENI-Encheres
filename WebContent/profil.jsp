@@ -11,11 +11,9 @@
 <title>Profil - ENI Enchères</title>
 </head>
 <body>
-  	<div class="row">
-		<div class="col-4 mt-3 ml-3">
-			<jsp:include page="logo.jsp"></jsp:include>
-		</div>
-	</div>
+
+	<jsp:include page="logo.jsp"></jsp:include>
+
 	<div class="container">
 		<div class="row mt-5">
 			<div class="col-sm-3">

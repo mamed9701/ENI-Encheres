@@ -11,12 +11,8 @@
 
 </head>
 <body>
-<div class="container">
-	<div class="row">
-		<div class="col-4 mt-3">
-			<jsp:include page="logo.jsp"></jsp:include>
-		</div>
-	</div>
+	<jsp:include page="logo.jsp"></jsp:include>
+	<div class="container">
 		<div class="row justify-content-center mt-5">
 			<h2>Détail vente</h2>		
 		</div>
