@@ -30,6 +30,7 @@ public class AccueilServlet extends HttpServlet {
 	private EnchereManager manager = EnchereManagerSingl.getInstance();
 	private UserManager userManager = UserManagerSingl.getInstance();
     List<Enchere> listeEncheres = new ArrayList<>();   
+    List<Enchere> listeEncheresByUser = new ArrayList<>();   
     List<Categorie> listeCategories = new ArrayList<>(); 
        
     /**
@@ -44,47 +45,52 @@ public class AccueilServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AccueilModel model = new AccueilModel();
+		Utilisateur currentUser = null;
 		
-		if("".equals(request.getParameter("filtre"))) {
-			try {
-				manager.trouverParLibelle(request.getParameter("filtre"));
-			} catch (BLLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}else if(null != request.getParameter("categories") && "".equals(request.getParameter("filtre"))) {
-			//manager.parCatEtLibelle()
-		}
+
+		//TODO filtres: categ libelle -> findByLibelle(param formulaire)
+		//if "".equals("get param filtre")
 		
 		
 		
-		
-		try {
-            model.setListEncheres(manager.getAllEncheres());
-        } catch (BLLException e) {
-            request.setAttribute("message", e.getMessage());
-        }
-      
-        try {
-            listeCategories = manager.getAllCategories();
-            model.setListCategories(listeCategories);
-            System.out.println(listeCategories);
-        } catch (BLLException e) {
-            e.printStackTrace();
-        }
-        
-        Utilisateur currentUser = null;
-        if (null != request.getSession().getAttribute("login")) {
-			// retrieve the current user id from session and search it in the database
+		if (null != request.getSession().getAttribute("login")) {
 			Integer id = (Integer) request.getSession().getAttribute("login");
 			try {
 				currentUser = userManager.afficherUtilisateur(id);
 			} catch (BLLException e) {
 				e.printStackTrace();
-			}
+			}			
 		}
-    	request.setAttribute("model", model);
-		request.getRequestDispatcher("afficherEncheres.jsp").forward(request, response);
+        try {
+            listeCategories = manager.getAllCategories();           
+            model.setListCategories(listeCategories);
+        } catch (BLLException e) {
+            e.printStackTrace();
+        }
+
+        if (null != currentUser) {
+        	try {
+        		listeEncheresByUser = manager.getEncheresByUser(currentUser.getNoUtilisateur());
+        		System.out.println(listeEncheresByUser);
+				model.setListEncheres(listeEncheresByUser);
+				request.setAttribute("model", model);
+				request.getRequestDispatcher("afficherEncheres.jsp").forward(request, response);			
+			} catch (BLLException e) {
+				e.printStackTrace();
+			}
+		}else {
+			System.out.println("nelogat");
+			try {
+				listeEncheres = manager.getAllEncheres();
+	            model.setListEncheres(listeEncheres);         
+	        } catch (BLLException e) {
+	            request.setAttribute("message", e.getMessage());
+	        }
+			model.setListEncheres(listeEncheres);
+			request.setAttribute("model", model);
+			request.getRequestDispatcher("accueil.jsp").forward(request, response);			
+		}
+
 	}
 
 	/**

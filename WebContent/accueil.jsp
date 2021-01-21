@@ -9,12 +9,12 @@
 
 <jsp:include page="header.jsp"></jsp:include>
 
-<title>Accueil-Encheres</title>
+<title>Accueil - ENI Enchères</title>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-md navbar-light bg-light mb-4">
-	<h2 class="navbar-brand">ENI-Encheres</h2>
+	<h2>ENI-Encheres</h2>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarCollapse" aria-controls="navbarCollapse"
 		aria-expanded="false" aria-label="Toggle navigation">

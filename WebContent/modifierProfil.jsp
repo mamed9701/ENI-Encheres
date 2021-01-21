@@ -7,7 +7,9 @@
 <head>
 <jsp:include page="header.jsp"></jsp:include>
 <meta charset="UTF-8">
-<title>Modifier profil-Encheres</title>
+
+<title>Modifier profil - ENI Enchères</title>
+
 </head>
 <body>
 <jsp:include page="logo.jsp"></jsp:include>
@@ -33,8 +35,10 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-6">
-                        <label for="prenom">Pr�nom : </label>
+                        <label for="prenom">Prénom : </label>
+
 						<input type="text" name="prenom" id="prenom" class="form-control" placeholder="Prénom" value="${model.utilisateur.prenom}" required>
+
                     </div>
                     <div class="col-sm-6">
                         <label for="email">Email : </label>
@@ -43,8 +47,10 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-sm-6">
-                        <label for="telephone">Tel�phone : </label>
+
+                        <label for="telephone">Téléphone : </label>
 						<input type="text" name="telephone" id="telephone" class="form-control" placeholder="Téléphone" value="${model.utilisateur.telephone}" required>
+
                     </div>
                     <div class="col-sm-6">
                         <label for="rue">Rue : </label>
@@ -81,7 +87,7 @@
                     </div>
                 </div>
                 <input type="submit" name="register" class="btn btn-primary px-4 float-left" value="Enregistrer">
-	            <a class="btn btn-warning px-4 float-right" href="#">Supprimer mon compte</a>
+	            <a class="btn btn-warning px-4 float-right" href="/ENI-Encheres/supprimer">Supprimer mon compte</a>
             </form>
             
         </div>

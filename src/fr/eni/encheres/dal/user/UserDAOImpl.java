@@ -126,6 +126,8 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public void delete(Integer id) throws UserDALException {
+    	// TODO On delete cascade : L'instruction DELETE est en conflit avec la contrainte REFERENCE "ventes_utilisateur_fk".
+    	//Le conflit s'est produit dans la base de données "ENCHERES_DB", table "dbo.ARTICLES_VENDUS", column 'no_utilisateur'.
         try( Connection cnx = ConnectionProvider.getConnection();
                 PreparedStatement pst = cnx.prepareStatement(SQL_DELETE);
                ) {

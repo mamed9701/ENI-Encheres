@@ -7,7 +7,7 @@
 <head>
 <jsp:include page="header.jsp"></jsp:include>
 <meta charset="UTF-8">
-<title>Inscription-Encheres</title>
+<title>Inscription - ENI Enchères</title>
 </head>
 <body>
 

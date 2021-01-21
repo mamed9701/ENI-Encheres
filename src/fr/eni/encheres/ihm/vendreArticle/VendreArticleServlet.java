@@ -76,7 +76,6 @@ public class VendreArticleServlet extends HttpServlet {
 
 			Date date_debut = null;
 			Date date_fin = null;
-
 			try {
 				categorie = manager.trouverParLibelle(request.getParameter("categories"));
 			} catch (BLLException e) {
@@ -94,12 +93,11 @@ public class VendreArticleServlet extends HttpServlet {
 			}
 			article.setDateDebutEncheres(date_debut.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
 			article.setDateFinEncheres(date_fin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+
 			article.setMiseAPrix(Integer.parseInt(request.getParameter("prix")));
 			article.setPrixVente(null);
 			article.setCategorie(categorie);
 			article.setUtilisateur(currentUser);
-			
-			
 			ArticleVendu newArticle = null;
 			try {
 				newArticle = manager.ajouterArticle(article);
@@ -118,9 +116,12 @@ public class VendreArticleServlet extends HttpServlet {
 			} catch (BLLException e) {
 				e.printStackTrace();
 			}
+
 		}
 
 		model.setUtilisateur(currentUser);
+
+		request.setAttribute("success", "L'article a été ajouté avec success !");
 		model.setListCategories(listeCategories);
 		request.setAttribute("model", model);
 		request.getRequestDispatcher("ajouterArticle.jsp").forward(request, response);
