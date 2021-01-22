@@ -10,10 +10,15 @@
 <jsp:include page="header.jsp"></jsp:include>
 <title>Novelle vente - ENI Enchères</title>
 </head>
+
 <body>
+	<jsp:include page="logo.jsp"></jsp:include>
+
 	<div class="container">
 		<div class="row justify-content-center mt-5">
-			<h2>Nouvelle vente</h2>
+			<h2>Nouvelle vente</h2>		
+		</div>
+		<div class="row justify-content-center mt-3">
 			<c:if test="${success != null}">
 				<div class="alert alert-success" role="alert">${success}</div>
 			</c:if>
@@ -28,13 +33,11 @@
 					<div class="form-group row">
 						<label for="nom" class="col-3 col-form-label">Article :</label>
 						<div class="col-6">
-							<input id="nom" name="nom" placeholder="Nom" type="text"
-								class="form-control" value="${model.article.nom}" required>
+							<input id="nom" name="nom" placeholder="Nom" type="text" class="form-control" value="${model.article.nom}" required>
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="description" class="col-3 col-form-label">Description
-							:</label>
+						<label for="description" class="col-3 col-form-label">Description :</label>
 						<div class="col-6">
 							<textarea id="description" name="description" cols="40" rows="5"
 								class="form-control" required>${model.article.nom}</textarea>
@@ -88,7 +91,7 @@
 					</div>
 					
 					<div class="card col-10">
-						<h5 class="card-header">Retrait</h5>
+						<h5 class="card-header row">Retrait</h5>
 						<div class="card-body">
 							<div class="form-group row">
 							<label for="rue" class="col-3 col-form-label">Rue :</label>
@@ -131,4 +134,5 @@
 
 	</div>
 </body>
+
 </html>

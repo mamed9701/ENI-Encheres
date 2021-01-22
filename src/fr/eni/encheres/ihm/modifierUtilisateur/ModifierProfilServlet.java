@@ -6,7 +6,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import fr.eni.encheres.bll.BLLException;
 import fr.eni.encheres.bll.user.UserManager;
 import fr.eni.encheres.bll.user.UserManagerSingl;
@@ -38,6 +37,8 @@ public class ModifierProfilServlet extends HttpServlet {
 			//retrieve the current user id from session and search it in the database
 			Integer id = (Integer) request.getSession().getAttribute("login");
 			try {
+				currentUser = manager.afficherUtilisateur(id);
+	
 			} catch (BLLException e) {
 				e.printStackTrace();
 			}

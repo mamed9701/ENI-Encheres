@@ -11,6 +11,8 @@
 </head>
 <body>
 
+<jsp:include page="logo.jsp"></jsp:include>
+
 <div class="container py-5">
     <div class="row">
         <div class="col-md-12 mx-auto">

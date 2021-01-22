@@ -7,10 +7,10 @@ import fr.eni.encheres.bo.Utilisateur;
 
 public class EncherirModel {
 
-	private ArticleVendu articleVendu;
+	private ArticleVendu article;
 	private Retrait retrait;
 	private Enchere enchere;
-	private Utilisateur profilUtilisateur;
+	private Utilisateur user;
 	private Integer maProposition;
 
 	/**
@@ -25,31 +25,31 @@ public class EncherirModel {
 	 * @param articleVendu
 	 * @param retrait
 	 * @param enchere
-	 * @param profilUtilisateur
+	 * @param user
 	 * @param maProposition
 	 */
-	public EncherirModel(ArticleVendu articleVendu, Retrait retrait, Enchere enchere, Utilisateur profilUtilisateur,
+	public EncherirModel(ArticleVendu article, Retrait retrait, Enchere enchere, Utilisateur user,
 			Integer maProposition) {
 		super();
-		this.articleVendu = articleVendu;
+		this.article = article;
 		this.retrait = retrait;
 		this.enchere = enchere;
-		this.profilUtilisateur = profilUtilisateur;
+		this.user = user;
 		this.maProposition = maProposition;
 	}
 
 	/**
 	 * @return the articleVendu
 	 */
-	public ArticleVendu getArticleVendu() {
-		return articleVendu;
+	public ArticleVendu getArticle() {
+		return article;
 	}
 
 	/**
 	 * @param articleVendu the articleVendu to set
 	 */
-	public void setArticleVendu(ArticleVendu articleVendu) {
-		this.articleVendu = articleVendu;
+	public void setArticle(ArticleVendu article) {
+		this.article = article;
 	}
 
 	/**
@@ -81,17 +81,17 @@ public class EncherirModel {
 	}
 
 	/**
-	 * @return the profilUtilisateur
+	 * @return the user
 	 */
-	public Utilisateur getProfilUtilisateur() {
-		return profilUtilisateur;
+	public Utilisateur getUser() {
+		return user;
 	}
 
 	/**
-	 * @param profilUtilisateur the profilUtilisateur to set
+	 * @param user the user to set
 	 */
-	public void setProfilUtilisateur(Utilisateur profilUtilisateur) {
-		this.profilUtilisateur = profilUtilisateur;
+	public void setUser(Utilisateur user) {
+		this.user = user;
 	}
 
 	/**
@@ -110,8 +110,8 @@ public class EncherirModel {
 
 	@Override
 	public String toString() {
-		return "EncherirModel [articleVendu=" + articleVendu + ", retrait=" + retrait + ", enchere=" + enchere
-				+ ", profilUtilisateur=" + profilUtilisateur + ", maProposition=" + maProposition + "]";
+		return "EncherirModel [article=" + article + ", retrait=" + retrait + ", enchere=" + enchere
+				+ ", user=" + user + ", maProposition=" + maProposition + "]";
 	}
 
 }

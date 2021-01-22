@@ -25,16 +25,22 @@ public class ArticleVendusDAOImpl implements ArticleVenduDAO {
     private static UserDAO daoUsers = DAOFactory.getUserDAO();
     private static CategorieDAO daoCategories = DAOFactory.getCategorieDAO();
     
-	private static final String INSERT = "INSERT INTO articles_vendus (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie)"
-	        + " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 	private static final String UPDATE = "UPDATE articles_vendus"
 	        +" set nom_article=?, description=?, date_debut_encheres=?, date_fin_encheres=?, prix_initial=?, prix_vente=?, no_utilisateur=?, no_categorie=?"
 	        +" where no_article=?";
 	private static final String DELETE = "DELETE FROM Articles_Vendus WHERE no_article = ?;";
 	private static final String SELECT_ID = "SELECT * FROM Articles_Vendus WHERE no_article = ?;";
+	private static final String SELECT_BY_USER = "SELECT * FROM Articles_Vendus WHERE no_utilisateur = ?;";
 	private static final String SELECT_MOT_CLE = "SELECT * FROM Articles_Vendus WHERE nom_article LIKE ?";
+	private static final String SELECT_BY_DATE_DEBUT = "SELECT * FROM Articles_Vendus WHERE date_debut_encheres >= ?";
 	private static final String SELECT_MOT_CATEG = "SELECT * FROM Articles_Vendus WHERE nom_article LIKE ? AND no_categorie = ?;";
 	private static final String SELECT_CATEGORIE = "SELECT * FROM Articles_Vendus WHERE no_categorie = ?;";
+	private static final String SQL_SELECT_ALL = "select * from articles_vendus";
+	
+	
+	private static final String INSERT = "INSERT INTO articles_vendus "
+			+"(nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie)"
+			+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
 	@Override
 	public ArticleVendu insert(ArticleVendu article) throws ArticleVenduDALException {
@@ -72,13 +78,13 @@ public class ArticleVendusDAOImpl implements ArticleVenduDAO {
                 }	
                 
 		} catch(Exception e) {
-		    e.printStackTrace();
-
-			//throw new ArticleVenduDALException("Article DAL - Impossible d'insérer l'article");
+			throw new ArticleVenduDALException("Article DAL - Impossible d'insérer l'article");
 		}
 
         return article;
 	}
+	
+	
 	
 	@Override
 	public ArticleVendu selectById(Integer id) throws ArticleVenduDALException {
@@ -89,14 +95,24 @@ public class ArticleVendusDAOImpl implements ArticleVenduDAO {
 
 			stmt.setInt(1, id);
 			rs = stmt.executeQuery();	
-
+			Utilisateur user = null;
+			Categorie categ = null;
 			if (rs.next()) {
 				LocalDate dateDebut = rs.getDate("date_debut_encheres").toLocalDate();
 				LocalDate dateFin = rs.getDate("date_fin_encheres").toLocalDate();
-
+				try {
+                    user = daoUsers.findById(rs.getInt("no_utilisateur"));
+                } catch (UserDALException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    categ = daoCategories.findById(rs.getInt("no_categorie"));
+                } catch (CategorieDALException e) {
+                    e.printStackTrace();
+                }
 				article = new ArticleVendu(rs.getInt("no_article"), rs.getString("nom_article"),
 						rs.getString("description"),dateDebut, dateFin, rs.getInt("prix_initial"), 
-						rs.getInt("prix_vente"));
+						rs.getInt("prix_vente"), user, categ);
 
 			}
 		} catch (SQLException e) {
@@ -229,6 +245,126 @@ public class ArticleVendusDAOImpl implements ArticleVenduDAO {
 				PreparedStatement stmt = cnx.prepareStatement(SELECT_CATEGORIE);) {
 
 			stmt.setInt(1, idCat);
+			rs = stmt.executeQuery();
+			ArticleVendu artVe = null;
+            Utilisateur user = null;
+            Categorie categ = null;
+
+			while (rs.next()) {
+				LocalDate dateDebut = rs.getDate("date_debut_encheres").toLocalDate();
+				LocalDate dateFin = rs.getDate("date_fin_encheres").toLocalDate();
+
+				try {
+                    user = daoUsers.findById(rs.getInt("no_utilisateur"));
+                } catch (UserDALException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    categ = daoCategories.findById(rs.getInt("no_categorie"));
+                } catch (CategorieDALException e) {
+                    e.printStackTrace();
+                }
+                artVe = new ArticleVendu(rs.getInt("no_article"), rs.getString("nom_article"),
+                        rs.getString("description"),dateDebut, dateFin, rs.getInt("prix_initial"), 
+                        rs.getInt("prix_vente"), user, categ);
+				
+				
+				liste.add(artVe);
+			}
+			
+		} catch (SQLException e) {
+			throw new ArticleVenduDALException("Article DAL - La séléction par catégorie a échoué !");
+		}
+		return liste;
+	}
+
+	@Override
+	public List<ArticleVendu> selectByDateDebut(LocalDate debut) throws ArticleVenduDALException {
+		
+		List<ArticleVendu> liste = new ArrayList<ArticleVendu>();
+		ResultSet rs = null;
+		try (Connection cnx = ConnectionProvider.getConnection();
+				PreparedStatement stmt = cnx.prepareStatement(SELECT_BY_DATE_DEBUT);
+		        ) {
+
+			stmt.setDate(1, Date.valueOf(debut));
+			rs = stmt.executeQuery();
+			ArticleVendu artVe = null;
+			Utilisateur user = null;
+			Categorie categ = null;
+
+			while (rs.next()) {
+				LocalDate dateDebut = rs.getDate("date_debut_encheres").toLocalDate();
+				LocalDate dateFin = rs.getDate("date_fin_encheres").toLocalDate();
+                try {
+                    user = daoUsers.findById(rs.getInt("no_utilisateur"));
+                } catch (UserDALException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    categ = daoCategories.findById(rs.getInt("no_categorie"));
+                } catch (CategorieDALException e) {
+                    e.printStackTrace();
+                }
+				artVe = new ArticleVendu(rs.getInt("no_article"), rs.getString("nom_article"),
+						rs.getString("description"),dateDebut, dateFin, rs.getInt("prix_initial"), 
+						rs.getInt("prix_vente"), user, categ);		
+				
+				liste.add(artVe);
+			}
+		
+		} catch (SQLException e) {
+		    e.printStackTrace();
+			throw new ArticleVenduDALException("Article DAL - La séléction par nom a échoué !");
+		}
+		return liste;
+	}
+
+	@Override
+	public List<ArticleVendu> selectAll() throws ArticleVenduDALException {
+		List<ArticleVendu> liste = new ArrayList<ArticleVendu>();
+		try (Connection cnx = ConnectionProvider.getConnection();
+				PreparedStatement rqt = cnx.prepareStatement(SQL_SELECT_ALL);) {
+			ResultSet rs = rqt.executeQuery();
+			ArticleVendu artVe = null;
+			Utilisateur user = null;
+			Categorie categ = null;
+			while (rs.next()) {
+//				System.out.println(rs.getDate("date_debut_encheres"));
+				LocalDate dateDebut = rs.getDate("date_debut_encheres").toLocalDate();
+				LocalDate dateFin = rs.getDate("date_fin_encheres").toLocalDate();
+				try {
+					user = daoUsers.findById(rs.getInt("no_utilisateur"));
+				} catch (UserDALException e) {
+					e.printStackTrace();
+				}
+				try {
+					categ = daoCategories.findById(rs.getInt("no_categorie"));
+				} catch (CategorieDALException e) {
+					e.printStackTrace();
+				}
+				artVe = new ArticleVendu(rs.getInt("no_article"), rs.getString("nom_article"),
+						rs.getString("description"), dateDebut, dateFin, rs.getInt("prix_initial"),
+						rs.getInt("prix_vente"), user, categ);
+
+				liste.add(artVe);
+			}
+
+		} catch (SQLException e) {
+//			e.printStackTrace();
+			throw new ArticleVenduDALException("Article DAL - La séléction a échoué !");
+		}
+		return liste;
+	}
+
+	@Override
+	public List<ArticleVendu> selectByUtilisateur(Integer id) throws ArticleVenduDALException {
+		List<ArticleVendu> liste = new ArrayList<ArticleVendu>();
+		ResultSet rs = null;
+		try (Connection cnx = ConnectionProvider.getConnection();
+				PreparedStatement stmt = cnx.prepareStatement(SELECT_BY_USER);) {
+
+			stmt.setInt(1, id);
 			rs = stmt.executeQuery();
 			ArticleVendu artVe = null;
             Utilisateur user = null;

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE html>
@@ -8,9 +8,12 @@
 <jsp:include page="header.jsp"></jsp:include>
 
 <meta charset="UTF-8">
-<title>Connexion - ENI Enchères</title>
+<title>Connexion - ENI EnchÃ¨res</title>
 </head>
 <body>
+
+	<jsp:include page="logo.jsp"></jsp:include>
+
 	<div class="container">
 		<div class="row">
 			<div class="col-12 col-lg-6 offset-lg-3">
@@ -35,8 +38,8 @@
 					<button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
 			    </form>
 			    
-				<a href="#" class="stretched-link">Mot de passe oublié</a> <br>
-			    <a href="/ENI-Encheres/register">Créer un compte</a>
+				<a href="#" class="stretched-link">Mot de passe oubliÃ©</a> <br>
+			    <a href="/ENI-Encheres/register">CrÃ©er un compte</a>
 			</div>			
 		</div>
 	</div>

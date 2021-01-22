@@ -15,7 +15,7 @@ public class ArticleVendu {
 	private Utilisateur utilisateur;
 
 	/**
-	 * 
+	 * Constructeur de la classe mère
 	 */
 	public ArticleVendu() {
 		super();
@@ -235,11 +235,14 @@ public class ArticleVendu {
         this.utilisateur = utilisateur;
     }
 
-    @Override
+	@Override
 	public String toString() {
 		return "ArticleVendu [noArticle=" + noArticle + ", nomArticle=" + nomArticle + ", description=" + description
 				+ ", dateDebutEncheres=" + dateDebutEncheres + ", dateFinEncheres=" + dateFinEncheres + ", miseAPrix="
-				+ miseAPrix + ", prixVente=" + prixVente + ", categorie=" + categorie + "]";
+				+ miseAPrix + ", prixVente=" + prixVente + ", categorie=" + categorie + ", utilisateur=" + utilisateur
+				+ "]";
 	}
+
+ 
 
 }

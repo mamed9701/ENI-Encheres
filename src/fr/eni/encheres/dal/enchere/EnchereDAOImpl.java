@@ -99,7 +99,7 @@ public class EnchereDAOImpl implements EnchereDAO {
                 }
            } catch (SQLException e) {
                e.printStackTrace();
-               throw new EnchereDALException("La récuperation des données a échoué !");
+//               throw new EnchereDALException("La récuperation des données a échoué !");
            }
         return result;
     }

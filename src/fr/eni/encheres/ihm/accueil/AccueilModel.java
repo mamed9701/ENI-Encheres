@@ -3,14 +3,18 @@ package fr.eni.encheres.ihm.accueil;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.eni.encheres.bo.ArticleVendu;
 import fr.eni.encheres.bo.Categorie;
 import fr.eni.encheres.bo.Enchere;
+import fr.eni.encheres.bo.Utilisateur;
 
 public class AccueilModel {
-
+	private Utilisateur currentUser;
 	private String filtre;
 	private List<Categorie> listCategories = new ArrayList<>();
 	private List<Enchere> listEncheres = new ArrayList<>();
+	private List<ArticleVendu> listArticles = new ArrayList<>();
+	private List<ArticleVendu> listArticlesByUser = new ArrayList<>();
 
 	/**
 	 * 
@@ -70,6 +74,30 @@ public class AccueilModel {
 	 */
 	public void setListEncheres(List<Enchere> listEncheres) {
 		this.listEncheres = listEncheres;
+	}
+
+	public List<ArticleVendu> getListArticles() {
+		return listArticles;
+	}
+
+	public void setListArticles(List<ArticleVendu> listArticles) {
+		this.listArticles = listArticles;
+	}
+
+	public List<ArticleVendu> getListArticlesByUser() {
+		return listArticlesByUser;
+	}
+
+	public void setListArticlesByUser(List<ArticleVendu> listArticlesByUser) {
+		this.listArticlesByUser = listArticlesByUser;
+	}
+
+	public Utilisateur getCurrentUser() {
+		return currentUser;
+	}
+
+	public void setCurrentUser(Utilisateur currentUser) {
+		this.currentUser = currentUser;
 	}
 
 	@Override
