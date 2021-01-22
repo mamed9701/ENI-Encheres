@@ -57,25 +57,41 @@ public class ModifierProfilServlet extends HttpServlet {
 		    String npwd = request.getParameter("new-password");
 		    String confirm = request.getParameter("confirm-password");
 		    
-		    if (pwd.equals(currentUser.getMotDePasse()) && npwd.equals(confirm)) {
-
-		    	currentUser.setPseudo(pseudo);
-		    	currentUser.setNom(nom);
-		    	currentUser.setPrenom(prenom);
-		    	currentUser.setEmail(email);
-		    	currentUser.setTelephone(telephone);
-		    	currentUser.setRue(rue);
-		    	currentUser.setVille(ville);
-		    	currentUser.setCodePostal(code);
-		    	currentUser.setMotDePasse(npwd);
-		    	
-		    	try {
-					manager.modifierUtilisateur(currentUser);
-				} catch (BLLException e) {
-					e.printStackTrace();
+		    if (pwd.equals(currentUser.getMotDePasse())) {
+		    	if (!"".equals(npwd)) {
+		    		if (npwd.equals(confirm)) {
+		    			currentUser.setMotDePasse(npwd);	
+		    			try {
+		    				manager.modifierUtilisateur(currentUser);
+		    			} catch (BLLException e) {
+		    				e.printStackTrace();
+		    			}
+		    			request.setAttribute("success", "Le mot de passe à été changé !");
+					}else {
+						request.setAttribute("error", "Les mots de passe ne correspondent pas !");						
+					}
+				}else {
+					currentUser.setPseudo(pseudo);
+			    	currentUser.setNom(nom);
+			    	currentUser.setPrenom(prenom);
+			    	currentUser.setEmail(email);
+			    	currentUser.setTelephone(telephone);
+			    	currentUser.setRue(rue);
+			    	currentUser.setVille(ville);
+			    	currentUser.setCodePostal(code);
+			    	currentUser.setMotDePasse(pwd);	
+			    	
+			    	try {
+						manager.modifierUtilisateur(currentUser);
+					} catch (BLLException e) {
+						e.printStackTrace();
+					}
+					
 				}
+	    	
+		    	request.setAttribute("success", "Le compte à été modifié !");	 
 			}else {					
-            	request.setAttribute("error", "Les mots de passe ne correspondent pas !");	            	
+            	request.setAttribute("error", "Le mot de passe est incorrect !");	            	
                          
             }
 		    

@@ -24,6 +24,11 @@
 				  	${error}
 				</div>       	
         	</c:if>
+        	<c:if test="${success != null}">
+	        	<div class="alert alert-success" role="alert">
+				  	${success}
+				</div>       	
+        	</c:if>
             <form action="/ENI-Encheres/edit" method="POST">
                 <div class="form-group row">
                     <div class="col-sm-6">
@@ -72,7 +77,7 @@
                 <div class="form-group row">
                     <div class="col-sm-6">
                         <label for="current-password">Mot de passe actuel : </label>
-						<input type="password" name="current-password" id="current-password" class="form-control" value="${model.utilisateur.motDePasse}" required>
+						<input type="password" name="current-password" id="current-password" class="form-control" required>
                     </div>
                     <div class="col-sm-6">
                         
@@ -81,11 +86,11 @@
                 <div class="form-group row">
                     <div class="col-sm-6">
                         <label for="new-password">Nouveau mot de passe : </label>
-						<input type="password" name="new-password" id="new-password" class="form-control" required>
+						<input type="password" name="new-password" id="new-password" class="form-control">
                     </div>
                     <div class="col-sm-6">
                         <label for="confirm-password">Confirmation mot de passe : </label>
-						<input type="password" name="confirm-password" id="confirm-password" class="form-control" required>
+						<input type="password" name="confirm-password" id="confirm-password" class="form-control">
                     </div>
                 </div>
                 <input type="submit" name="register" class="btn btn-primary px-4 float-left" value="Enregistrer">
