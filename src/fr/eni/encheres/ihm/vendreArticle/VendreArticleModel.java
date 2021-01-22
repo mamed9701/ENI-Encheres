@@ -15,12 +15,8 @@ public class VendreArticleModel {
 	private Retrait retrait;
 	private Utilisateur utilisateur;
 
-	/**
-	 * 
-	 */
 	public VendreArticleModel() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**

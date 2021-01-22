@@ -15,7 +15,7 @@ public class ArticleVendu {
 	private Utilisateur utilisateur;
 
 	/**
-	 * 
+	 * Constructeur de la classe mère
 	 */
 	public ArticleVendu() {
 		super();

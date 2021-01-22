@@ -25,8 +25,6 @@ public class ArticleVendusDAOImpl implements ArticleVenduDAO {
     private static UserDAO daoUsers = DAOFactory.getUserDAO();
     private static CategorieDAO daoCategories = DAOFactory.getCategorieDAO();
     
-	private static final String INSERT = "INSERT INTO articles_vendus (nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie)"
-	        + " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 	private static final String UPDATE = "UPDATE articles_vendus"
 	        +" set nom_article=?, description=?, date_debut_encheres=?, date_fin_encheres=?, prix_initial=?, prix_vente=?, no_utilisateur=?, no_categorie=?"
 	        +" where no_article=?";
@@ -38,6 +36,11 @@ public class ArticleVendusDAOImpl implements ArticleVenduDAO {
 	private static final String SELECT_MOT_CATEG = "SELECT * FROM Articles_Vendus WHERE nom_article LIKE ? AND no_categorie = ?;";
 	private static final String SELECT_CATEGORIE = "SELECT * FROM Articles_Vendus WHERE no_categorie = ?;";
 	private static final String SQL_SELECT_ALL = "select * from articles_vendus";
+	
+	
+	private static final String INSERT = "INSERT INTO articles_vendus "
+			+"(nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie)"
+			+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
 	@Override
 	public ArticleVendu insert(ArticleVendu article) throws ArticleVenduDALException {
@@ -75,13 +78,13 @@ public class ArticleVendusDAOImpl implements ArticleVenduDAO {
                 }	
                 
 		} catch(Exception e) {
-		    e.printStackTrace();
-
-			//throw new ArticleVenduDALException("Article DAL - Impossible d'insérer l'article");
+			throw new ArticleVenduDALException("Article DAL - Impossible d'insérer l'article");
 		}
 
         return article;
 	}
+	
+	
 	
 	@Override
 	public ArticleVendu selectById(Integer id) throws ArticleVenduDALException {
